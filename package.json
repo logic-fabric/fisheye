@@ -1,0 +1,28 @@
+{
+  "name": "loicmangin_6_29012021",
+  "version": "1.0.0",
+  "description": "FishEye project",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "watchSCSS": "node ./node_modules/gulp/bin/gulp.js watchSCSS",
+    "makeCSS": "node ./node_modules/gulp/bin/gulp.js makeCSS"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logic-fabric/LoicMangin_6_29012021.git"
+  },
+  "author": "Lowic Mangin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/logic-fabric/LoicMangin_6_29012021/issues"
+  },
+  "homepage": "https://github.com/logic-fabric/LoicMangin_6_29012021#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^5.0.0"
+  }
+}
