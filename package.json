@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/logic-fabric/LoicMangin_6_29012021#readme",
   "devDependencies": {
+    "eslint": "^7.19.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-ejs": "^5.1.0",
