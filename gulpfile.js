@@ -12,7 +12,7 @@ sass.compiler = require("node-sass");
 
 function watch() {
   gulp.watch("./src/scss/**/*.scss", buildCSS);
-  gulp.watch("./src/templates/**/*.ejs", buildTemplates);
+  //gulp.watch("./src/templates/**/*.ejs", buildTemplates);
 }
 
 function buildCSS() {
@@ -25,7 +25,7 @@ function buildCSS() {
 
 function buildTemplates() {
   return gulp
-    .src("./src/templates/*.ejs")
+    .src("./src/templates/**/*.ejs")
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest("."));
