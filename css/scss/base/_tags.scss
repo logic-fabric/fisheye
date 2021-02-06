@@ -1,0 +1,20 @@
+/* =======================
+   RAW TAGS DEFAULT STYLES
+   ======================= */
+
+   html {
+    box-sizing: border-box;
+  
+    color: $neutral-900;
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: 300;
+  
+    scroll-behavior: smooth;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }

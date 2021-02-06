@@ -25,7 +25,7 @@ function buildCSS() {
 
 function buildTemplates() {
   return gulp
-    .src("./templates/**/*.ejs")
+    .src("./templates/*.ejs")
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest("."));

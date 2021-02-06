@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-
-<html class="no-js" lang="fr">
-  <head>
-    <meta charset="utf-8" />
-<title>FishEye</title>
-<meta name="description" content="" />
+<meta charset="utf-8" />
+<title><%= title %></title>
+<meta name="description" content="<%= description %>" />
 <meta name="author" content="Lowic Mangin" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,8 +12,8 @@
 <meta property="og:image" content="img/logo-fisheye.png" />
 
 <!-- Place favicon.ico in the root directory: -->
-<link rel="icon" type="image/png" href="icon.png" />
-<link rel="apple-touch-icon" href="icon.png" />
+<link rel="icon" type="image/png" href="<%= faviconPath %>" />
+<link rel="apple-touch-icon" href="<%= faviconPath %>" />
 
 <!-- Fonts and icons: -->
 <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -33,30 +29,7 @@
 />
 
 <!-- Custom CSS: -->
-<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="<%= cssPath %>" />
 
 <!-- Custom JS: -->
-<script type="module" src="js/home.js"></script>
-
-  </head>
-
-  <body>
-    <header><div class="c-logo__box">
-  <img
-    class="c-logo__img"
-    src="./img/logo-fisheye.png"
-    alt="Logo de FishEye"
-    width="200"
-    height="50"
-  />
-</div>
-
-
-  <p>This is home page header</p>
-</header>
-
-    <main></main>
-
-    <footer></footer>
-  </body>
-</html>
+<script type="module" src="<%= jsPath %>"></script>
