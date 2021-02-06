@@ -11,13 +11,13 @@ const rename = require("gulp-rename");
 sass.compiler = require("node-sass");
 
 function watch() {
-  gulp.watch("./src/scss/**/*.scss", buildCSS);
-  //gulp.watch("./src/templates/**/*.ejs", buildTemplates);
+  gulp.watch("./css/scss/**/*.scss", buildCSS);
+  gulp.watch("./templates/**/*.ejs", buildTemplates);
 }
 
 function buildCSS() {
   return gulp
-    .src("./src/scss/main.scss")
+    .src("./css/scss/main.scss")
     .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
     .pipe(autoprefixer({ cascade: false }))
     .pipe(gulp.dest("./css"));
@@ -25,7 +25,7 @@ function buildCSS() {
 
 function buildTemplates() {
   return gulp
-    .src("./src/templates/**/*.ejs")
+    .src("./templates/**/*.ejs")
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest("."));
