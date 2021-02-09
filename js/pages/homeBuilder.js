@@ -43,7 +43,7 @@ export class HomePageBuilder {
   }
 
   templateTag(tag) {
-    return `<li><a href="#">#${tag}</a></li>`;
+    return `<li><button type="button">#${tag}</button></li>`;
   }
 
   templateCardFocusableArea(photographer) {
