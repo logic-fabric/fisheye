@@ -9,7 +9,8 @@
   "scripts": {
     "watch": "node ./node_modules/gulp/bin/gulp.js watch",
     "buildCSS": "node ./node_modules/gulp/bin/gulp.js buildCSS",
-    "buildTemplates": "node ./node_modules/gulp/bin/gulp.js buildTemplates"
+    "buildTemplates": "node ./node_modules/gulp/bin/gulp.js buildTemplates",
+    "compressImages": "node ./node_modules/gulp/bin/gulp.js compressImages"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-ejs": "^5.1.0",
+    "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "node-sass": "^5.0.0"
