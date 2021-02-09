@@ -28,18 +28,19 @@ export class HomePageBuilder {
 
   renderPhotographerCards(photographers) {
     const cardsContainer = document.getElementById("photographer-cards");
-    const photographerCard = document.createElement("article");
-
-    let htmlContent = "";
 
     for (let photographer of photographers) {
+      const photographerCard = document.createElement("article");
+      let htmlContent = "";
+
       htmlContent += this.templateCardFocusableArea(photographer);
       htmlContent += this.templateCardInfos(photographer);
       htmlContent += this.templateCardTags(photographer);
-    }
 
-    photographerCard.innerHTML = htmlContent;
-    cardsContainer.appendChild(photographerCard);
+      photographerCard.innerHTML = htmlContent;
+      photographerCard.classList.add("lg4");
+      cardsContainer.appendChild(photographerCard);
+    }
   }
 
   templateTag(tag) {

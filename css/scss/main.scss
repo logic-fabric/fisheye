@@ -8,6 +8,7 @@
 @import "vendors/normalize";
 
 // 3. Base stuff:
+@import "base/responsive";
 @import "base/tags";
 
 // 4. Layout-related sections:
@@ -15,5 +16,6 @@
 // 5. Components:;
 
 // 6. Pages specific styles:
+@import "pages/home";
 
 // 7. Themes:
