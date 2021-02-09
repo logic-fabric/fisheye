@@ -2,14 +2,35 @@
 
 <html class="no-js" lang="fr">
   <head>
-    <%- include('./partials/_head.ejs', {title: 'FishEye', description: '',
-    faviconPath: 'icon.png', cssPath: 'css/main.css', jsPath: 'js/home.js'}); %>
+    <%- 
+      include(
+        './partials/_head.ejs', 
+        {
+          title: 'FishEye', 
+          description: '',
+          faviconPath: 'icon.png', 
+          cssPath: 'css/main.css', 
+          jsPath: 'js/home.js'
+        }
+      );
+    %>
   </head>
 
   <body>
-    <header><%- include('./partials/_header.ejs', {home: true}); %></header>
+    <header>
+      <%- 
+        include(
+          './partials/_header.ejs', 
+          {home: true}
+        ); 
+      %>
+    </header>
 
-    <main></main>
+    <main>
+      <h1>Nos photographes</h1>
+
+      <div id="photographer-cards"></div>
+    </main>
 
     <footer></footer>
   </body>

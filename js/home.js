@@ -1,10 +1,9 @@
 import { DataHandler } from "./data/dataHandler.js";
-import { PageBuilder } from "./pages/pageBuilder.js";
+import { HomePageBuilder } from "./pages/homeBuilder.js";
 
 const DATA_SOURCE = "/data/FishEyeDataFR.json";
+const TAGS = ["portrait", "events", "travel", "animals"];
 
 const dataHandler = new DataHandler(DATA_SOURCE);
 
-const domTarget = document.querySelector("main");
-
-new PageBuilder(domTarget, dataHandler);
+new HomePageBuilder(dataHandler, TAGS);
