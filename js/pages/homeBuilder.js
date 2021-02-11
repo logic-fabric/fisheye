@@ -16,6 +16,8 @@ export class HomePageBuilder {
     this.renderHeaderTagNav(this.photographersTags);
 
     this.renderPhotographerCards(this.data.photographers);
+
+    this.addTagsEvents();
   }
 
   collectPhotographersTags(photographers) {
@@ -23,6 +25,8 @@ export class HomePageBuilder {
 
     for (let photographer of photographers) {
       for (let tag of photographer.tags) {
+        tag = tag.toLowerCase();
+
         photographersTags.add(tag);
       }
     }
@@ -49,6 +53,7 @@ export class HomePageBuilder {
 
   renderPhotographerCards(photographers) {
     const cardsContainer = document.getElementById("photographer-cards");
+    cardsContainer.innerHTML = "";
 
     for (let photographer of photographers) {
       const photographerCard = document.createElement("article");
@@ -65,7 +70,7 @@ export class HomePageBuilder {
   }
 
   templateTag(tag) {
-    return `<li><button type="button">#${tag}</button></li>`;
+    return `<li><button class="tag" type="button">#${tag}</button></li>`;
   }
 
   templateCardFocusableArea(photographer) {
@@ -95,5 +100,36 @@ export class HomePageBuilder {
     htmlContent += "</ul></nav>";
 
     return htmlContent;
+  }
+
+  photographerFilteredByTag(photographers, tagToMatch) {
+    let filteredPhotographers = new Set();
+
+    for (let photographer of photographers) {
+      for (let tag of photographer.tags) {
+        if (tag === tagToMatch) {
+          filteredPhotographers.add(photographer);
+          break;
+        }
+      }
+    }
+    return filteredPhotographers;
+  }
+
+  addTagsEvents() {
+    const tagButtons = document.querySelectorAll("button.tag");
+
+    tagButtons.forEach((btn) => {
+      btn.onclick = () => {
+        let tagWithoutHashtag = btn.textContent.slice(1);
+
+        let photographers = this.photographerFilteredByTag(
+          this.data.photographers,
+          tagWithoutHashtag
+        );
+
+        this.renderPhotographerCards(photographers);
+      };
+    });
   }
 }
