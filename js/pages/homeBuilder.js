@@ -1,9 +1,8 @@
 "use strict";
 
 export class HomePageBuilder {
-  constructor(dataHandler, tags) {
+  constructor(dataHandler) {
     this.dataHandler = dataHandler;
-    this.tags = tags;
 
     this.asyncBuild();
   }
@@ -11,8 +10,30 @@ export class HomePageBuilder {
   async asyncBuild() {
     this.data = await this.dataHandler.readSource();
 
-    this.renderHeaderTagNav(this.tags);
+    this.photographersTags = this.collectSortedPhotographersTags(
+      this.data.photographers
+    );
+    this.renderHeaderTagNav(this.photographersTags);
+
     this.renderPhotographerCards(this.data.photographers);
+  }
+
+  collectPhotographersTags(photographers) {
+    let photographersTags = new Set();
+
+    for (let photographer of photographers) {
+      for (let tag of photographer.tags) {
+        photographersTags.add(tag);
+      }
+    }
+    return photographersTags;
+  }
+
+  collectSortedPhotographersTags(photographers) {
+    let photographersTags = this.collectPhotographersTags(photographers);
+    let sortedTags = [...photographersTags].sort();
+
+    return sortedTags;
   }
 
   renderHeaderTagNav(tags) {
@@ -65,8 +86,9 @@ export class HomePageBuilder {
 
   templateCardTags(photographer) {
     let htmlContent = "<nav><ul>";
+    let photographerSortedTags = photographer.tags.sort();
 
-    for (let tag of photographer.tags) {
+    for (let tag of photographerSortedTags) {
       htmlContent += this.templateTag(tag);
     }
 
