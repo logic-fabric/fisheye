@@ -9,14 +9,14 @@ export class HomePageBuilder {
 
   async asyncBuild() {
     this.data = await this.dataHandler.readSource();
-
     this.photographersTags = this.collectSortedPhotographersTags(
       this.data.photographers
     );
-    this.renderHeaderTagNav(this.photographersTags);
 
+    this.renderHeaderTagNav(this.photographersTags);
     this.renderPhotographerCards(this.data.photographers);
 
+    this.addLogoEvent();
     this.addTagsEvents();
   }
 
@@ -127,6 +127,14 @@ export class HomePageBuilder {
       }
     }
     return filteredPhotographers;
+  }
+
+  addLogoEvent() {
+    const logoImg = document.querySelector(".c-logo__img");
+
+    logoImg.onclick = () => {
+      this.renderPhotographerCards(this.data.photographers);
+    };
   }
 
   addTagsEvents() {
