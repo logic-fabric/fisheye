@@ -49,7 +49,10 @@ export class HomePageBuilder {
 
   templateCardFocusableArea(photographer) {
     return `<a href="#">
-              <img src="img/logo-fisheye.png" alt="" wifth="48" height="48" />
+              <img 
+                src="img/photographers/${photographer.portrait}" 
+                alt="${photographer.name}" wifth="200" height="200" 
+              />
               <h2>${photographer.name}</h2>
             </a>`;
   }
