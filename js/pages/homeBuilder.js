@@ -40,6 +40,17 @@ export class HomePageBuilder {
     return sortedTags;
   }
 
+  sortPhotographersByName(photographers) {
+    return [...photographers].sort((p1, p2) => {
+      const name1 = p1.name.toLowerCase();
+      const name2 = p2.name.toLowerCase();
+
+      if (name1 > name2) return 1;
+      if (name1 < name2) return -1;
+      return 0;
+    });
+  }
+
   renderHeaderTagNav(tags) {
     const tagNav = document.querySelector("#header-tagnav ul");
     let htmlContent = "";
@@ -54,6 +65,8 @@ export class HomePageBuilder {
   renderPhotographerCards(photographers) {
     const cardsContainer = document.getElementById("photographer-cards");
     cardsContainer.innerHTML = "";
+
+    photographers = this.sortPhotographersByName(photographers);
 
     for (let photographer of photographers) {
       const photographerCard = document.createElement("article");
