@@ -5,8 +5,8 @@ const gulp = require("gulp");
 const sass = require("gulp-sass");
 const autoprefixer = require("gulp-autoprefixer");
 
-const ejs = require("gulp-ejs");
-const rename = require("gulp-rename");
+//const ejs = require("gulp-ejs");
+//const rename = require("gulp-rename");
 
 const imagemin = require("gulp-imagemin");
 
@@ -14,7 +14,7 @@ sass.compiler = require("node-sass");
 
 function watch() {
   gulp.watch("./css/scss/**/*.scss", buildCSS);
-  gulp.watch("./templates/**/*.ejs", buildTemplates);
+  //gulp.watch("./templates/**/*.ejs", buildTemplates);
 }
 
 function buildCSS() {
@@ -25,13 +25,13 @@ function buildCSS() {
     .pipe(gulp.dest("./css"));
 }
 
-function buildTemplates() {
+/* function buildTemplates() {
   return gulp
     .src("./templates/*.ejs")
     .pipe(ejs())
     .pipe(rename({ extname: ".html" }))
     .pipe(gulp.dest("."));
-}
+} */
 
 function compressImages() {
   gulp
@@ -42,5 +42,5 @@ function compressImages() {
 
 module.exports.watch = watch;
 module.exports.buildCSS = buildCSS;
-module.exports.buildTemplates = buildTemplates;
+//module.exports.buildTemplates = buildTemplates;
 module.exports.compressImages = compressImages;
