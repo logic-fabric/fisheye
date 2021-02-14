@@ -1,6 +1,6 @@
 "use strict";
 
-class Medium {
+export class Medium {
   constructor(id, photographerId, filename, tags, likes, date, price, altText) {
     this.id = id;
     this.photographerId = photographerId;
@@ -23,7 +23,7 @@ class Medium {
   }
 }
 
-class MediaList {
+export class MediaList {
   constructor(media) {
     this.media = media;
   }

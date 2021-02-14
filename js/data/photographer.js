@@ -1,6 +1,6 @@
 "use strict";
 
-class Photographer {
+export class Photographer {
   constructor(id, name, city, country, tags, tagline, price, portrait) {
     this.id = id;
     this.name = name;
@@ -23,7 +23,7 @@ class Photographer {
   sumAllMediaLikes() {}
 }
 
-class PhotographersList {
+export class PhotographersList {
   constructor(photographers) {
     this.photographers = photographers;
   }
