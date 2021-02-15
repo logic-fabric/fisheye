@@ -26,6 +26,7 @@ export class Photographer {
 export class PhotographersList {
   constructor(photographers) {
     this.photographers = photographers;
+    this.sortByName();
   }
 
   /**
@@ -56,7 +57,16 @@ export class PhotographersList {
   /**
    * @returns {PhotographersList} Photographers sorted by name
    */
-  sortByName() {}
+  sortByName() {
+    return this.photographers.sort((p1, p2) => {
+      const name1 = p1.name.toLowerCase();
+      const name2 = p2.name.toLowerCase();
+
+      if (name1 > name2) return 1;
+      if (name1 < name2) return -1;
+      return 0;
+    });
+  }
 
   /**
    * @param {string} tag
