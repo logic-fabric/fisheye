@@ -6,7 +6,7 @@ export class Photographer {
     this.name = name;
     this.city = city;
     this.country = country;
-    this.tags = tags;
+    this.tags = tags.sort();
     this.tagline = tagline;
     this.price = price;
     this.portrait = portrait;
@@ -31,12 +31,27 @@ export class PhotographersList {
   /**
    * @returns {string[]} All tags present in this list of photographers
    */
-  collectTags() {} // TO DO: build as a property
+  collectTags() {
+    // TO DO: build as a property
+    let tags = new Set();
+
+    for (let photographer of this.list) {
+      for (let tag of photographer.tags) {
+        tag = tag.toLowerCase();
+        tags.add(tag);
+      }
+    }
+    return [...tags];
+  }
 
   /**
    * @returns {string[]} All tags present, sorted by name
    */
-  collectSortedTags() {}
+  collectSortedTags() {
+    const tags = this.collectTags();
+
+    return tags.sort();
+  }
 
   /**
    * @returns {PhotographersList} Photographers sorted by name

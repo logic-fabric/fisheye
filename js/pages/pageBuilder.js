@@ -3,7 +3,8 @@
 export class PageBuilder {
   constructor(photographersList, mediaList) {
     this.photographersList = photographersList;
-    this.photographersTags = ["animals", "events"];
+    this.photographersTags = photographersList.collectSortedTags();
+
     this.mediaList = mediaList;
   }
 
@@ -78,12 +79,12 @@ export class PageBuilder {
   }
 
   templateNavTags(checkedTag) {
-    let htmlContent = "<nav>";
+    let htmlContent = "<nav><ul style='display: flex'>";
 
     for (let tag of this.photographersTags) {
       htmlContent += this.templateTag(tag, tag === checkedTag);
     }
-    htmlContent += "</nav>";
+    htmlContent += "</ul></nav>";
 
     return htmlContent;
   }
@@ -92,7 +93,7 @@ export class PageBuilder {
     let htmlContent = "<div class=row-12>";
 
     for (let photographer of this.photographersList.list) {
-      let cardHtmlContent = "<article class='lg4'>";
+      let cardHtmlContent = "<article class='lg4 md4 sm4'>";
 
       cardHtmlContent += this.templatePhotographerCardFocusableArea(
         photographer
@@ -114,7 +115,7 @@ export class PageBuilder {
     return `<a href="#">
               <img 
                 src="img/photographers/${photographer.portrait}" 
-                alt="${photographer.name}" wifth="200" height="200" 
+                alt="${photographer.name}" width="200" height="200" 
               />
               <h2>${photographer.name}</h2>
             </a>`;
