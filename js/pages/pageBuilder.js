@@ -23,6 +23,8 @@ export class PageBuilder {
     this.renderHomePageMain(tag);
 
     console.log("-----");
+
+    this.addHomePageTagsEvents();
   }
 
   renderHomePageHeader(checkedTag) {
@@ -74,8 +76,8 @@ export class PageBuilder {
 
   templateTag(tag, checked) {
     return checked
-      ? `<li><button class="c-tag" type="button">#${tag}</button></li>`
-      : `<li><button class="c-tag c-tag--checked" type="button">#${tag}</button></li>`;
+      ? `<li><button class="c-tag c-tag--checked" type="button">#${tag}</button></li>`
+      : `<li><button class="c-tag" type="button">#${tag}</button></li>`;
   }
 
   templateNavTags(checkedTag) {
@@ -92,7 +94,7 @@ export class PageBuilder {
   templatePhotographersCards(tag) {
     let htmlContent = "<div class=row-12>";
 
-    for (let photographer of this.photographersList.list) {
+    for (let photographer of this.photographersList.filterByTag(tag)) {
       let cardHtmlContent = "<article class='lg4 md4 sm4'>";
 
       cardHtmlContent += this.templatePhotographerCardFocusableArea(
@@ -136,5 +138,21 @@ export class PageBuilder {
     htmlContent += "</ul></nav>";
 
     return htmlContent;
+  }
+
+  addHomePageTagsEvents() {
+    const tagButtons = document.querySelectorAll("button.c-tag");
+
+    console.log("tagsButtons >", tagButtons);
+
+    tagButtons.forEach((btn) => {
+      btn.onclick = () => {
+        const clickedTag = btn.textContent.slice(1);
+
+        console.log(`'${clickedTag} has been clicked'`);
+
+        window.location.hash = clickedTag;
+      };
+    });
   }
 }

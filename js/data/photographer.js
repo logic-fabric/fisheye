@@ -25,7 +25,7 @@ export class Photographer {
 
 export class PhotographersList {
   constructor(photographers) {
-    this.list = photographers;
+    this.photographers = photographers;
   }
 
   /**
@@ -35,7 +35,7 @@ export class PhotographersList {
     // TO DO: build as a property
     let tags = new Set();
 
-    for (let photographer of this.list) {
+    for (let photographer of this.photographers) {
       for (let tag of photographer.tags) {
         tag = tag.toLowerCase();
         tags.add(tag);
@@ -62,5 +62,21 @@ export class PhotographersList {
    * @param {string} tag
    * @returns {PhotographersList} All photographers possessing this tag
    */
-  filterByTag(tag) {}
+  filterByTag(tagToMatch) {
+    if (tagToMatch === "") {
+      return [...this.photographers];
+    }
+
+    let filteredPhotographers = [];
+
+    for (let photographer of this.photographers) {
+      for (let tag of photographer.tags) {
+        if (tag === tagToMatch) {
+          filteredPhotographers.push(photographer);
+          break;
+        }
+      }
+    }
+    return filteredPhotographers;
+  }
 }

@@ -25,7 +25,7 @@ export class Medium {
 
 export class MediaList {
   constructor(media) {
-    this.list = media;
+    this.media = media;
   }
 
   /**
