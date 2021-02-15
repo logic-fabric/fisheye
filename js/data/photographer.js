@@ -25,7 +25,7 @@ export class Photographer {
 
 export class PhotographersList {
   constructor(photographers) {
-    this.photographers = photographers;
+    this.list = photographers;
   }
 
   /**

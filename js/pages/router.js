@@ -52,7 +52,7 @@ export class Router {
     this.MEDIA = new MediaList(mediumInstances);
     this.pageBuilder = new PageBuilder(this.PHOTOGRAPHERS, this.MEDIA);
 
-    this.pageBuilder.buildHomePage("");
+    this.pageBuilder.renderHomePage("");
     this.addRouteListener();
   }
 
@@ -70,13 +70,13 @@ export class Router {
           `'Photographers' route for '${photographerName}' and tag '${tag}'`
         );
 
-        this.pageBuilder.buildPhotographerPage(photographerName, tag);
+        this.pageBuilder.renderPage(photographerName, tag);
       } else {
         let tag = route;
 
         console.log(`Home route filtered on tag '${tag}'`);
 
-        this.pageBuilder.buildHomePage(tag);
+        this.pageBuilder.renderPage("", tag);
       }
     };
   }
