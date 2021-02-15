@@ -2,6 +2,7 @@
 
 import { Photographer, PhotographersList } from "../data/photographer.js";
 import { Medium, MediaList } from "../data/medium.js";
+import { PageBuilder } from "./pageBuilder.js";
 
 export class Router {
   constructor(dataFetcher, initialRoute) {
@@ -49,7 +50,9 @@ export class Router {
 
     this.PHOTOGRAPHERS = new PhotographersList(photographerInstances);
     this.MEDIA = new MediaList(mediumInstances);
+    this.pageBuilder = new PageBuilder(this.PHOTOGRAPHERS, this.MEDIA);
 
+    this.pageBuilder.buildHomePage("");
     this.addRouteListener();
   }
 
@@ -61,15 +64,19 @@ export class Router {
 
       if (route.startsWith("photographers")) {
         let routeParameters = route.split(":")[1];
-        let [photographerName, mediaTag] = routeParameters.split("#");
+        let [photographerName, tag] = routeParameters.split("#");
 
         console.log(
-          `'Photographers' route for '${photographerName}' and tag '${mediaTag}'`
+          `'Photographers' route for '${photographerName}' and tag '${tag}'`
         );
-      } else {
-        let photographersTag = route;
 
-        console.log(`Home route filtered on tag '${photographersTag}'`);
+        this.pageBuilder.buildPhotographerPage(photographerName, tag);
+      } else {
+        let tag = route;
+
+        console.log(`Home route filtered on tag '${tag}'`);
+
+        this.pageBuilder.buildHomePage(tag);
       }
     };
   }
