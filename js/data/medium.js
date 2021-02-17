@@ -53,6 +53,17 @@ export class MediaList {
    */
   sortByName() {}
 
+  filterByPhotographerId(photographerId) {
+    let photographerMedia = [];
+
+    for (let medium of this.media) {
+      if (medium.photographerId === photographerId) {
+        photographerMedia.push(medium);
+      }
+    }
+    return photographerMedia;
+  }
+
   /**
    * @param {string} tag
    * @returns {MediaList} All media possessing this tag

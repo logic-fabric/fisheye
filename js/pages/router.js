@@ -37,7 +37,7 @@ export class Router {
       const mediumInstance = new Medium(
         fetchedMedium.id,
         fetchedMedium.photographerId,
-        fetchedMedium.filename,
+        fetchedMedium.image,
         fetchedMedium.tags,
         fetchedMedium.likes,
         fetchedMedium.date,

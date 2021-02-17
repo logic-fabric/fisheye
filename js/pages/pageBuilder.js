@@ -55,7 +55,6 @@ export class PageBuilder {
     );
 
     this.renderPhotographerPageHeader(tag);
-
     this.renderPhotographerPageMain(photographer, tag);
 
     console.log("-----");
@@ -72,7 +71,10 @@ export class PageBuilder {
   renderPhotographerPageMain(photographer, checkedTag) {
     const main = document.querySelector("main");
 
-    let htmlContent = this.templatePhotographerBanner(photographer, checkedTag);
+    let htmlContent = "";
+    htmlContent += this.templatePhotographerBanner(photographer, checkedTag);
+    htmlContent += this.templateMediaFilters();
+    htmlContent += this.templateMediaCards(photographer, checkedTag);
 
     main.innerHTML = htmlContent;
 
@@ -206,5 +208,56 @@ export class PageBuilder {
                   </section>`;
 
     return htmlContent;
+  }
+
+  templateMediaFilters() {
+    return `<label for="media-filter">Trier par</label>
+            <select id="media-filter" name="media-filter">
+              <option value="popularity">Popularité</option>
+              <option value="date">Date</option>
+              <option value="title">Titre</option>
+            </select>`;
+  }
+
+  templateMediaCards(photographer, checkedTag) {
+    let htmlContent = "<div class=row-12>";
+
+    const photographerMedia = this.mediaList.filterByPhotographerId(
+      photographer.id
+    );
+
+    console.log("photographerId >", photographer);
+    console.log("photographerMedia >", photographerMedia);
+
+    for (let medium of photographerMedia) {
+      let cardHtmlContent = "<article class='lg4 md4 sm4'>";
+
+      console.log(medium.filename, medium);
+
+      cardHtmlContent += this.templateMediumCardImage(photographer, medium);
+
+      cardHtmlContent += "</article>";
+
+      htmlContent += cardHtmlContent;
+    }
+
+    htmlContent += "</div>";
+
+    return htmlContent;
+  }
+
+  templateMediumCardImage(photographer, medium) {
+    return `<a href="#photographer:${photographer.name.replace(/ /, "-")}">
+              <img 
+                src="img/${photographer.name
+                  .replace(/ /, "")
+                  .replace(/-/, "")}/${medium.filename}" 
+                alt="${medium.altText} for ${medium.filename}" 
+                width="200" height="200"
+              />
+            </a>
+            <h2>${medium.filename}</h2>
+            <p>${medium.price}&nbsp;€</p>
+            <p>${medium.likes} <i class="fas fa-heart"></i></p>`;
   }
 }

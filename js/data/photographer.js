@@ -13,11 +13,6 @@ export class Photographer {
   }
 
   /**
-   * @returns {MediaList} All media made by the photographer
-   */
-  collectAllMedia() {} // TO DO: build as a property to use in sumAllMediaLikes
-
-  /**
    * @returns {number} Sum of all likes given to the photographer's media
    */
   sumAllMediaLikes() {}
