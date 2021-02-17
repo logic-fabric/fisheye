@@ -82,7 +82,7 @@ export class PageBuilder {
   }
 
   templateLogo() {
-    return `<div class="c-logo__box">
+    return `<a class="c-logo__box" href="#">
               <img
                 class="c-logo__img"
                 src="./img/logo-fisheye.png"
@@ -90,7 +90,7 @@ export class PageBuilder {
                 width="200"
                 height="50"
               />
-            </div>`;
+            </a>`;
   }
 
   templateUpButton() {
