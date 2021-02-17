@@ -70,7 +70,11 @@ export class Router {
           `'Photographers' route for '${photographerName}' and tag '${tag}'`
         );
 
-        this.pageBuilder.renderPage(photographerName, tag);
+        let photographer = this.PHOTOGRAPHERS.findByName(photographerName);
+
+        console.log("Photographer found >", photographer);
+
+        this.pageBuilder.renderPage(photographer, tag);
       } else {
         let tag = route;
 

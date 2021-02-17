@@ -29,6 +29,16 @@ export class PhotographersList {
     this.sortByName();
   }
 
+  findByName(name) {
+    name = name.replace(/ /, "-");
+    for (let photographer of this.photographers) {
+      if (photographer.name.replace(/ /, "-") === name) {
+        return photographer;
+      }
+    }
+    return `No photographer finded for the name '${name}'`;
+  }
+
   /**
    * @returns {string[]} All tags present in this list of photographers
    */

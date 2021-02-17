@@ -8,9 +8,9 @@ export class PageBuilder {
     this.mediaList = mediaList;
   }
 
-  renderPage(photographerName, tag) {
-    if (photographerName) {
-      this.renderPhotographerPage(photographerName, tag);
+  renderPage(photographer, tag) {
+    if (photographer) {
+      this.renderPhotographerPage(photographer, tag);
     } else {
       this.renderHomePage(tag);
     }
@@ -49,11 +49,34 @@ export class PageBuilder {
     console.log("Builded main >", main);
   }
 
-  renderPhotographerPage(name, tag) {
+  renderPhotographerPage(photographer, tag) {
     console.log(
-      `Building PhotographerPage for '${name}' filtered by '${tag}'...`
+      `Building PhotographerPage for '${photographer.name}' filtered by '${tag}'...`
     );
+
+    this.renderPhotographerPageHeader(tag);
+
+    this.renderPhotographerPageMain(photographer, tag);
+
     console.log("-----");
+  }
+
+  renderPhotographerPageHeader() {
+    const header = document.querySelector("header");
+
+    header.innerHTML = this.templateLogo();
+
+    console.log("Builded header >", header);
+  }
+
+  renderPhotographerPageMain(photographer, checkedTag) {
+    const main = document.querySelector("main");
+
+    let htmlContent = this.templatePhotographerBanner(photographer, checkedTag);
+
+    main.innerHTML = htmlContent;
+
+    console.log("Builded main >", main);
   }
 
   templateLogo() {
@@ -72,17 +95,17 @@ export class PageBuilder {
     return "<button type='button'>Revenir en haut</button>";
   }
 
-  templateTag(tag, checked) {
+  templatePhotographerTag(tag, checked) {
     return checked
-      ? `<li><a class="c-tag c-tag--checked" href="#${tag}">#${tag}</a</li>`
-      : `<li><a class="c-tag" href="#${tag}">#${tag}</a</li>`;
+      ? `<li><a class="c-tag c-tag--checked" href="#${tag}">#${tag}</a></li>`
+      : `<li><a class="c-tag" href="#${tag}">#${tag}</a></li>`;
   }
 
   templateNavTags(checkedTag) {
     let htmlContent = "<nav><ul>";
 
     for (let tag of this.photographersTags) {
-      htmlContent += this.templateTag(tag, tag === checkedTag);
+      htmlContent += this.templatePhotographerTag(tag, tag === checkedTag);
     }
     htmlContent += "</ul></nav>";
 
@@ -112,7 +135,7 @@ export class PageBuilder {
   }
 
   templatePhotographerCardFocusableArea(photographer) {
-    return `<a href="#photographer:${photographer.name.replace(" ", "-")}">
+    return `<a href="#photographer:${photographer.name.replace(/ /, "-")}">
               <img 
                 src="img/photographers/${photographer.portrait}" 
                 alt="${photographer.name}" width="200" height="200" 
@@ -131,9 +154,56 @@ export class PageBuilder {
     let htmlContent = "<nav><ul>";
 
     for (let tag of photographer.tags) {
-      htmlContent += this.templateTag(tag);
+      htmlContent += this.templatePhotographerTag(tag);
     }
     htmlContent += "</ul></nav>";
+
+    return htmlContent;
+  }
+
+  templateMediaTag(photographer, tag, checked) {
+    return checked
+      ? `<li>
+          <a 
+            class="c-tag c-tag--checked" 
+            href="#photographer:${photographer.name.replace(/ /, "-")}"
+          >
+            #${tag}
+          </a>
+        </li>`
+      : `<li>
+          <a 
+            class="c-tag" 
+            href="#photographer:${photographer.name.replace(/ /, "-")}"
+          >
+            #${tag}
+          </a>
+        </li>`;
+  }
+
+  templatePhotographerBanner(photographer, checkedTag) {
+    let htmlContent = `<section>
+              <h1>${photographer.name}</h1>
+
+              <p>${photographer.city}, ${photographer.country}</p>
+              <p>${photographer.tagline}</p>
+              <nav><ul>`;
+
+    for (let tag of photographer.tags) {
+      htmlContent += this.templateMediaTag(
+        photographer,
+        tag,
+        tag === checkedTag
+      );
+    }
+
+    htmlContent += `</ul></nav>
+                    <button type="button">Contactez-moi</button>
+                    <img 
+                      src="img/photographers/${photographer.portrait}" 
+                      alt="${photographer.name}" width="200" height="200" 
+                    />
+                  </section>`;
 
     return htmlContent;
   }
