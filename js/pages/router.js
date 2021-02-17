@@ -62,7 +62,7 @@ export class Router {
 
       console.log("Route >", route);
 
-      if (route.startsWith("photographers")) {
+      if (route.startsWith("photographer")) {
         let routeParameters = route.split(":")[1];
         let [photographerName, tag] = routeParameters.split("#");
 

@@ -23,8 +23,6 @@ export class PageBuilder {
     this.renderHomePageMain(tag);
 
     console.log("-----");
-
-    this.addHomePageTagsEvents();
   }
 
   renderHomePageHeader(checkedTag) {
@@ -76,12 +74,12 @@ export class PageBuilder {
 
   templateTag(tag, checked) {
     return checked
-      ? `<li><button class="c-tag c-tag--checked" type="button">#${tag}</button></li>`
-      : `<li><button class="c-tag" type="button">#${tag}</button></li>`;
+      ? `<li><a class="c-tag c-tag--checked" href="#${tag}">#${tag}</a</li>`
+      : `<li><a class="c-tag" href="#${tag}">#${tag}</a</li>`;
   }
 
   templateNavTags(checkedTag) {
-    let htmlContent = "<nav><ul style='display: flex'>";
+    let htmlContent = "<nav><ul>";
 
     for (let tag of this.photographersTags) {
       htmlContent += this.templateTag(tag, tag === checkedTag);
@@ -114,7 +112,7 @@ export class PageBuilder {
   }
 
   templatePhotographerCardFocusableArea(photographer) {
-    return `<a href="#">
+    return `<a href="#photographer:${photographer.name.replace(" ", "-")}">
               <img 
                 src="img/photographers/${photographer.portrait}" 
                 alt="${photographer.name}" width="200" height="200" 
@@ -138,21 +136,5 @@ export class PageBuilder {
     htmlContent += "</ul></nav>";
 
     return htmlContent;
-  }
-
-  addHomePageTagsEvents() {
-    const tagButtons = document.querySelectorAll("button.c-tag");
-
-    console.log("tagsButtons >", tagButtons);
-
-    tagButtons.forEach((btn) => {
-      btn.onclick = () => {
-        const clickedTag = btn.textContent.slice(1);
-
-        console.log(`'${clickedTag} has been clicked'`);
-
-        window.location.hash = clickedTag;
-      };
-    });
   }
 }
