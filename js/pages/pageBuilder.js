@@ -241,18 +241,14 @@ export class PageBuilder {
 
     if (medium.filename.toLowerCase().endsWith(".jpg")) {
       htmlContent += `<img 
-                        src="img/${photographer.name
-                          .replace(/ /, "")
-                          .replace(/-/, "")}/${medium.filename}" 
+                        src="img/${photographer.mediaFolder}/${medium.filename}" 
                         alt="${medium.altText} for ${medium.filename}" 
                         width="200" height="200"
                       />`;
     } else {
       htmlContent += `<video width="200", height="200" controls>
                         <source 
-                          src="img/${photographer.name
-                            .replace(/ /, "")
-                            .replace(/-/, "")}/${medium.filename}" 
+                          src="img/${photographer.mediaFolder}/${medium.filename}" 
                           type="video/mp4"
                         />
                       </video>`;

@@ -12,6 +12,10 @@ export class Photographer {
     this.portrait = portrait;
   }
 
+  get mediaFolder() {
+    return this.name.replace(/ /, "").replace(/-/, "");
+  }
+
   /**
    * @returns {number} Sum of all likes given to the photographer's media
    */
