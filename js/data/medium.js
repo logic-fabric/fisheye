@@ -53,8 +53,20 @@ export class MediaList {
    */
   sortByName() {}
 
-  filterByPhotographerId(photographerId) {
+  filterByPhotographerIdAndTag(photographerId, tag) {
     let photographerMedia = [];
+
+    if (tag) {
+      for (let medium of this.media) {
+        if (
+          medium.photographerId === photographerId &&
+          medium.tags.includes(tag)
+        ) {
+          photographerMedia.push(medium);
+        }
+      }
+      return photographerMedia;
+    }
 
     for (let medium of this.media) {
       if (medium.photographerId === photographerId) {

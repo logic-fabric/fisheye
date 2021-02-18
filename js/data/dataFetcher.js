@@ -14,7 +14,7 @@ export class DataFetcher {
 
         return json;
       } else {
-        console.log(
+        console.error(
           `HTTP-error-${response.status} while fetchning ${this.dataSource}`
         );
       }

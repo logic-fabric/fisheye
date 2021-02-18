@@ -34,8 +34,6 @@ export class PageBuilder {
     htmlContent += this.templateNavTags(checkedTag);
 
     header.innerHTML = htmlContent;
-
-    console.log("Builded header >", header);
   }
 
   renderHomePageMain(tag) {
@@ -45,8 +43,6 @@ export class PageBuilder {
     htmlContent += this.templatePhotographersCards(tag);
 
     main.innerHTML = htmlContent;
-
-    console.log("Builded main >", main);
   }
 
   renderPhotographerPage(photographer, tag) {
@@ -64,8 +60,6 @@ export class PageBuilder {
     const header = document.querySelector("header");
 
     header.innerHTML = this.templateLogo();
-
-    console.log("Builded header >", header);
   }
 
   renderPhotographerPageMain(photographer, checkedTag) {
@@ -77,8 +71,6 @@ export class PageBuilder {
     htmlContent += this.templateMediaCards(photographer, checkedTag);
 
     main.innerHTML = htmlContent;
-
-    console.log("Builded main >", main);
   }
 
   templateLogo() {
@@ -168,7 +160,7 @@ export class PageBuilder {
       ? `<li>
           <a 
             class="c-tag c-tag--checked" 
-            href="#photographer:${photographer.name.replace(/ /, "-")}"
+            href="#photographer:${photographer.name.replace(/ /, "-")}#${tag}"
           >
             #${tag}
           </a>
@@ -176,7 +168,7 @@ export class PageBuilder {
       : `<li>
           <a 
             class="c-tag" 
-            href="#photographer:${photographer.name.replace(/ /, "-")}"
+            href="#photographer:${photographer.name.replace(/ /, "-")}#${tag}"
           >
             #${tag}
           </a>
@@ -222,20 +214,14 @@ export class PageBuilder {
   templateMediaCards(photographer, checkedTag) {
     let htmlContent = "<div class=row-12>";
 
-    const photographerMedia = this.mediaList.filterByPhotographerId(
-      photographer.id
+    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
+      photographer.id, checkedTag
     );
-
-    console.log("photographerId >", photographer);
-    console.log("photographerMedia >", photographerMedia);
 
     for (let medium of photographerMedia) {
       let cardHtmlContent = "<article class='lg4 md4 sm4'>";
 
-      console.log(medium.filename, medium);
-
       cardHtmlContent += this.templateMediumCardImage(photographer, medium);
-
       cardHtmlContent += "</article>";
 
       htmlContent += cardHtmlContent;

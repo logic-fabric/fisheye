@@ -71,13 +71,10 @@ export class Router {
         let [photographerName, tag] = routeParameters.split("#");
 
         console.log(
-          `'Photographers' route for '${photographerName}' and tag '${tag}'`
+          `Photographer route for '${photographerName}' and tag '${tag}'`
         );
 
         let photographer = this.PHOTOGRAPHERS.findByName(photographerName);
-
-        console.log("Photographer found >", photographer);
-
         this.pageBuilder.renderPage(photographer, tag);
       } else {
         let tag = route;
