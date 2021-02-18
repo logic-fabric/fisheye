@@ -34,10 +34,14 @@ export class Router {
     }
 
     for (let fetchedMedium of this.data.media) {
+      const fetchedMediumFilename = fetchedMedium.hasOwnProperty("image")
+        ? fetchedMedium.image
+        : fetchedMedium.video;
+
       const mediumInstance = new Medium(
         fetchedMedium.id,
         fetchedMedium.photographerId,
-        fetchedMedium.image,
+        fetchedMediumFilename,
         fetchedMedium.tags,
         fetchedMedium.likes,
         fetchedMedium.date,
