@@ -46,7 +46,7 @@ export class Router {
         fetchedMedium.likes,
         fetchedMedium.date,
         fetchedMedium.price,
-        "TO DO: add an altText into JSON"
+        "TO DO: altText"
       );
 
       mediumInstances.push(mediumInstance);

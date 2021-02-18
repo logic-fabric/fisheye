@@ -215,7 +215,8 @@ export class PageBuilder {
     let htmlContent = "<div class=row-12>";
 
     const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
-      photographer.id, checkedTag
+      photographer.id,
+      checkedTag
     );
 
     for (let medium of photographerMedia) {
@@ -233,17 +234,34 @@ export class PageBuilder {
   }
 
   templateMediumCardImage(photographer, medium) {
-    return `<a href="#photographer:${photographer.name.replace(/ /, "-")}">
-              <img 
-                src="img/${photographer.name
-                  .replace(/ /, "")
-                  .replace(/-/, "")}/${medium.filename}" 
-                alt="${medium.altText} for ${medium.filename}" 
-                width="200" height="200"
-              />
-            </a>
-            <h2>${medium.filename}</h2>
-            <p>${medium.price}&nbsp;€</p>
-            <p>${medium.likes} <i class="fas fa-heart"></i></p>`;
+    let htmlContent = `<a 
+        href="#photographer:${photographer.name.replace(/ /, "-")}"
+      >
+        <a href="#photographer:${photographer.name.replace(/ /, "-")}">`;
+
+    if (medium.filename.toLowerCase().endsWith(".jpg")) {
+      htmlContent += `<img 
+                        src="img/${photographer.name
+                          .replace(/ /, "")
+                          .replace(/-/, "")}/${medium.filename}" 
+                        alt="${medium.altText} for ${medium.filename}" 
+                        width="200" height="200"
+                      />`;
+    } else {
+      htmlContent += `<video width="200", height="200" controls>
+                        <source 
+                          src="img/${photographer.name
+                            .replace(/ /, "")
+                            .replace(/-/, "")}/${medium.filename}" 
+                          type="video/mp4"
+                        />
+                      </video>`;
+    }
+    htmlContent += `</a>
+                    <h2>${medium.filename}</h2>
+                    <p>${medium.price}&nbsp;€</p>
+                    <p>${medium.likes} <i class="fas fa-heart"></i></p>`;
+
+    return htmlContent;
   }
 }
