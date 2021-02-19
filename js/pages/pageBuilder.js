@@ -1,5 +1,11 @@
 "use strict";
 
+import { Button } from "./components/buttons.js";
+import { MediaCard, PhotographerCard } from "./components/cards.js";
+import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
+import { Logo } from "./components/logo.js";
+import { MediaNavTag, PhotographersNavTag } from "./components/tags.js";
+
 export class PageBuilder {
   constructor(photographersList, mediaList) {
     this.photographersList = photographersList;
@@ -29,9 +35,10 @@ export class PageBuilder {
     const header = document.querySelector("header");
     let htmlContent = "";
 
-    htmlContent += this.templateLogo();
-    htmlContent += this.templateUpButton();
-    htmlContent += this.templateNavTags(checkedTag);
+    htmlContent += new Logo().html;
+    htmlContent += new Button("", "button", "Revenir en haut").html;
+    htmlContent += new PhotographersNavTag(this.photographersTags, checkedTag)
+      .html;
 
     header.innerHTML = htmlContent;
   }
@@ -59,7 +66,7 @@ export class PageBuilder {
   renderPhotographerPageHeader() {
     const header = document.querySelector("header");
 
-    header.innerHTML = this.templateLogo();
+    header.innerHTML = new Logo().html;
   }
 
   renderPhotographerPageMain(photographer, checkedTag) {
@@ -67,148 +74,39 @@ export class PageBuilder {
 
     let htmlContent = "";
     htmlContent += this.templatePhotographerBanner(photographer, checkedTag);
-    htmlContent += this.templateMediaFilters();
+    htmlContent += new MediaFiltersDropdownMenu().html;
     htmlContent += this.templateMediaCards(photographer, checkedTag);
 
     main.innerHTML = htmlContent;
-  }
-
-  templateLogo() {
-    return `<a class="c-logo__box" href="#">
-              <img
-                class="c-logo__img"
-                src="./img/logo-fisheye.png"
-                alt="Logo de FishEye"
-                width="200"
-                height="50"
-              />
-            </a>`;
-  }
-
-  templateUpButton() {
-    return "<button type='button'>Revenir en haut</button>";
-  }
-
-  templatePhotographerTag(tag, checked) {
-    return checked
-      ? `<li><a class="c-tag c-tag--checked" href="#${tag}">#${tag}</a></li>`
-      : `<li><a class="c-tag" href="#${tag}">#${tag}</a></li>`;
-  }
-
-  templateNavTags(checkedTag) {
-    let htmlContent = "<nav><ul>";
-
-    for (let tag of this.photographersTags) {
-      htmlContent += this.templatePhotographerTag(tag, tag === checkedTag);
-    }
-    htmlContent += "</ul></nav>";
-
-    return htmlContent;
   }
 
   templatePhotographersCards(tag) {
     let htmlContent = "<div class=row-12>";
 
     for (let photographer of this.photographersList.filterByTag(tag)) {
-      let cardHtmlContent = "<article class='lg4 md4 sm4'>";
-
-      cardHtmlContent += this.templatePhotographerCardFocusableArea(
-        photographer
-      );
-      cardHtmlContent += this.templatePhotographerCardInfos(photographer);
-      cardHtmlContent += this.templatePhotographerCardTags(photographer);
-
-      cardHtmlContent += "</article>";
-
-      htmlContent += cardHtmlContent;
+      htmlContent += new PhotographerCard(photographer).html;
     }
-
     htmlContent += "</div>";
 
     return htmlContent;
   }
 
-  templatePhotographerCardFocusableArea(photographer) {
-    return `<a href="#photographer:${photographer.name.replace(/ /, "-")}">
-              <img 
-                src="img/photographers/${photographer.portrait}" 
-                alt="${photographer.name}" width="200" height="200" 
-              />
-              <h2>${photographer.name}</h2>
-            </a>`;
-  }
-
-  templatePhotographerCardInfos(photographer) {
-    return `<p>${photographer.city}, ${photographer.country}</p>
-            <p>${photographer.tagline}</p>
-            <p>${photographer.price}&nbsp;€/jour</p>`;
-  }
-
-  templatePhotographerCardTags(photographer) {
-    let htmlContent = "<nav><ul>";
-
-    for (let tag of photographer.tags) {
-      htmlContent += this.templatePhotographerTag(tag);
-    }
-    htmlContent += "</ul></nav>";
-
-    return htmlContent;
-  }
-
-  templateMediaTag(photographer, tag, checked) {
-    return checked
-      ? `<li>
-          <a 
-            class="c-tag c-tag--checked" 
-            href="#photographer:${photographer.name.replace(/ /, "-")}#${tag}"
-          >
-            #${tag}
-          </a>
-        </li>`
-      : `<li>
-          <a 
-            class="c-tag" 
-            href="#photographer:${photographer.name.replace(/ /, "-")}#${tag}"
-          >
-            #${tag}
-          </a>
-        </li>`;
-  }
-
   templatePhotographerBanner(photographer, checkedTag) {
-    let htmlContent = `<section>
-              <h1>${photographer.name}</h1>
+    let htmlContent = "<section>";
 
-              <p>${photographer.city}, ${photographer.country}</p>
-              <p>${photographer.tagline}</p>
-              <nav><ul>`;
-
-    for (let tag of photographer.tags) {
-      htmlContent += this.templateMediaTag(
-        photographer,
-        tag,
-        tag === checkedTag
-      );
-    }
-
-    htmlContent += `</ul></nav>
-                    <button type="button">Contactez-moi</button>
-                    <img 
+    htmlContent += `<h1>${photographer.name}</h1>`;
+    htmlContent += `<p>${photographer.city}, ${photographer.country}</p>`;
+    htmlContent += `<p>${photographer.tagline}</p>`;
+    htmlContent += new MediaNavTag(photographer, checkedTag).html;
+    htmlContent += new Button("", "button", "Contactez-moi").html;
+    htmlContent += `<img 
                       src="img/photographers/${photographer.portrait}" 
                       alt="${photographer.name}" width="200" height="200" 
-                    />
-                  </section>`;
+                    />`;
+
+    htmlContent += "</section>";
 
     return htmlContent;
-  }
-
-  templateMediaFilters() {
-    return `<label for="media-filter">Trier par</label>
-            <select id="media-filter" name="media-filter">
-              <option value="popularity">Popularité</option>
-              <option value="date">Date</option>
-              <option value="title">Titre</option>
-            </select>`;
   }
 
   templateMediaCards(photographer, checkedTag) {
@@ -220,43 +118,9 @@ export class PageBuilder {
     );
 
     for (let medium of photographerMedia) {
-      let cardHtmlContent = "<article class='lg4 md4 sm4'>";
-
-      cardHtmlContent += this.templateMediumCardImage(photographer, medium);
-      cardHtmlContent += "</article>";
-
-      htmlContent += cardHtmlContent;
+      htmlContent += new MediaCard(photographer, medium).html;
     }
-
     htmlContent += "</div>";
-
-    return htmlContent;
-  }
-
-  templateMediumCardImage(photographer, medium) {
-    let htmlContent = `<a 
-        href="#photographer:${photographer.name.replace(/ /, "-")}"
-      >
-        <a href="#photographer:${photographer.name.replace(/ /, "-")}">`;
-
-    if (medium.filename.toLowerCase().endsWith(".jpg")) {
-      htmlContent += `<img 
-                        src="img/${photographer.mediaFolder}/${medium.filename}" 
-                        alt="${medium.altText} for ${medium.filename}" 
-                        width="200" height="200"
-                      />`;
-    } else {
-      htmlContent += `<video width="200", height="200" controls>
-                        <source 
-                          src="img/${photographer.mediaFolder}/${medium.filename}" 
-                          type="video/mp4"
-                        />
-                      </video>`;
-    }
-    htmlContent += `</a>
-                    <h2>${medium.filename}</h2>
-                    <p>${medium.price}&nbsp;€</p>
-                    <p>${medium.likes} <i class="fas fa-heart"></i></p>`;
 
     return htmlContent;
   }
