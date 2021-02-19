@@ -6,7 +6,7 @@ import { PhotographerPageBuilder } from "./photographerPageBuilder.js";
 export class PageFactory {
   constructor(photographersList, mediaList) {
     this.photographersList = photographersList;
-    this.photographersTags = photographersList.collectSortedTags();
+    this.photographersTags = photographersList.sortedTags;
 
     this.mediaList = mediaList;
   }

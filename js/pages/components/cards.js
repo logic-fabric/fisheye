@@ -27,7 +27,7 @@ export class MediaCard {
       htmlContent += "<i class='far fa-play-circle'></i>";
     }
     htmlContent += "</a>";
-    htmlContent += `<h2>${this.medium.filename}</h2>`;
+    htmlContent += `<h2>${this.medium.title}</h2>`;
     htmlContent += `<p>${this.medium.price}&nbsp;€</p>`;
     htmlContent += `<p>
                       ${this.medium.likes}&nbsp;

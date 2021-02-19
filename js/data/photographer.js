@@ -57,7 +57,7 @@ export class PhotographersList {
   /**
    * @returns {string[]} All tags present, sorted by name
    */
-  collectSortedTags() {
+  get sortedTags() {
     const tags = this.collectTags();
 
     return tags.sort();

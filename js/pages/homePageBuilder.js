@@ -10,7 +10,7 @@ export class HomePageBuilder {
     this.photographersList = photographersList;
     this.checkedTag = checkedTag;
 
-    this.photographersTags = photographersList.collectSortedTags();
+    this.photographersTags = photographersList.sortedTags;
   }
 
   render() {
