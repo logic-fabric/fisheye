@@ -13,20 +13,15 @@ export class MediaCard {
     htmlContent += `<a 
       href="#photographer:${this.photographer.name.replace(/ /, "-")}">`;
 
-    if (this.medium.filename.toLowerCase().endsWith(".jpg")) {
-      htmlContent += `<img 
-                        src="img/${this.photographer.mediaFolder}/${this.medium.filename}" 
-                        alt="${this.medium.altText} for ${this.medium.filename}" 
-                        width="200" height="200"
-                      />`;
-    } else {
-      htmlContent += `<video width="200", height="200" controls>
-                        <source 
-                          src="img/${this.photographer.mediaFolder}/${this.medium.filename}" 
-                          type="video/mp4"
-                        />
-                      </video>`;
-    }
+    const filename = this.medium.filename.endsWith("mp4")
+      ? this.medium.filename.replace("mp4", "png")
+      : this.medium.filename;
+
+    htmlContent += `<img 
+                      src="img/${this.photographer.mediaFolder}/${filename}" 
+                      alt="${this.medium.altText} for ${filename}" 
+                      width="200" height="200"
+                    />`;
     htmlContent += "</a>";
     htmlContent += `<h2>${this.medium.filename}</h2>`;
     htmlContent += `<p>${this.medium.price}&nbsp;€</p>`;
@@ -67,7 +62,6 @@ class PhotographerCardInfos {
             <p>${this.photographer.price}&nbsp;€/jour</p>`;
   }
 }
-
 
 export class PhotographerCard {
   constructor(photographer) {
