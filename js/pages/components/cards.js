@@ -13,7 +13,8 @@ export class MediaCard {
     htmlContent += `<a 
       href="#photographer:${this.photographer.name.replace(/ /, "-")}">`;
 
-    const filename = this.medium.filename.endsWith("mp4")
+    const isVideo = this.medium.filename.endsWith("mp4");
+    const filename = isVideo
       ? this.medium.filename.replace("mp4", "png")
       : this.medium.filename;
 
@@ -22,6 +23,9 @@ export class MediaCard {
                       alt="${this.medium.altText} for ${filename}" 
                       width="200" height="200"
                     />`;
+    if (isVideo) {
+      htmlContent += "<i class='far fa-play-circle'></i>";
+    }
     htmlContent += "</a>";
     htmlContent += `<h2>${this.medium.filename}</h2>`;
     htmlContent += `<p>${this.medium.price}&nbsp;€</p>`;
