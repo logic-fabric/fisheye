@@ -2,7 +2,7 @@
 
 import { Photographer, PhotographersList } from "../data/photographer.js";
 import { Medium, MediaList } from "../data/medium.js";
-import { PageBuilder } from "./pageBuilder.js";
+import { PageFactory } from "./pageFactory.js";
 
 export class Router {
   constructor(dataFetcher, initialRoute) {
@@ -54,9 +54,9 @@ export class Router {
 
     this.PHOTOGRAPHERS = new PhotographersList(photographerInstances);
     this.MEDIA = new MediaList(mediumInstances);
-    this.pageBuilder = new PageBuilder(this.PHOTOGRAPHERS, this.MEDIA);
+    this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
 
-    this.pageBuilder.renderHomePage("");
+    this.pageFactory.render("", "");
     this.addRouteListener();
   }
 
@@ -75,13 +75,13 @@ export class Router {
         );
 
         let photographer = this.PHOTOGRAPHERS.findByName(photographerName);
-        this.pageBuilder.renderPage(photographer, tag);
+        this.pageFactory.render(photographer, tag);
       } else {
         let tag = route;
 
         console.log(`Home route filtered on tag '${tag}'`);
 
-        this.pageBuilder.renderPage("", tag);
+        this.pageFactory.render("", tag);
       }
     };
   }
