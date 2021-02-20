@@ -1,15 +1,15 @@
 "use strict";
 
 export class Button {
-  constructor(cssClasses, type, text) {
+  constructor(cssClasses, type, content) {
     this.cssClasses = cssClasses;
     this.type = type;
-    this.text = text;
+    this.content = content;
   }
 
   get html() {
     return `<button class="${this.cssClasses}" type='${this.type}'>
-              ${this.text}
+              ${this.content}
             </button>`;
   }
 }

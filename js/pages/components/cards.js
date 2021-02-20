@@ -1,5 +1,6 @@
 "use strict";
 
+import { Button } from "./buttons.js";
 import { PhotographersNavTag } from "./tags.js";
 
 export class MediaCard {
@@ -29,10 +30,11 @@ export class MediaCard {
     htmlContent += "</a>";
     htmlContent += `<h2>${this.medium.title}</h2>`;
     htmlContent += `<p>${this.medium.price}&nbsp;€</p>`;
-    htmlContent += `<p>
-                      ${this.medium.likes}&nbsp;
-                      <i class="fas fa-heart"></i>
-                    </p>`;
+    htmlContent += new Button(
+      "",
+      "button",
+      `<p>${this.medium.likes}&nbsp;<i class="fas fa-heart"></i></p>`
+    ).html;
     htmlContent += "</article>";
 
     return htmlContent;
