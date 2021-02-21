@@ -23,7 +23,12 @@ export class LikesButton extends Button {
   get html() {
     return `<button class="${this.cssClasses}" type="${this.type}" 
                     data-medium-id="${this.mediumId}">
-              <p>${this.content}&nbsp;<i class="fas fa-heart"></i></p>
+              <p>
+                <span id="likes-quantity-${this.mediumId}">
+                  ${this.content}
+                </span>
+                &nbsp;<i class="fas fa-heart"></i>
+              </p>
             </button>`;
   }
 }

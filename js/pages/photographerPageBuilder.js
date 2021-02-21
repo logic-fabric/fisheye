@@ -95,10 +95,10 @@ export class PhotographerPageBuilder {
     }
 
     let htmlContent = `<aside>
-                        <span>
-                          ${photographerTotalLikes}&nbsp;
-                          <i class="fas fa-heart"></i>
+                        <span id="photographer-total-likes">
+                          ${photographerTotalLikes}
                         </span>
+                        &nbsp;<i class="fas fa-heart"></i>
                         <span>${photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
                       </aside>`;
 
@@ -115,14 +115,20 @@ export class PhotographerPageBuilder {
       const likesButton = document.querySelector(
         `[data-medium-id="${medium.id}"]`
       );
+      const likesQuantitySpan = document.getElementById(
+        `likes-quantity-${medium.id}`
+      );
+      const photographerTotalLikesSpan = document.getElementById(
+        "photographer-total-likes"
+      );
+      let totalLikes = photographerTotalLikesSpan.textContent;
 
       likesButton.onclick = () => {
         medium.likes++;
+        totalLikes++;
 
-        likesButton.innerHTML = `<p>
-                                  ${medium.likes}&nbsp;
-                                  <i class="fas fa-heart"></i>
-                                </p>`;
+        likesQuantitySpan.textContent = medium.likes;
+        photographerTotalLikesSpan.textContent = totalLikes;
       };
     }
   }
