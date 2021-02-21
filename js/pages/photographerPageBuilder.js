@@ -42,6 +42,7 @@ export class PhotographerPageBuilder {
     );
     htmlContent += new MediaFiltersDropdownMenu().html;
     htmlContent += this.templateMediaCards(this.photographer, this.checkedTag);
+    htmlContent += this.templatePhotographerSummary(this.photographer);
 
     main.innerHTML = htmlContent;
   }
@@ -82,6 +83,28 @@ export class PhotographerPageBuilder {
     return htmlContent;
   }
 
+  templatePhotographerSummary(photographer) {
+    let photographerTotalLikes = 0;
+    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
+      this.photographer.id,
+      ""
+    );
+
+    for (let medium of photographerMedia) {
+      photographerTotalLikes += medium.likes;
+    }
+
+    let htmlContent = `<aside>
+                        <span>
+                          ${photographerTotalLikes}&nbsp;
+                          <i class="fas fa-heart"></i>
+                        </span>
+                        <span>${photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
+                      </aside>`;
+
+    return htmlContent;
+  }
+
   addLikesIncrementEvents() {
     const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
       this.photographer.id,
@@ -95,7 +118,7 @@ export class PhotographerPageBuilder {
 
       likesButton.onclick = () => {
         medium.likes++;
-        
+
         likesButton.innerHTML = `<p>
                                   ${medium.likes}&nbsp;
                                   <i class="fas fa-heart"></i>
