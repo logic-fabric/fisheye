@@ -22,6 +22,8 @@ export class PhotographerPageBuilder {
     this.renderMain();
 
     console.log("-----");
+
+    this.addLikesIncrementEvents();
   }
 
   renderHeader() {
@@ -78,5 +80,27 @@ export class PhotographerPageBuilder {
     htmlContent += "</div>";
 
     return htmlContent;
+  }
+
+  addLikesIncrementEvents() {
+    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
+      this.photographer.id,
+      this.checkedTag
+    );
+
+    for (let medium of photographerMedia) {
+      const likesButton = document.querySelector(
+        `[data-medium-id="${medium.id}"]`
+      );
+
+      likesButton.onclick = () => {
+        medium.likes++;
+        
+        likesButton.innerHTML = `<p>
+                                  ${medium.likes}&nbsp;
+                                  <i class="fas fa-heart"></i>
+                                </p>`;
+      };
+    }
   }
 }

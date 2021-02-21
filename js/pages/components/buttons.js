@@ -8,8 +8,22 @@ export class Button {
   }
 
   get html() {
-    return `<button class="${this.cssClasses}" type='${this.type}'>
+    return `<button class="${this.cssClasses}" type="${this.type}">
               ${this.content}
+            </button>`;
+  }
+}
+
+export class LikesButton extends Button {
+  constructor(cssClasses, type, content, mediumId) {
+    super(cssClasses, type, content);
+    this.mediumId = mediumId;
+  }
+
+  get html() {
+    return `<button class="${this.cssClasses}" type="${this.type}" 
+                    data-medium-id="${this.mediumId}">
+              <p>${this.content}&nbsp;<i class="fas fa-heart"></i></p>
             </button>`;
   }
 }
