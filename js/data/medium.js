@@ -16,11 +16,8 @@ export class Medium {
    * @returns {string} Name based on the medium's filename
    */
   get title() {
-    console.log(this.filename);
     const filenameWithoutExtension = this.filename.split(".")[0];
-    console.log(filenameWithoutExtension);
     const title = filenameWithoutExtension.split("_").slice(1).join(" ");
-    console.log(title);
     return title;
   }
 
