@@ -17,7 +17,9 @@ export class Medium {
    */
   get title() {
     const filenameWithoutExtension = this.filename.split(".")[0];
-    const title = filenameWithoutExtension.split("_").slice(1).join(" ");
+    let title = filenameWithoutExtension.split("_").slice(1).join(" ");
+    title = title.toLowerCase();
+    title = title[0].toUpperCase() + title.slice(1);
     return title;
   }
 
