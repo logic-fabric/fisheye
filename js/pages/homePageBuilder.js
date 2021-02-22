@@ -21,6 +21,8 @@ export class HomePageBuilder {
     this.renderHeader();
     this.renderMain();
 
+    this.addUpButtonEvent();
+
     console.log("-----");
   }
 
@@ -33,7 +35,9 @@ export class HomePageBuilder {
       this.photographersTags,
       this.checkedTag
     ).html;
-    htmlContent += "<a class='c-btn c-btn--up' href= '#'>Revenir en haut</a>";
+    htmlContent += `<a class="c-btn" id="up-button" href= '#'>
+                      Revenir en haut
+                    </a>`;
 
     header.innerHTML = htmlContent;
   }
@@ -58,5 +62,20 @@ export class HomePageBuilder {
     htmlContent += "</div>";
 
     return htmlContent;
+  }
+
+  addUpButtonEvent() {
+    const upButton = document.getElementById("up-button");
+    const mainContent = document.getElementById("main-content");
+
+    window.addEventListener("scroll", () => {
+      let mainRect = mainContent.getBoundingClientRect();
+
+      if (mainRect.top < 60) {
+        upButton.classList.add("visible");
+      } else {
+        upButton.classList.remove("visible");
+      }
+    });
   }
 }

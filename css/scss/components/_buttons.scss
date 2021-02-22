@@ -7,16 +7,33 @@
   background: $primary-300;
 
   cursor: pointer;
+}
 
-  &--up {
-    position: fixed;
-    top: 0.25rem;
-    left: calc(50% - 5rem);
+#up-button {
+  position: fixed;
+  top: 0.25rem;
+  left: calc(50% - 5rem);
 
-    width: 10rem;
-    padding: 0.25rem 0.5rem;
+  width: 10rem;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
 
-    color: black;
-    text-align: center;
+  color: black;
+  text-align: center;
+
+  opacity: 0;
+
+  transition: color 250ms, height 50ms, opacity 400ms;
+
+  &:hover {
+    color: $neutral-100;
+  }
+
+  &.visible {
+    height: auto;
+    padding: 0.5rem;
+
+    opacity: 1;
   }
 }

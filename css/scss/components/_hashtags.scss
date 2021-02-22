@@ -4,12 +4,12 @@
   border: 1px solid $neutral-300;
   border-radius: 1rem;
 
-  transition: background-color 200ms, border-color 200ms;
+  transition: background-color 250ms, border-color 250ms;
 
   a {
     color: $primary-700;
 
-    transition: color 200ms;
+    transition: color 250ms;
   }
 
   &:hover,
