@@ -55,19 +55,28 @@ export class PhotographerPageBuilder {
   }
 
   templatePhotographerBanner() {
-    let htmlContent = "<section>";
+    let htmlContent = "<section class='row-12 p-banner'>";
 
-    htmlContent += `<h1>${this.photographer.name}</h1>`;
-    htmlContent += `<p>
-                      ${this.photographer.city}, ${this.photographer.country}
-                    </p>`;
-    htmlContent += `<p>${this.photographer.tagline}</p>`;
+    htmlContent += `<div class="lg4 md4 sm4">
+                      <h1>${this.photographer.name}</h1>
+                      <p class="p-banner__location">
+                        ${this.photographer.city}, ${this.photographer.country}
+                      </p>
+                      <p class="p-banner__tagline">
+                        ${this.photographer.tagline}
+                      </p>`;
     htmlContent += new MediaNavTag(this.photographer, this.checkedTag).html;
-    htmlContent += new Button("", "button", "Contactez-moi").html;
-    htmlContent += `<img 
-                      src="img/photographers/${this.photographer.portrait}" 
-                      alt="${this.photographer.name}" width="200" height="200" 
-                    />`;
+    htmlContent += "</div>";
+    htmlContent += "<div class='lg4 md4 sm4'>";
+    htmlContent += new Button("c-btn c-btn--cta", "button", "Contactez-moi")
+      .html;
+    htmlContent += "</div>";
+    htmlContent += `<div class="lg4 md4 sm4 p-banner__portrait">
+                      <img 
+                        src="img/photographers/${this.photographer.portrait}" 
+                        alt="${this.photographer.name}" width="200" height="200" 
+                      />
+                    </div>`;
 
     htmlContent += "</section>";
 

@@ -1,0 +1,33 @@
+.p-photographer main {
+  padding: 0 1.75rem;
+}
+
+.p-banner {
+  padding: 2.5rem 3rem;
+
+  background: $neutral-100;
+
+  &__location {
+    color: $primary-700;
+    font-size: $h3-size;
+  }
+
+  &__tagline {
+    margin: 2rem 0 1.5rem 0;
+
+    font-size: $h6-size;
+  }
+
+  ul {
+    justify-content: left;
+  }
+
+  &__portrait {
+    text-align: right;
+
+    img {
+      margin: 2rem 0;
+      border-radius: 50%;
+    }
+  }
+}

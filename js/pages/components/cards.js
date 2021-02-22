@@ -64,7 +64,7 @@ class PhotographerCardInfos {
   }
 
   get html() {
-    return `<p class="c-photographer-card__infos">
+    return `<p class="c-photographer-card__location">
               ${this.photographer.city}, ${this.photographer.country}
             </p>
             <p class="c-photographer-card__tagline">

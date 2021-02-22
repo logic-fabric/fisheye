@@ -7,6 +7,17 @@
   background: $primary-300;
 
   cursor: pointer;
+
+  &--cta {
+    margin: 2rem;
+    padding: 1.25rem;
+
+    color: white;
+    font-size: $h5-size;
+    font-weight: 700;
+
+    background: $primary-700;
+  }
 }
 
 #up-button {
