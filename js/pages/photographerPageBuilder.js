@@ -25,6 +25,7 @@ export class PhotographerPageBuilder {
     console.log("-----");
 
     this.addLikesIncrementEvents();
+    this.addSortWithDropdownMenu();
   }
 
   renderHeader() {
@@ -42,8 +43,10 @@ export class PhotographerPageBuilder {
       this.checkedTag
     );
     htmlContent += new MediaFiltersDropdownMenu().html;
-    htmlContent += this.templateMediaCards(this.photographer, this.checkedTag);
-    htmlContent += this.templatePhotographerSummary(this.photographer);
+    htmlContent += "<div class=row-12 id='cards-container'>";
+    htmlContent += this.templateMediaCards("date");
+    htmlContent += "/div>";
+    htmlContent += this.templatePhotographerSummary();
 
     main.innerHTML = htmlContent;
   }
@@ -68,8 +71,8 @@ export class PhotographerPageBuilder {
     return htmlContent;
   }
 
-  templateMediaCards() {
-    let htmlContent = "<div class=row-12>";
+  templateMediaCards(filter) {
+    let htmlContent = "";
 
     let photographerMedia = new MediaList(
       this.mediaList.filterByPhotographerIdAndTag(
@@ -77,17 +80,18 @@ export class PhotographerPageBuilder {
         this.checkedTag
       )
     );
-    photographerMedia.sortByDate();
+    if (filter == "date") photographerMedia.sortByDate();
+    if (filter == "popularity") photographerMedia.sortByLikes();
+    if (filter == "title") photographerMedia.sortByTitle();
 
     for (let medium of photographerMedia.media) {
       htmlContent += new MediaCard(this.photographer, medium).html;
     }
-    htmlContent += "</div>";
 
     return htmlContent;
   }
 
-  templatePhotographerSummary(photographer) {
+  templatePhotographerSummary() {
     let photographerTotalLikes = 0;
     const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
       this.photographer.id,
@@ -103,7 +107,7 @@ export class PhotographerPageBuilder {
                           ${photographerTotalLikes}
                         </span>
                         &nbsp;<i class="fas fa-heart"></i>
-                        <span>${photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
+                        <span>${this.photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
                       </aside>`;
 
     return htmlContent;
@@ -135,5 +139,14 @@ export class PhotographerPageBuilder {
         photographerTotalLikesSpan.textContent = totalLikes;
       };
     }
+  }
+
+  addSortWithDropdownMenu() {
+    const dropdownMenu = document.getElementById("media-filter");
+
+    dropdownMenu.onchange = () => {
+      const cardsContainer = document.getElementById("cards-container");
+      cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
+    };
   }
 }
