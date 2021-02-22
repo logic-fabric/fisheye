@@ -30,6 +30,7 @@ export class Medium {
 export class MediaList {
   constructor(media) {
     this.media = media;
+    this.sortByTitle();
   }
 
   /**
@@ -53,9 +54,18 @@ export class MediaList {
   sortByLikes() {}
 
   /**
-   * @returns {MediaList} Media sorted by name
+   * @returns {MediaList} Media sorted by title
    */
-  sortByName() {}
+  sortByTitle() {
+    return this.media.sort((m1, m2) => {
+      const title1 = m1.title.toLowerCase();
+      const title2 = m2.title.toLowerCase();
+
+      if (title1 > title2) return 1;
+      if (title1 < title2) return -1;
+      return 0;
+    });
+  }
 
   filterByPhotographerIdAndTag(photographerId, tag) {
     let photographerMedia = [];
