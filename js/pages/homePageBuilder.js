@@ -1,9 +1,8 @@
 "use strict";
 
-import { Button } from "./components/buttons.js";
 import { PhotographerCard } from "./components/cards.js";
 import { Logo } from "./components/logo.js";
-import { PhotographersNavTag } from "./components/tags.js";
+import { PhotographersNavTag } from "./components/hashtags.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
@@ -16,6 +15,9 @@ export class HomePageBuilder {
   render() {
     console.log(`Building HomePage filtered by tag '${this.checkedTag}'...`);
 
+    const contentWrapper = document.getElementById("p-spa-wrapper");
+    contentWrapper.className = "p-home";
+
     this.renderHeader();
     this.renderMain();
 
@@ -27,11 +29,11 @@ export class HomePageBuilder {
     let htmlContent = "";
 
     htmlContent += new Logo().html;
-    htmlContent += new Button("", "button", "Revenir en haut").html;
     htmlContent += new PhotographersNavTag(
       this.photographersTags,
       this.checkedTag
     ).html;
+    htmlContent += "<a class='c-btn c-btn--up' href= '#'>Revenir en haut</a>";
 
     header.innerHTML = htmlContent;
   }
@@ -48,7 +50,9 @@ export class HomePageBuilder {
   templatePhotographersCards() {
     let htmlContent = "<div class=row-12>";
 
-    for (let photographer of this.photographersList.filterByTag(this.checkedTag)) {
+    for (let photographer of this.photographersList.filterByTag(
+      this.checkedTag
+    )) {
       htmlContent += new PhotographerCard(photographer).html;
     }
     htmlContent += "</div>";

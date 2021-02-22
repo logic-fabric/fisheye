@@ -9,9 +9,8 @@ class MediaTag {
 
   get html() {
     return this.checked
-      ? `<li>
-          <a 
-            class="c-tag c-tag--checked" 
+      ? `<li class="c-tag c-tag--checked">
+          <a  
             href="#photographer:${this.photographer.name.replace(/ /, "-")}#${
           this.tag
         }"
@@ -19,9 +18,8 @@ class MediaTag {
             #${this.tag}
           </a>
         </li>`
-      : `<li>
+      : `<li class="c-tag">
           <a 
-            class="c-tag" 
             href="#photographer:${this.photographer.name.replace(/ /, "-")}#${
           this.tag
         }"
@@ -40,10 +38,10 @@ class PhotographerTag {
 
   get html() {
     return this.checked
-      ? `<li><a class="c-tag c-tag--checked" href="#${this.tag}">
-          #${this.tag}
-        </a></li>`
-      : `<li><a class="c-tag" href="#${this.tag}">#${this.tag}</a></li>`;
+      ? `<li  class="c-tag c-tag--checked">
+          <a href="#${this.tag}">#${this.tag}</a>
+        </li>`
+      : `<li class="c-tag"><a href="#${this.tag}">#${this.tag}</a></li>`;
   }
 }
 
@@ -76,11 +74,10 @@ export class PhotographersNavTag {
   }
 
   get html() {
-    let htmlContent = "<nav><ul>";
+    let htmlContent = "<nav class='lg6 md6 sm6'><ul>";
 
     for (let tag of this.tagsList) {
-      htmlContent += new PhotographerTag(tag, tag === this.checkedTag)
-        .html;
+      htmlContent += new PhotographerTag(tag, tag === this.checkedTag).html;
     }
     htmlContent += "</ul></nav>";
 

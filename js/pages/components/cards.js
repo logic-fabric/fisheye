@@ -1,7 +1,7 @@
 "use strict";
 
 import { LikesButton } from "./buttons.js";
-import { PhotographersNavTag } from "./tags.js";
+import { PhotographersNavTag } from "./hashtags.js";
 
 export class MediaCard {
   constructor(photographer, medium) {

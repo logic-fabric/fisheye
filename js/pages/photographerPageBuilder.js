@@ -5,7 +5,7 @@ import { Button } from "./components/buttons.js";
 import { MediaCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
-import { MediaNavTag } from "./components/tags.js";
+import { MediaNavTag } from "./components/hashtags.js";
 
 export class PhotographerPageBuilder {
   constructor(photographer, mediaList, checkedTag) {
@@ -18,6 +18,9 @@ export class PhotographerPageBuilder {
     console.log(
       `Building PhotographerPage for '${this.photographer.name}' filtered by '${this.checkedTag}'...`
     );
+
+    const contentWrapper = document.getElementById("p-spa-wrapper");
+    contentWrapper.className = "p-photographer";
 
     this.renderHeader();
     this.renderMain();

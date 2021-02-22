@@ -6,6 +6,7 @@ $primary-300: #d3573c;
 $primary-700: #901c1c;
 
 $neutral-100: #fafafa;
+$neutral-300: #c4c4c4;
 $neutral-700: #525252;
 $neutral-900: #333;
 
@@ -15,6 +16,18 @@ $neutral-900: #333;
 
 $font-primary: "DM Sans", Arial, Helvetica, sans-serif;
 
+// =======================
+// TEXT AND HEADINGS SIZES
+// =======================
+
+$txt-size: 1rem;
+
+$xs-size: 0.7 * $txt-size;
+$sm-size: 0.85 * $txt-size;
+
+$h2-size: 2.25rem;
+$h1-size: 4rem;
+
 // ===========
 // BREAKPOINTS
 // ===========
@@ -22,3 +35,6 @@ $font-primary: "DM Sans", Arial, Helvetica, sans-serif;
 $small-breakpoint: 1440px;
 $medium-breakpoint: 1440px;
 $large-breakpoint: 1440px;
+
+$small-container-width: 640px;
+$large-container-width: 1440px;

@@ -1,0 +1,9 @@
+#p-spa-wrapper {
+  @include large-wrapping;
+  padding: 0 4.5rem;
+
+  @media (max-width: $small-breakpoint - 1) {
+    @include small-wrapping;
+    padding: 0 1.5rem;
+  }
+}

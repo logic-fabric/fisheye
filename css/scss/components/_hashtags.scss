@@ -1,0 +1,25 @@
+.c-tag {
+  margin: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid $neutral-300;
+  border-radius: 1rem;
+
+  transition: background-color 200ms, border-color 200ms;
+
+  a {
+    color: $primary-700;
+
+    transition: color 200ms;
+  }
+
+  &:hover,
+  &--checked {
+    border-color: $primary-700;
+
+    background: $primary-700;
+
+    a {
+      color: white;
+    }
+  }
+}

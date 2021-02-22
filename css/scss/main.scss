@@ -3,6 +3,7 @@
 // 1. Configuration and helpers:
 // - the 'abstracts/' folder should not output a single line of CSS if compiled on its own
 @import "abstracts/variables";
+@import "abstracts/mixins";
 
 // 2. Vendors:
 @import "vendors/normalize";
@@ -12,10 +13,15 @@
 @import "base/tags";
 
 // 4. Layout-related sections:
+@import "layout/header";
 
 // 5. Components:;
+@import "components/buttons.scss";
+@import "components/hashtags.scss";
+@import "components/logo.scss";
 
 // 6. Pages specific styles:
 @import "pages/home";
+@import "pages/spa";
 
 // 7. Themes:
