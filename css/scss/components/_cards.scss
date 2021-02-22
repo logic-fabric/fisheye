@@ -1,0 +1,25 @@
+.c-photographer-card {
+  margin: 2rem 0 1rem 0;
+
+  text-align: center;
+
+  img {
+    border-radius: 50%;
+
+    object-fit: cover;
+  }
+
+  &__infos {
+    color: $primary-700;
+    font-size: $h5-size;
+  }
+
+  &__tagline {
+    font-size: $h6-size;
+    font-weight: 500;
+  }
+
+  nav {
+    padding: 1rem 2rem;
+  }
+}

@@ -64,23 +64,31 @@ class PhotographerCardInfos {
   }
 
   get html() {
-    return `<p>${this.photographer.city}, ${this.photographer.country}</p>
-            <p>${this.photographer.tagline}</p>
+    return `<p class="c-photographer-card__infos">
+              ${this.photographer.city}, ${this.photographer.country}
+            </p>
+            <p class="c-photographer-card__tagline">
+              ${this.photographer.tagline}
+            </p>
             <p>${this.photographer.price}&nbsp;€/jour</p>`;
   }
 }
 
 export class PhotographerCard {
-  constructor(photographer) {
+  constructor(photographer, checkedTag) {
     this.photographer = photographer;
+    this.checkedTag = checkedTag;
   }
 
   get html() {
-    let htmlContent = "<article class='lg4 md4 sm4'>";
+    let htmlContent = "<article class='c-photographer-card lg4 md4 sm4'>";
 
     htmlContent += new PhotographerCardFocusableArea(this.photographer).html;
     htmlContent += new PhotographerCardInfos(this.photographer).html;
-    htmlContent += new PhotographersNavTag(this.photographer.tags, "").html;
+    htmlContent += new PhotographersNavTag(
+      this.photographer.tags,
+      this.checkedTag
+    ).html;
 
     htmlContent += "</article>";
 

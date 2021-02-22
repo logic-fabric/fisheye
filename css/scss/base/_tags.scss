@@ -30,6 +30,8 @@ a {
 
 h1,
 h2 {
+  margin: 1rem 0;
+  
   color: $primary-300;
   font-weight: 400;
 }
@@ -40,6 +42,10 @@ h1 {
 
 h2 {
   font-size: $h2-size;
+}
+
+p {
+  margin: 0.5rem 0;
 }
 
 ul {

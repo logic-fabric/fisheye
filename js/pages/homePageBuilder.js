@@ -53,7 +53,7 @@ export class HomePageBuilder {
     for (let photographer of this.photographersList.filterByTag(
       this.checkedTag
     )) {
-      htmlContent += new PhotographerCard(photographer).html;
+      htmlContent += new PhotographerCard(photographer, this.checkedTag).html;
     }
     htmlContent += "</div>";
 
