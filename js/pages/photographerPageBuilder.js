@@ -1,5 +1,6 @@
 "use strict";
 
+import { MediaList } from "../data/medium.js";
 import { Button } from "./components/buttons.js";
 import { MediaCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
@@ -70,12 +71,15 @@ export class PhotographerPageBuilder {
   templateMediaCards() {
     let htmlContent = "<div class=row-12>";
 
-    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
-      this.photographer.id,
-      this.checkedTag
+    let photographerMedia = new MediaList(
+      this.mediaList.filterByPhotographerIdAndTag(
+        this.photographer.id,
+        this.checkedTag
+      )
     );
+    photographerMedia.sortByDate();
 
-    for (let medium of photographerMedia) {
+    for (let medium of photographerMedia.media) {
       htmlContent += new MediaCard(this.photographer, medium).html;
     }
     htmlContent += "</div>";

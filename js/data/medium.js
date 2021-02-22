@@ -7,7 +7,7 @@ export class Medium {
     this.filename = filename;
     this.tags = tags;
     this.likes = likes;
-    this.date = date;
+    this.date = new Date(date);
     this.price = price;
     this.altText = altText;
   }
@@ -30,7 +30,6 @@ export class Medium {
 export class MediaList {
   constructor(media) {
     this.media = media;
-    this.sortByTitle();
   }
 
   /**
@@ -44,14 +43,26 @@ export class MediaList {
   collectSortedTags() {}
 
   /**
-   * @returns {MediaList} Media sorted by date (starting with the most recent)
+   * @returns {MediaList} Media sorted by date from newest to oldest
    */
-  sortByDate() {}
+  sortByDate() {
+    return this.media.sort((m1, m2) => {
+      if (m1.date - m2.date < 0) return 1;
+      if (m1.date - m2.date > 0) return -1;
+      return 0;
+    });
+  }
 
   /**
-   * @returns {MediaList} Media sorted by likes number (starting with the most popular)
+   * @returns {MediaList} Media sorted by likes from the most popular to the less popular
    */
-  sortByLikes() {}
+  sortByLikes() {
+    return this.media.sort((m1, m2) => {
+      if (m1.likes < m2.likes) return 1;
+      if (m1.likes > m2.likes) return -1;
+      return 0;
+    });
+  }
 
   /**
    * @returns {MediaList} Media sorted by title
