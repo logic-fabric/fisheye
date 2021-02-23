@@ -35,6 +35,7 @@
 .p-dropdown {
   display: flex;
   position: relative;
+  z-index: $z-dropdown;
 
   margin: 1.5rem 0 4rem 0;
 

@@ -3,40 +3,42 @@
 import { LikesButton } from "./buttons.js";
 import { PhotographersNavTag } from "./hashtags.js";
 
-export class MediaCard {
+export class MediumCard {
   constructor(photographer, medium) {
     this.photographer = photographer;
     this.medium = medium;
   }
 
   get html() {
-    let htmlContent = "<article class='lg4 md4 sm4'>";
-    htmlContent += `<a 
-      href="#photographer:${this.photographer.name.replace(/ /, "-")}">`;
+    let htmlContent = "<article class='lg4 md4 sm4 c-medium-card'>";
+    htmlContent += `<a class="c-medium-card__img"
+                       href="#photographer:${this.photographer.name.replace(/ /, "-")}"
+                    >`;
 
     const isVideo = this.medium.filename.endsWith("mp4");
     const filename = isVideo
       ? this.medium.filename.replace("mp4", "png")
       : this.medium.filename;
 
-    htmlContent += `<img 
+    htmlContent += `<img
                       src="img/${this.photographer.mediaFolder}/${filename}" 
                       alt="${this.medium.altText} for ${filename}" 
-                      width="200" height="200"
+                      width="350" height="300"
                     />`;
     if (isVideo) {
       htmlContent += "<i class='far fa-play-circle'></i>";
     }
     htmlContent += "</a>";
-    htmlContent += `<h2>${this.medium.title}</h2>`;
-    htmlContent += `<p>${this.medium.price}&nbsp;€</p>`;
+    htmlContent += "<div class='row-12 c-medium-card__infos'>";
+    htmlContent += `<h2 class="lg7 md7 sm7">${this.medium.title}</h2>`;
+    htmlContent += `<p class="lg2 md2 sm2">${this.medium.price}&nbsp;€</p>`;
     htmlContent += new LikesButton(
-      "",
+      "lg3 md3 sm3 c-btn",
       "button",
       this.medium.likes,
       this.medium.id
     ).html;
-    htmlContent += "</article>";
+    htmlContent += "</div></article>";
 
     return htmlContent;
   }

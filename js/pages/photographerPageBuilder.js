@@ -2,7 +2,7 @@
 
 import { MediaList } from "../data/medium.js";
 import { Button } from "./components/buttons.js";
-import { MediaCard } from "./components/cards.js";
+import { MediumCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
 import { MediaNavTag } from "./components/hashtags.js";
@@ -100,7 +100,7 @@ export class PhotographerPageBuilder {
     if (filter == "title") photographerMedia.sortByTitle();
 
     for (let medium of photographerMedia.media) {
-      htmlContent += new MediaCard(this.photographer, medium).html;
+      htmlContent += new MediumCard(this.photographer, medium).html;
     }
 
     return htmlContent;
