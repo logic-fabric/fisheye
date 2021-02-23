@@ -67,8 +67,8 @@ export class Router {
       console.log("Route >", route);
 
       if (route.startsWith("photographer")) {
-        let routeParameters = route.split(":")[1];
-        let [photographerName, tag] = routeParameters.split("#");
+        const routeParameters = route.split(":")[1];
+        const [photographerName, tag] = routeParameters.split("#");
 
         console.log(
           `Photographer route for '${photographerName}' and tag '${tag}'`
@@ -77,7 +77,7 @@ export class Router {
         let photographer = this.PHOTOGRAPHERS.findByName(photographerName);
         this.pageFactory.render(photographer, tag);
       } else {
-        let tag = route;
+        const tag = route;
 
         console.log(`Home route filtered on tag '${tag}'`);
 

@@ -12,6 +12,8 @@ export class PageFactory {
   }
 
   render(photographer, checkedTag) {
+    window.scrollTo(0, 0);
+
     if (photographer) {
       const page = new PhotographerPageBuilder(
         photographer,
@@ -24,4 +26,23 @@ export class PageFactory {
       page.render();
     }
   }
+}
+
+export function addUpButtonEvent() {
+  const upButton = document.getElementById("up-button");
+  const mainContent = document.getElementById("main-content");
+
+  window.addEventListener("scroll", () => {
+    let mainRect = mainContent.getBoundingClientRect();
+
+    if (mainRect.top < 60) {
+      upButton.classList.add("visible");
+    } else {
+      upButton.classList.remove("visible");
+    }
+  });
+
+  upButton.onclick = () => {
+    window.scrollTo(0, 0);
+  };
 }

@@ -1,6 +1,7 @@
 .c-btn {
   border: none;
   border-radius: 0.25rem;
+  outline: none;
 
   font-weight: 700;
 
@@ -26,25 +27,20 @@
   left: calc(50% - 5rem);
 
   width: 10rem;
-  height: 0;
-  padding: 0;
-  overflow: hidden;
+  padding: 0.5rem;
 
   color: black;
   text-align: center;
 
-  opacity: 0;
+  transform: translateY(-3rem);
 
-  transition: color 250ms, height 50ms, opacity 400ms;
+  transition: color 250ms, transform 300ms;
 
   &:hover {
     color: $neutral-100;
   }
 
   &.visible {
-    height: auto;
-    padding: 0.5rem;
-
-    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -31,3 +31,33 @@
     }
   }
 }
+
+.p-dropdown {
+  margin: 1.5rem 0;
+
+  label,
+  option {
+    font-size: $h6-size;
+    font-weight: 700;
+  }
+
+  label {
+    margin-right: 1.5rem;
+  }
+
+  select {
+    border: none;
+    border-radius: 0.25rem;
+
+    color: white;
+
+    background: $primary-700;
+  }
+
+  option {
+    padding: 1.25rem;
+    color: white;
+
+    background: $primary-700;
+  }
+}
