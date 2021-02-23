@@ -4,7 +4,7 @@ class MediaTag {
   constructor(photographer, tag, checked) {
     this.photographer = photographer;
     this.tag = tag;
-    this.checked;
+    this.checked = checked;
   }
 
   get html() {
@@ -46,7 +46,7 @@ class PhotographerTag {
 }
 
 export class MediaNavTag {
-  constructor(photographer, tagsList, checkedTag) {
+  constructor(photographer, checkedTag) {
     this.photographer = photographer;
     this.checkedTag = checkedTag;
   }

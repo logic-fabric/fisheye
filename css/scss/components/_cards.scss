@@ -80,5 +80,11 @@
     font-weight: 500;
 
     background: white;
+
+    transition: color 300ms;
+
+    &:hover {
+      color: lighten($primary-700, 20);
+    }
   }
 }

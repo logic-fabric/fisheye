@@ -12,8 +12,10 @@ export class PageFactory {
   }
 
   render(photographer, checkedTag) {
-    window.scrollTo(0, 0);
-
+    if (!checkedTag) {
+      window.scrollTo(0, 0);
+    }
+    
     if (photographer) {
       const page = new PhotographerPageBuilder(
         photographer,

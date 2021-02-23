@@ -18,6 +18,12 @@
     font-weight: 700;
 
     background: $primary-700;
+
+    transition: background-color 300ms;
+
+    &:hover {
+      background: lighten($primary-700, 10);
+    }
   }
 }
 
@@ -25,6 +31,7 @@
   position: fixed;
   top: 0.25rem;
   left: calc(50% - 5rem);
+  z-index: $z-fullscreen-functionality;
 
   width: 10rem;
   padding: 0.5rem;
