@@ -48,9 +48,7 @@ export class PhotographerPageBuilder {
       this.photographer,
       this.checkedTag
     );
-    htmlContent += "<div class='p-dropdown'>";
     htmlContent += new MediaFiltersDropdownMenu().html;
-    htmlContent += "</div>";
     htmlContent += "<div class=row-12 id='cards-container'>";
     htmlContent += this.templateMediaCards("date");
     htmlContent += "</div>";
@@ -174,10 +172,11 @@ export class PhotographerPageBuilder {
   }
 
   addSortWithDropdownMenu() {
-    const dropdownMenu = document.getElementById("media-filter");
+    const dropdownMenu = document.getElementById("sorting-dropdown");
 
     dropdownMenu.onchange = () => {
       const cardsContainer = document.getElementById("cards-container");
+
       cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
     };
   }
