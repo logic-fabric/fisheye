@@ -97,3 +97,20 @@
     display: none;
   }
 }
+
+.p-photographer-summary {
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+
+  padding: 1.25rem 2rem;
+  border-radius: 0.25rem 0.25rem 0 0;
+
+  font-size: $h3-size;
+
+  background: $primary-200;
+
+  i {
+    margin-right: 3rem;
+  }
+}

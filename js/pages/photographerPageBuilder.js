@@ -117,7 +117,7 @@ export class PhotographerPageBuilder {
       photographerTotalLikes += medium.likes;
     }
 
-    let htmlContent = `<aside>
+    let htmlContent = `<aside class="p-photographer-summary">
                         <span id="photographer-total-likes">
                           ${photographerTotalLikes}
                         </span>
