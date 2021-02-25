@@ -5,6 +5,8 @@ export class MediaModal {
     this.photographer = photographer;
     this.mediaList = mediaList;
     this.displayedMediumId = displayedMediumId;
+
+    this.addCloseModalEvents();
   }
 
   get displayedMedium() {
@@ -33,5 +35,23 @@ export class MediaModal {
               </span>
             </div>
             <h2>${medium.title}</h2>`;
+  }
+
+  addCloseModalEvents() {
+    const modalBackground = document.getElementById("modal-bg");
+    const modalWindow = document.getElementById("modal-window")
+    const modalContent = document.getElementById("modal-content");
+    const closeIcon = document.getElementById("close-icon");
+
+    closeIcon.onclick = () => {
+      modalBackground.style.display = "none";
+      modalContent.innerHTML = "";
+    };
+
+    modalWindow.onclick = (e) => e.stopPropagation();
+    modalBackground.onclick = () => {
+      modalBackground.style.display = "none";
+      modalContent.innerHTML = "";
+    };
   }
 }
