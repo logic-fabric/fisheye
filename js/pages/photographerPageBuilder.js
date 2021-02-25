@@ -2,6 +2,7 @@
 
 import { MediaList } from "../data/medium.js";
 import { Button } from "./components/buttons.js";
+import { MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
@@ -30,8 +31,9 @@ export class PhotographerPageBuilder {
     console.log("-----");
 
     addUpButtonEvent();
-    this.addLikesIncrementEvents();
     this.addSortWithDropdownMenu();
+    this.addLikesIncrementEvents();
+    this.addOpenMediaModalEvents();
   }
 
   renderHeader() {
@@ -179,5 +181,26 @@ export class PhotographerPageBuilder {
 
       cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
     };
+  }
+
+  addOpenMediaModalEvents() {
+    const mediaImages = document.getElementsByClassName("c-medium-card__img");
+
+    for (const mediumImage of mediaImages) {
+      mediumImage.onclick = () => {
+        const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
+        const modalBackground = document.getElementById("modal-bg");
+        const modalContent = document.getElementById("modal-content");
+
+        modalContent.classList.add("c-media-modal");
+        modalContent.innerHTML = new MediaModal(
+          this.photographer,
+          this.mediaList,
+          mediumToDisplayId,
+        ).html;
+
+        modalBackground.style.display = "block";
+      };
+    }
   }
 }

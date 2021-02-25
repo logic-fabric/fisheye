@@ -10,16 +10,14 @@ export class MediumCard {
   }
 
   get html() {
-    let htmlContent = "<article class='lg4 md4 sm4 c-medium-card'>";
-    htmlContent += `<a class="c-medium-card__img"
-                       href="#photographer:${this.photographer.name.replace(/ /, "-")}"
-                    >`;
-
     const isVideo = this.medium.filename.endsWith("mp4");
     const filename = isVideo
       ? this.medium.filename.replace("mp4", "png")
       : this.medium.filename;
 
+    let htmlContent = "<article class='lg4 md4 sm4 c-medium-card'>";
+    htmlContent += `<div class="c-medium-card__img" 
+                         data-medium-id="${this.medium.id}">`;
     htmlContent += `<img
                       src="img/${this.photographer.mediaFolder}/${filename}" 
                       alt="${this.medium.altText} for ${filename}" 
@@ -28,7 +26,7 @@ export class MediumCard {
     if (isVideo) {
       htmlContent += "<i class='far fa-play-circle'></i>";
     }
-    htmlContent += "</a>";
+    htmlContent += "</div>";
     htmlContent += "<div class='row-12 c-medium-card__infos'>";
     htmlContent += `<h2 class="lg7 md7 sm7">${this.medium.title}</h2>`;
     htmlContent += `<p class="lg2 md2 sm2">${this.medium.price}&nbsp;€</p>`;

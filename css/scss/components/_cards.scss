@@ -35,6 +35,8 @@
   &__img {
     position: relative;
 
+    cursor: pointer;
+
     img {
       border-radius: 0.25rem;
 
@@ -43,7 +45,7 @@
 
     i {
       position: absolute;
-      top: -12.5rem;
+      top: 4.5rem;
       left: calc(50% - 5rem);
       z-index: $z-in-front;
 
