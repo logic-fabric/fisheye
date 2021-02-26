@@ -44,7 +44,7 @@ export class Router {
         fetchedMedium.likes,
         fetchedMedium.date,
         fetchedMedium.price,
-        "TO DO: altText"
+        fetchedMedium.altText,
       );
 
       mediumInstances.push(mediumInstance);
