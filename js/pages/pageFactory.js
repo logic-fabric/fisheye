@@ -6,8 +6,6 @@ import { PhotographerPageBuilder } from "./photographerPageBuilder.js";
 export class PageFactory {
   constructor(photographersList, mediaList) {
     this.photographersList = photographersList;
-    this.photographersTags = photographersList.sortedTags;
-
     this.mediaList = mediaList;
   }
 
@@ -15,18 +13,12 @@ export class PageFactory {
     if (!checkedTag) {
       window.scrollTo(0, 0);
     }
-    
-    if (photographer) {
-      const page = new PhotographerPageBuilder(
-        photographer,
-        this.mediaList,
-        checkedTag
-      );
-      page.render();
-    } else {
-      const page = new HomePageBuilder(this.photographersList, checkedTag);
-      page.render();
-    }
+
+    const page = photographer
+      ? new PhotographerPageBuilder(photographer, this.mediaList, checkedTag)
+      : new HomePageBuilder(this.photographersList, checkedTag);
+
+    page.render();
   }
 }
 

@@ -5,9 +5,8 @@ import { Medium, MediaList } from "../data/medium.js";
 import { PageFactory } from "./pageFactory.js";
 
 export class Router {
-  constructor(dataFetcher, initialRoute) {
+  constructor(dataFetcher) {
     this.dataFetcher = dataFetcher;
-    this.route = initialRoute;
 
     this.init();
   }
@@ -34,9 +33,8 @@ export class Router {
     }
 
     for (let fetchedMedium of this.data.media) {
-      const fetchedMediumFilename = fetchedMedium.hasOwnProperty("image")
-        ? fetchedMedium.image
-        : fetchedMedium.video;
+      const fetchedMediumFilename =
+        "image" in fetchedMedium ? fetchedMedium.image : fetchedMedium.video;
 
       const mediumInstance = new Medium(
         fetchedMedium.id,
@@ -63,26 +61,21 @@ export class Router {
   addRouteListener() {
     window.onhashchange = () => {
       const route = window.location.hash.slice(1);
-
-      console.log("Route >", route);
+      let photographer, tag;
 
       if (route.startsWith("photographer")) {
-        const routeParameters = route.split(":")[1];
-        const [photographerName, tag] = routeParameters.split("#");
-
-        console.log(
-          `Photographer route for '${photographerName}' and tag '${tag}'`
-        );
-
-        let photographer = this.PHOTOGRAPHERS.findByName(photographerName);
-        this.pageFactory.render(photographer, tag);
+        const routeData = route.split(":")[1];
+        const routeParameters = routeData.split("#");
+        const photographerName = routeParameters[0];
+        
+        photographer = this.PHOTOGRAPHERS.findByName(photographerName);
+        tag = routeParameters[1];
       } else {
-        const tag = route;
-
-        console.log(`Home route filtered on tag '${tag}'`);
-
-        this.pageFactory.render("", tag);
+        photographer = "";
+        tag = route;
       }
+
+      this.pageFactory.render(photographer, tag);
     };
   }
 }

@@ -18,17 +18,11 @@ export class PhotographerPageBuilder {
   }
 
   render() {
-    console.log(
-      `Building PhotographerPage for '${this.photographer.name}' filtered by '${this.checkedTag}'...`
-    );
-
     const contentWrapper = document.getElementById("p-spa-wrapper");
     contentWrapper.className = "p-photographer";
 
     this.renderHeader();
     this.renderMain();
-
-    console.log("-----");
 
     addUpButtonEvent();
     this.addSortWithDropdownMenu();
@@ -196,7 +190,7 @@ export class PhotographerPageBuilder {
         modalContent.innerHTML = new MediaModal(
           this.photographer,
           this.mediaList,
-          mediumToDisplayId,
+          mediumToDisplayId
         ).html;
 
         modalBackground.style.display = "block";

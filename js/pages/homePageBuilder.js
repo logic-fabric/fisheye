@@ -15,8 +15,6 @@ export class HomePageBuilder {
   }
 
   render() {
-    console.log(`Building HomePage filtered by tag '${this.checkedTag}'...`);
-
     const contentWrapper = document.getElementById("p-spa-wrapper");
     contentWrapper.className = "p-home";
 
@@ -24,8 +22,6 @@ export class HomePageBuilder {
     this.renderMain();
 
     addUpButtonEvent();
-
-    console.log("-----");
   }
 
   renderHeader() {
