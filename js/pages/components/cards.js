@@ -20,7 +20,7 @@ export class MediumCard {
                          data-medium-id="${this.medium.id}">`;
     htmlContent += `<img
                       src="img/${this.photographer.mediaFolder}/${filename}" 
-                      alt="${this.medium.altText} for ${filename}" 
+                      alt="${this.medium.altText}" 
                       width="350" height="300"
                     />`;
     if (isVideo) {

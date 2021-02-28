@@ -70,7 +70,7 @@
       "likes": 62,
       "date": "2011-12-08",
       "price": 55,
-      "altText": "Une mannequin vêtue de jaune en bord de mer, avec un arrière-plan un panneau de basket et un ciel sans nuage lumineux"
+      "altText": "Une mannequin vêtue de jaune, en bordure de mer, par un jour d'été luminueux"
     },
     {
       "id": 8520927,
@@ -80,7 +80,7 @@
       "likes": 11,
       "date": "2011-11-06",
       "price": 55,
-      "altText": "Une mannequin portant une tenue d'été verte aux motifs imprimés, posant sur un pont au sein d'une cité"
+      "altText": "Une mannequin en tenue d'été, verte aux motifs imprimés, posant sur un pont dans une grande cité"
     },
     {
       "id": 9025895,
@@ -90,7 +90,7 @@
       "likes": 72,
       "date": "2013-08-12",
       "price": 55,
-      "altText": "Une mannequin portant une tenue courte au tissu imprimé de bandes verticales colorées, posant devant un mur de carreeaux en losange"
+      "altText": "Une mannequin aux vêtements imprimés de bandes verticales et colorées, posant devant un mur carrelé"
     },
     {
       "id": 9275938,
@@ -100,7 +100,7 @@
       "likes": 69,
       "date": "2018-02-22",
       "price": 55,
-      "altText": "Un petit belvédère au milieu d'un jardin, décoré en vue d'un futur mariage"
+      "altText": "Un belvédère au sein d'un jardin, décoré pour un futur mariage"
     },
     {
       "id": 2053494,
@@ -110,7 +110,7 @@
       "likes": 2,
       "date": "2020-05-25",
       "price": 55,
-      "altText": "Des mariés vus de dos, contemplant leurs convives tenant des feux d'artifice dans la nuit"
+      "altText": "Des mariés vus de dos, entourés de convives tenant des feux d'artifice dans la nuit"
     },
     {
       "id": 7324238,
@@ -120,7 +120,7 @@
       "likes": 33,
       "date": "2019-06-12",
       "price": 55,
-      "altText": "altText to complete"
+      "altText": "Une table dressée pour une grande fête d'anniversaire, un ballon à la forme de 18 en arrière-plan "
     },
     {
       "id": 8328953,
@@ -130,7 +130,7 @@
       "likes": 24,
       "date": "2011-12-08",
       "price": 100,
-      "altText": "altText to complete"
+      "altText": "Un travelling autour de la tête d'une sculpture de cheval en bois"
     },
     {
       "id": 7502053,
@@ -140,7 +140,7 @@
       "likes": 88,
       "date": "2007-05-07",
       "price": 55,
-      "altText": "altText to complete"
+      "altText": "Des placards avec un grand personnage coloré torse nu, sur lequel se superpose un triangle équilatéral blanc"
     },
     {
       "id": 8523492,
@@ -150,7 +150,7 @@
       "likes": 24,
       "date": "2018-05-05",
       "price": 55,
-      "altText": "altText to complete"
+      "altText": "Un passage souterrain recouvert de street art, baigné d'une lumière pourpre"
     },
     {
       "id": 75902334,
@@ -160,7 +160,7 @@
       "likes": 75,
       "date": "2019-11-25",
       "price": 55,
-      "altText": "altText to complete"
+      "altText": "Une peinture murale formée de pigeons bleus et rouges, à la façon d'un papier peint pour chambre d'enfant"
     },
 
     {
@@ -171,7 +171,7 @@
       "likes": 52,
       "date": "2013-02-30",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Vue aérienne d'un 8, bâteau d'aviron, et de quelques-uns de ses rameurs"
     },
     {
       "id": 92758372,
@@ -181,7 +181,7 @@
       "likes": 58,
       "date": "2018-07-17",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un couple de danseurs, figés debout, un bras dressé dans une posture choréggraphiée"
     },
     {
       "id": 32958383,
@@ -191,7 +191,7 @@
       "likes": 11,
       "date": "2019-08-12",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Une mannequin descendant l'escalier d'une ruelle, vêtue d'une grande robe en tulle rouge"
     },
     {
       "id": 928587383,
@@ -201,7 +201,7 @@
       "likes": 2,
       "date": "2019-01-02",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Une réunion en entreprise, les participants travaillant sur un ensemble de post-it collés sur un mur"
     },
     {
       "id": 725639493,
@@ -211,7 +211,7 @@
       "likes": 3,
       "date": "2019-05-20",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un pitch dans une start-up, l'orateur présentant un diaporama devant une petite assemblée décontractée"
     },
     {
       "id": 23394384,
@@ -221,7 +221,7 @@
       "likes": 52,
       "date": "2019-07-18",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Une photo noir et blanc d'une musicienne, assise, concentrée sur son jeu au clavier"
     },
     {
       "id": 87367293,
@@ -231,7 +231,7 @@
       "likes": 23,
       "date": "2018-02-22",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un chanteur sur scène, durant un festival de musique pop"
     },
     {
       "id": 593834784,
@@ -241,7 +241,7 @@
       "likes": 52,
       "date": "2017-03-13",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un cerf, regardant l'objectif, dans un champ baigné d'une lumière automnale"
     },
     {
       "id": 83958935,
@@ -251,7 +251,7 @@
       "likes": 52,
       "date": "2016-06-12",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un chiot, au pelage noir et blanc, jouant sur une plage au soleil couchant"
     },
 
     {
@@ -262,7 +262,7 @@
       "likes": 23,
       "date": "2017-03-18",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Un travelling aérien, au-dessus d'une crête montagneuse dépourvue de neige"
     },
     {
       "id": 343423425,
@@ -272,7 +272,7 @@
       "likes": 101,
       "date": "2017-04-03",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Des baigneurs en extérieur, profitant des thermes naturels d'une source d'eau chaude"
     },
     {
       "id": 73434243,
@@ -282,7 +282,7 @@
       "likes": 99,
       "date": "2018-04-30",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Une route sinueuse au sein de steppes orangées"
     },
     {
       "id": 23425523,
@@ -292,7 +292,7 @@
       "likes": 34,
       "date": "2016-04-05",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Vue à la première personne d'un passage sur un pont forestier"
     },
     {
       "id": 23134513,
@@ -302,7 +302,7 @@
       "likes": 23,
       "date": "2017-03-18",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Vue à la première personne, depuis une barque, d'un lac de montagne"
     },
     {
       "id": 92352352,
@@ -312,7 +312,7 @@
       "likes": 66,
       "date": "2018-05-24",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait d'une jeune femme rousse au sourire radieux"
     },
     {
       "id": 34513453,
@@ -322,7 +322,7 @@
       "likes": 52,
       "date": "2017-04-21",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait en noir et blanc d'un jeune homme noir, portant une fine moustache, au regard portant au loin"
     },
     {
       "id": 23523533,
@@ -332,7 +332,7 @@
       "likes": 95,
       "date": "2018-11-02",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait en noir et blanc d'une jeunne femme noire, aux cheveux et sourcils entièrement blancs"
     },
     {
       "id": 525834234,
@@ -342,7 +342,7 @@
       "likes": 25,
       "date": "2019-01-02",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait en noir et blanc d'un soixantenaire prenant une pause cigarette, regard vers l'objectif"
     },
 
     {
@@ -353,7 +353,7 @@
       "likes": 88,
       "date": "2019-02-03",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Un randonneur, vu de loin, admirant depuis un surplomb un paysage vallonné verdoyant"
     },
     {
       "id": 625025343,
@@ -363,7 +363,7 @@
       "likes": 85,
       "date": "2019-04-03",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Une petite ville colorée, bâtie sur un bord de mer déchiqueté, par une journée lumineuse"
     },
     {
       "id": 2525345343,
@@ -373,7 +373,7 @@
       "likes": 34,
       "date": "2019-04-07",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait en noir et blnc d'une jeune enfant allongée sur le ventre, le visage boudeur"
     },
     {
       "id": 2523434634,
@@ -383,7 +383,7 @@
       "likes": 63,
       "date": "2019-04-07",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait d'une jeune femme noire portant des lunettes rondes, assise dans un diner et regardant l'objectif"
     },
     {
       "id": 398847109,
@@ -393,7 +393,7 @@
       "likes": 55,
       "date": "2019-06-20",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Portrait en noir et blanc d'une jeune femme au port de tête hautain"
     },
     {
       "id": 2534342,
@@ -403,7 +403,7 @@
       "likes": 25,
       "date": "2019-06-21",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Une table dressée sur une plage pour un marriage"
     },
     {
       "id": 65235234,
@@ -413,7 +413,7 @@
       "likes": 52,
       "date": "2019-06-25",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Des mariés front contre front, dans un décor forestier et rocheux"
     },
     {
       "id": 23523434,
@@ -423,7 +423,7 @@
       "likes": 77,
       "date": "2019-06-28",
       "price": 45,
-      "altText": "altText to complete"
+      "altText": "Des mariés plaisantant tendrement, sur le lieu déserté de la cérémonie"
     },
     {
       "id": 5234343,
@@ -433,7 +433,7 @@
       "likes": 142,
       "date": "2019-08-23",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Un grand groupe de chevaux, au trot dans un paysage de steppes montagneuses"
     },
     {
       "id": 95234343,
@@ -443,7 +443,7 @@
       "likes": 59,
       "date": "2019-07-02",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Un petit oiseau sur une branche, au plumage coloré"
     },
 
     {
@@ -454,7 +454,7 @@
       "likes": 25,
       "date": "2019-04-03",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une rue d'un quartier historique menant à une pagode, traversée par deux femmes en kimono"
     },
     {
       "id": 2523434,
@@ -464,7 +464,7 @@
       "likes": 53,
       "date": "2019-05-06",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une vue d'un canal de Venise, bordé de maisons donnant sur l'eau"
     },
     {
       "id": 95293534,
@@ -474,7 +474,7 @@
       "likes": 33,
       "date": "2019-05-12",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Un lac bordé de forêts et précédant un paysage montagneux"
     },
     {
       "id": 356234343,
@@ -484,7 +484,7 @@
       "likes": 53,
       "date": "2019-06-20",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Un vélo posé contre la rambarde d'un escalier en ville"
     },
     {
       "id": 235234343,
@@ -494,7 +494,7 @@
       "likes": 63,
       "date": "2019-06-26",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une porte arquée en pierre, ouverte sur un paysage urbain du Proche-Orient"
     },
     {
       "id": 6234234343,
@@ -504,7 +504,7 @@
       "likes": 52,
       "date": "2019-06-30",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Un bâtiment historique, doté de tours couronnés de bulbes"
     },
     {
       "id": 6525666253,
@@ -514,7 +514,7 @@
       "likes": 63,
       "date": "2019-07-20",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une petite ville bâtie sur une colline, entourée de paysages montagneux"
     },
     {
       "id": 98252523433,
@@ -524,7 +524,7 @@
       "likes": 88,
       "date": "2020-01-05",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une vue en contre-plongée de la Tour de Pise"
     },
     {
       "id": 9259398453,
@@ -534,7 +534,7 @@
       "likes": 57,
       "date": "2020-01-20",
       "price": 65,
-      "altText": "altText to complete"
+      "altText": "Un travelling aérien au-desus d'un échangeur d'autoroute à Buenos Aires"
     },
     {
       "id": 3523523534,
@@ -544,7 +544,7 @@
       "likes": 54,
       "date": "2020-05-05",
       "price": 60,
-      "altText": "altText to complete"
+      "altText": "Une vue du haut d'un immeuble construit l'angle de deux rues ressérées"
     },
 
     {
@@ -555,7 +555,7 @@
       "likes": 150,
       "date": "2018-02-30",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Une gymnaste suspendue par une main, tournant sur elle-même"
     },
     {
       "id": 235234343,
@@ -565,7 +565,7 @@
       "likes": 101,
       "date": "2018-03-05",
       "price": 65,
-      "altText": "altText to complete"
+      "altText": "Une grimpeuse en pleine escalade d'un surplomb rocheux"
     },
     {
       "id": 235343222,
@@ -575,7 +575,7 @@
       "likes": 103,
       "date": "2018-03-10",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Un surfer glissant à l'intérieur des rouleaux d'une vague"
     },
     {
       "id": 7775342343,
@@ -585,7 +585,7 @@
       "likes": 77,
       "date": "2018-04-16",
       "price": 50,
-      "altText": "altText to complete"
+      "altText": "Un skieur en pleine acrobatie aérienne"
     },
     {
       "id": 9253445784,
@@ -595,7 +595,7 @@
       "likes": 88,
       "date": "2018-04-22",
       "price": 65,
-      "altText": "altText to complete"
+      "altText": "Des coureuses d'athlétisme en plein sprint"
     },
     {
       "id": 22299394,
@@ -605,7 +605,7 @@
       "likes": 95,
       "date": "2018-04-27",
       "price": 70,
-      "altText": "altText to complete"
+      "altText": "Deux skateurs dans un skate park, l'un d'eux en pleine figure aérienne"
     },
     {
       "id": 3452342633,
@@ -615,7 +615,7 @@
       "likes": 52,
       "date": "2018-05-03",
       "price": 75,
-      "altText": "altText to complete"
+      "altText": "Une vue intérieure de l'atrium d'un musée moderne totalement blanc"
     },
     {
       "id": 939234243,
@@ -625,7 +625,7 @@
       "likes": 55,
       "date": "2018-05-10",
       "price": 72,
-      "altText": "altText to complete"
+      "altText": "Un bâtiment à l'architecture avant-gardiste"
     },
     {
       "id": 222959233,
@@ -635,7 +635,7 @@
       "likes": 85,
       "date": "2018-05-15",
       "price": 71,
-      "altText": "altText to complete"
+      "altText": "Une vue en contre-plongée d'un bâtiment moderne en forme de fer à cheval"
     },
     {
       "id": 965933434,
@@ -645,7 +645,7 @@
       "likes": 66,
       "date": "2018-05-20",
       "price": 58,
-      "altText": "altText to complete"
+      "altText": "Une vue symétrique, en enfilade des façades vitrèes d'un bâtiment moderne"
     },
     {
       "id": 777723343,
@@ -655,7 +655,7 @@
       "likes": 79,
       "date": "2018-05-21",
       "price": 80,
-      "altText": "altText to complete"
+      "altText": "Une vue de la façade incurvée et évidée d'une architecture moderne"
     }
   ]
 }
