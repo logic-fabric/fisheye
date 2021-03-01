@@ -16,33 +16,30 @@ export class Photographer {
     return this.name.replace(/ /, "").replace(/-/, "");
   }
 
-  /**
-   * @returns {number} Sum of all likes given to the photographer's media
-   */
-  sumAllMediaLikes() {}
+  get slug() {
+    return this.name.toLowerCase().replace(/ /, "-");
+  }
 }
 
 export class PhotographersList {
   constructor(photographers) {
     this.photographers = photographers;
+
     this.sortByName();
   }
 
   findByName(name) {
-    name = name.replace(/ /, "-");
+    const slugToMatch = name.toLowerCase().replace(/ /, "-");
+
     for (let photographer of this.photographers) {
-      if (photographer.name.replace(/ /, "-") === name) {
+      if (photographer.slug === slugToMatch) {
         return photographer;
       }
     }
     return `No photographer finded for the name '${name}'`;
   }
 
-  /**
-   * @returns {string[]} All tags present in this list of photographers
-   */
-  collectTags() {
-    // TO DO: build as a property
+  _collectTags() {
     let tags = new Set();
 
     for (let photographer of this.photographers) {
@@ -54,20 +51,14 @@ export class PhotographersList {
     return [...tags];
   }
 
-  /**
-   * @returns {string[]} All tags present, sorted by name
-   */
   get sortedTags() {
-    const tags = this.collectTags();
+    const tags = this._collectTags();
 
     return tags.sort();
   }
 
-  /**
-   * @returns {PhotographersList} Photographers sorted by name
-   */
   sortByName() {
-    return this.photographers.sort((p1, p2) => {
+    this.photographers.sort((p1, p2) => {
       const name1 = p1.name.toLowerCase();
       const name2 = p2.name.toLowerCase();
 
@@ -77,25 +68,16 @@ export class PhotographersList {
     });
   }
 
-  /**
-   * @param {string} tag
-   * @returns {PhotographersList} All photographers possessing this tag
-   */
   filterByTag(tagToMatch) {
-    if (tagToMatch === "") {
-      return [...this.photographers];
-    }
+    if (tagToMatch === "") return this;
 
     let filteredPhotographers = [];
 
     for (let photographer of this.photographers) {
-      for (let tag of photographer.tags) {
-        if (tag === tagToMatch) {
-          filteredPhotographers.push(photographer);
-          break;
-        }
+      if (photographer.tags.includes(tagToMatch)) {
+        filteredPhotographers.push(photographer);
       }
     }
-    return filteredPhotographers;
+    return new PhotographersList(filteredPhotographers);
   }
 }

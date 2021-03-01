@@ -8,7 +8,7 @@ import { addUpButtonEvent } from "./pageFactory.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
-    this.photographersList = photographersList;
+    this.photographersList = photographersList.filterByTag(checkedTag);
     this.checkedTag = checkedTag;
 
     this.photographersTags = photographersList.sortedTags;
@@ -49,9 +49,7 @@ export class HomePageBuilder {
   templatePhotographersCards() {
     let htmlContent = "<div class=row-12>";
 
-    for (let photographer of this.photographersList.filterByTag(
-      this.checkedTag
-    )) {
+    for (let photographer of this.photographersList.photographers) {
       htmlContent += new PhotographerCard(photographer, this.checkedTag).html;
     }
     htmlContent += "</div>";
