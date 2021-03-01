@@ -1,6 +1,5 @@
 "use strict";
 
-import { MediaList } from "../data/medium.js";
 import { Button } from "./components/buttons.js";
 import { MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
@@ -85,11 +84,9 @@ export class PhotographerPageBuilder {
   templateMediaCards(filter) {
     let htmlContent = "";
 
-    let photographerMedia = new MediaList(
-      this.mediaList.filterByPhotographerIdAndTag(
-        this.photographer.id,
-        this.checkedTag
-      )
+    let photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
+      this.photographer.id,
+      this.checkedTag
     );
     if (filter == "date") photographerMedia.sortByDate();
     if (filter == "popularity") photographerMedia.sortByLikes();
@@ -109,7 +106,7 @@ export class PhotographerPageBuilder {
       ""
     );
 
-    for (let medium of photographerMedia) {
+    for (let medium of photographerMedia.media) {
       photographerTotalLikes += medium.likes;
     }
 
@@ -145,7 +142,7 @@ export class PhotographerPageBuilder {
       this.checkedTag
     );
 
-    for (let medium of photographerMedia) {
+    for (let medium of photographerMedia.media) {
       const likesButton = document.querySelector(
         `[data-medium-id="${medium.id}"]`
       );

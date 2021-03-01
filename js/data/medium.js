@@ -12,20 +12,11 @@ export class Medium {
     this.altText = altText;
   }
 
-  /**
-   * @returns {string} Name based on the medium's filename
-   */
   get title() {
     const filenameWithoutExtension = this.filename.split(".")[0];
-    let title = filenameWithoutExtension.split("_").slice(1).join(" ");
-    title = title.toLowerCase();
-    title = title[0].toUpperCase() + title.slice(1);
-    return title;
-  }
+    const rawTitle = filenameWithoutExtension.split("_").slice(1).join(" ");
 
-  /** Add a like to the medium. */
-  incrementLikes() {
-    this.likes++;
+    return rawTitle[0].toUpperCase() + rawTitle.slice(1).toLowerCase();
   }
 }
 
@@ -34,19 +25,6 @@ export class MediaList {
     this.media = media;
   }
 
-  /**
-   * @returns {string[]} All tags present in this list of media
-   */
-  collectTags() {} // TO DO: build as a property
-
-  /**
-   * @returns {string[]} All tags present, sorted by name
-   */
-  collectSortedTags() {}
-
-  /**
-   * @returns {MediaList} Media sorted by date from newest to oldest
-   */
   sortByDate() {
     return this.media.sort((m1, m2) => {
       if (m1.date - m2.date < 0) return 1;
@@ -55,9 +33,6 @@ export class MediaList {
     });
   }
 
-  /**
-   * @returns {MediaList} Media sorted by likes from the most popular to the less popular
-   */
   sortByLikes() {
     return this.media.sort((m1, m2) => {
       if (m1.likes < m2.likes) return 1;
@@ -66,9 +41,6 @@ export class MediaList {
     });
   }
 
-  /**
-   * @returns {MediaList} Media sorted by title
-   */
   sortByTitle() {
     return this.media.sort((m1, m2) => {
       const title1 = m1.title.toLowerCase();
@@ -92,7 +64,7 @@ export class MediaList {
           photographerMedia.push(medium);
         }
       }
-      return photographerMedia;
+      return new MediaList(photographerMedia);
     }
 
     for (let medium of this.media) {
@@ -100,12 +72,6 @@ export class MediaList {
         photographerMedia.push(medium);
       }
     }
-    return photographerMedia;
+    return new MediaList(photographerMedia);
   }
-
-  /**
-   * @param {string} tag
-   * @returns {MediaList} All media possessing this tag
-   */
-  filterByTag(tag) {}
 }
