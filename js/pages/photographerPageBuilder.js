@@ -9,119 +9,127 @@ import { MediaNavTag } from "./components/hashtags.js";
 
 export class PhotographerPageBuilder {
   constructor(photographer, mediaList, checkedTag) {
-    this.photographer = photographer;
-    this.mediaList = mediaList;
-    this.checkedTag = checkedTag;
+    this._photographer = photographer;
+    this._mediaList = mediaList;
+    this._checkedTag = checkedTag;
   }
 
   render() {
     const contentWrapper = document.getElementById("p-spa-wrapper");
+
     contentWrapper.className = "p-photographer";
 
-    this.renderHeader();
-    this.renderMain();
+    this._renderHeader();
+    this._renderMain();
 
-    this.addSortWithDropdownMenu();
-    this.addLikesIncrementEvents();
-    this.addOpenMediaModalEvents();
+    this._addSortWithDropdownMenu();
+    this._addLikesIncrementEvents();
+    this._addOpenMediaModalEvents();
   }
 
-  renderHeader() {
+  _renderHeader() {
     const header = document.querySelector("header");
 
     header.innerHTML = new Logo().html;
   }
 
-  renderMain() {
+  _renderMain() {
     const main = document.querySelector("main");
-
     let htmlContent = "";
-    htmlContent += this.templatePhotographerBanner(
-      this.photographer,
-      this.checkedTag
+
+    htmlContent += this._templatePhotographerBanner(
+      this._photographer,
+      this._checkedTag
     );
+
     htmlContent += new MediaFiltersDropdownMenu().html;
-    htmlContent += "<div class=row-12 id='cards-container'>";
-    htmlContent += this.templateMediaCards("date");
-    htmlContent += "</div>";
-    htmlContent += this.templatePhotographerSummary();
+
+    htmlContent += `<div class="row-12" id="cards-container">
+                      ${this._templateMediaCards("date")}
+                    </div>`;
+
+    htmlContent += this._templatePhotographerSummary();
 
     main.innerHTML = htmlContent;
   }
 
-  templatePhotographerBanner() {
-    let htmlContent = "<section class='row-12 p-banner'>";
+  _templatePhotographerBanner() {
+    let infosHtml = `<h1>${this._photographer.name}</h1>
+                     <p class="p-banner__location">
+                       ${this._photographer.city}, ${this._photographer.country}
+                     </p>
+                     <p class="p-banner__tagline">
+                       ${this._photographer.tagline}
+                     </p>`;
+    let navTagHtml = new MediaNavTag(this._photographer, this._checkedTag).html;
 
-    htmlContent += `<div class="lg4 md4 sm4">
-                      <h1>${this.photographer.name}</h1>
-                      <p class="p-banner__location">
-                        ${this.photographer.city}, ${this.photographer.country}
-                      </p>
-                      <p class="p-banner__tagline">
-                        ${this.photographer.tagline}
-                      </p>`;
-    htmlContent += new MediaNavTag(this.photographer, this.checkedTag).html;
-    htmlContent += "</div>";
-    htmlContent += "<div class='lg4 md4 sm4'>";
-    htmlContent += new Button("c-btn c-btn--cta", "button", "Contactez-moi")
-      .html;
-    htmlContent += "</div>";
-    htmlContent += `<div class="lg4 md4 sm4 p-banner__portrait">
-                      <img 
-                        src="img/photographers/${this.photographer.portrait}" 
-                        alt="${this.photographer.name}" width="200" height="200" 
-                      />
-                    </div>`;
+    let infosWithNavTagHtml = `<div class="lg4 md4 sm4">
+                                ${infosHtml}
+                                ${navTagHtml}
+                              </div>`;
 
-    htmlContent += "</section>";
+    let contactButtonHtml = `<div class="lg4 md4 sm4">
+          ${new Button("c-btn c-btn--cta", "button", "Contactez-moi").html}
+                             </div>`;
 
-    return htmlContent;
+    let portraitHtml = `<div class="lg4 md4 sm4 p-banner__portrait">
+          <img 
+            src="img/photographers/${this._photographer.portrait}" 
+            alt="${this._photographer.name}" width="200" height="200" 
+          />
+                        </div>`;
+
+    return `<section class="row-12 p-banner">
+              ${infosWithNavTagHtml}
+              ${contactButtonHtml}
+              ${portraitHtml}
+            </section>`;
   }
 
-  templateMediaCards(filter) {
-    let htmlContent = "";
-
-    let photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
-      this.photographer.id,
-      this.checkedTag
+  _templateMediaCards(filter) {
+    let photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
+      this._photographer.id,
+      this._checkedTag
     );
+
     if (filter == "date") photographerMedia.sortByDate();
     if (filter == "popularity") photographerMedia.sortByLikes();
     if (filter == "title") photographerMedia.sortByTitle();
 
+    let cardsHtml = "";
+
     for (let medium of photographerMedia.media) {
-      htmlContent += new MediumCard(this.photographer, medium).html;
+      cardsHtml += new MediumCard(this._photographer, medium).html;
     }
 
-    return htmlContent;
+    return cardsHtml;
   }
 
-  templatePhotographerSummary() {
-    let photographerTotalLikes = 0;
-    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
-      this.photographer.id,
+  _templatePhotographerSummary() {
+    const photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
+      this._photographer.id,
       ""
     );
+
+    let photographerTotalLikes = 0;
 
     for (let medium of photographerMedia.media) {
       photographerTotalLikes += medium.likes;
     }
 
-    let htmlContent = `<aside class="p-photographer-summary">
-                        <span id="photographer-total-likes">
-                          ${photographerTotalLikes}
-                        </span>
-                        &nbsp;<i class="fas fa-heart"></i>
-                        <span>${this.photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
-                      </aside>`;
-
-    return htmlContent;
+    return `<aside class="p-photographer-summary">
+              <span id="photographer-total-likes">
+                ${photographerTotalLikes}
+              </span>
+              &nbsp;<i class="fas fa-heart"></i>
+              <span>${this._photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
+            </aside>`;
   }
 
-  addLikesIncrementEvents() {
-    const photographerMedia = this.mediaList.filterByPhotographerIdAndTag(
-      this.photographer.id,
-      this.checkedTag
+  _addLikesIncrementEvents() {
+    const photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
+      this._photographer.id,
+      this._checkedTag
     );
 
     for (let medium of photographerMedia.media) {
@@ -146,7 +154,7 @@ export class PhotographerPageBuilder {
     }
   }
 
-  addSortWithDropdownMenu() {
+  _addSortWithDropdownMenu() {
     const dropdownMenu = document.getElementById("sorting-dropdown");
 
     dropdownMenu.onchange = () => {
@@ -156,7 +164,7 @@ export class PhotographerPageBuilder {
     };
   }
 
-  addOpenMediaModalEvents() {
+  _addOpenMediaModalEvents() {
     const mediaImages = document.getElementsByClassName("c-medium-card__img");
 
     for (const mediumImage of mediaImages) {
@@ -167,8 +175,8 @@ export class PhotographerPageBuilder {
 
         modalContent.classList.add("c-media-modal");
         modalContent.innerHTML = new MediaModal(
-          this.photographer,
-          this.mediaList,
+          this._photographer,
+          this._mediaList,
           mediumToDisplayId
         ).html;
 

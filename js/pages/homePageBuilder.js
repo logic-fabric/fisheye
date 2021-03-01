@@ -6,50 +6,50 @@ import { PhotographersNavTag } from "./components/hashtags.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
-    this.photographersList = photographersList.filterByTag(checkedTag);
-    this.checkedTag = checkedTag;
+    this._photographersList = photographersList.filterByTag(checkedTag);
+    this._checkedTag = checkedTag;
 
-    this.photographersTags = photographersList.sortedTags;
+    this._photographersTags = photographersList.sortedTags;
   }
 
   render() {
     const contentWrapper = document.getElementById("p-spa-wrapper");
+
     contentWrapper.className = "p-home";
 
-    this.renderHeader();
-    this.renderMain();
+    this._renderHeader();
+    this._renderMain();
   }
 
-  renderHeader() {
+  _renderHeader() {
     const header = document.querySelector("header");
     let htmlContent = "";
 
     htmlContent += new Logo().html;
     htmlContent += new PhotographersNavTag(
-      this.photographersTags,
-      this.checkedTag
+      this._photographersTags,
+      this._checkedTag
     ).html;
 
     header.innerHTML = htmlContent;
   }
 
-  renderMain() {
+  _renderMain() {
     const main = document.querySelector("main");
     let htmlContent = "<h1>Nos photographes</h1>";
 
-    htmlContent += this.templatePhotographersCards(this.checkedTag);
+    htmlContent += this._templatePhotographersCards(this._checkedTag);
 
     main.innerHTML = htmlContent;
   }
 
-  templatePhotographersCards() {
-    let htmlContent = "<div class=row-12>";
+  _templatePhotographersCards() {
+    let cardsHtml = "";
 
-    for (let photographer of this.photographersList.photographers) {
-      htmlContent += new PhotographerCard(photographer, this.checkedTag).html;
+    for (let photographer of this._photographersList.photographers) {
+      cardsHtml += new PhotographerCard(photographer, this._checkedTag).html;
     }
-    htmlContent += "</div>";
 
-    return htmlContent;
+    return `<div class=row-12>${cardsHtml}</div>`;
   }
 }
