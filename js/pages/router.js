@@ -6,13 +6,13 @@ import { PageFactory } from "./pageFactory.js";
 
 export class Router {
   constructor(dataFetcher) {
-    this.dataFetcher = dataFetcher;
+    this._dataFetcher = dataFetcher;
 
-    this.init();
+    this._init();
   }
 
-  async init() {
-    this.data = await this.dataFetcher.fetchSource();
+  async _init() {
+    this.data = await this._dataFetcher.fetchSource();
 
     const photographerInstances = [];
     const mediumInstances = [];
@@ -52,13 +52,14 @@ export class Router {
 
     this.PHOTOGRAPHERS = new PhotographersList(photographerInstances);
     this.MEDIA = new MediaList(mediumInstances);
-    this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
 
+    this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
     this.pageFactory.render("", "");
-    this.addRouteListener();
+
+    this._addRouteListener();
   }
 
-  addRouteListener() {
+  _addRouteListener() {
     window.onhashchange = () => {
       const route = window.location.hash.slice(1);
       let photographer, tag;

@@ -5,8 +5,8 @@ import { PhotographerPageBuilder } from "./photographerPageBuilder.js";
 
 export class PageFactory {
   constructor(photographersList, mediaList) {
-    this.photographersList = photographersList;
-    this.mediaList = mediaList;
+    this._photographersList = photographersList;
+    this._mediaList = mediaList;
   }
 
   render(photographer, checkedTag) {
@@ -15,28 +15,29 @@ export class PageFactory {
     }
 
     const page = photographer
-      ? new PhotographerPageBuilder(photographer, this.mediaList, checkedTag)
-      : new HomePageBuilder(this.photographersList, checkedTag);
+      ? new PhotographerPageBuilder(photographer, this._mediaList, checkedTag)
+      : new HomePageBuilder(this._photographersList, checkedTag);
 
     page.render();
+    this._addUpButtonEvent();
   }
-}
 
-export function addUpButtonEvent() {
-  const upButton = document.getElementById("up-button");
-  const mainContent = document.getElementById("main-content");
+  _addUpButtonEvent() {
+    const upButton = document.getElementById("up-button");
+    const mainContent = document.getElementById("main-content");
 
-  window.addEventListener("scroll", () => {
-    let mainRect = mainContent.getBoundingClientRect();
+    window.addEventListener("scroll", () => {
+      let mainRect = mainContent.getBoundingClientRect();
 
-    if (mainRect.top < 60) {
-      upButton.classList.add("visible");
-    } else {
-      upButton.classList.remove("visible");
-    }
-  });
+      if (mainRect.top < 60) {
+        upButton.classList.add("visible");
+      } else {
+        upButton.classList.remove("visible");
+      }
+    });
 
-  upButton.onclick = () => {
-    window.scrollTo(0, 0);
-  };
+    upButton.onclick = () => {
+      window.scrollTo(0, 0);
+    };
+  }
 }

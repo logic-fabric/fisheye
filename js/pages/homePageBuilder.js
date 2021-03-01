@@ -4,8 +4,6 @@ import { PhotographerCard } from "./components/cards.js";
 import { Logo } from "./components/logo.js";
 import { PhotographersNavTag } from "./components/hashtags.js";
 
-import { addUpButtonEvent } from "./pageFactory.js";
-
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
     this.photographersList = photographersList.filterByTag(checkedTag);
@@ -20,8 +18,6 @@ export class HomePageBuilder {
 
     this.renderHeader();
     this.renderMain();
-
-    addUpButtonEvent();
   }
 
   renderHeader() {

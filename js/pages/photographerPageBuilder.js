@@ -7,8 +7,6 @@ import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
 import { MediaNavTag } from "./components/hashtags.js";
 
-import { addUpButtonEvent } from "./pageFactory.js";
-
 export class PhotographerPageBuilder {
   constructor(photographer, mediaList, checkedTag) {
     this.photographer = photographer;
@@ -23,7 +21,6 @@ export class PhotographerPageBuilder {
     this.renderHeader();
     this.renderMain();
 
-    addUpButtonEvent();
     this.addSortWithDropdownMenu();
     this.addLikesIncrementEvents();
     this.addOpenMediaModalEvents();
@@ -119,21 +116,6 @@ export class PhotographerPageBuilder {
                       </aside>`;
 
     return htmlContent;
-  }
-
-  addUpButtonEvent() {
-    const upButton = document.getElementById("up-button");
-    const mainContent = document.getElementById("main-content");
-
-    window.addEventListener("scroll", () => {
-      let mainRect = mainContent.getBoundingClientRect();
-
-      if (mainRect.top < 60) {
-        upButton.classList.add("visible");
-      } else {
-        upButton.classList.remove("visible");
-      }
-    });
   }
 
   addLikesIncrementEvents() {
