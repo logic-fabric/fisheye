@@ -144,7 +144,7 @@ export class PhotographerPageBuilder {
 
     for (let medium of photographerMedia.media) {
       const likesButton = document.querySelector(
-        `[data-medium-id="${medium.id}"]`
+        `button[data-medium-id="${medium.id}"]`
       );
       const likesQuantitySpan = document.getElementById(
         `likes-quantity-${medium.id}`
