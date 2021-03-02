@@ -1,7 +1,5 @@
-import { DataFetcher } from "./js/data/dataFetcher.js";
-import { Router } from "./js/pages/router.js";
+import { SinglePageApplication } from "./js/app.js";
 
 const DATA_SOURCE = "./data/FishEyeDataFR.json";
-const dataFetcher = new DataFetcher(DATA_SOURCE);
 
-new Router(dataFetcher);
+new SinglePageApplication(DATA_SOURCE);
