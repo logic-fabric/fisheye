@@ -52,7 +52,7 @@ export class MediaList {
     });
   }
 
-  filterByPhotographerIdAndTag(photographerId, tag) {
+  filterByTagAndPhotographerId(tag, photographerId) {
     let photographerMedia = [];
 
     if (tag) {

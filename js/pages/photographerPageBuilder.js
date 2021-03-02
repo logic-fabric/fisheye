@@ -87,9 +87,9 @@ export class PhotographerPageBuilder {
   }
 
   _templateMediaCards(filter) {
-    let photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
-      this._photographer.id,
-      this._checkedTag
+    let photographerMedia = this._mediaList.filterByTagAndPhotographerId(
+      this._checkedTag,
+      this._photographer.id
     );
 
     if (filter == "date") photographerMedia.sortByDate();
@@ -106,9 +106,9 @@ export class PhotographerPageBuilder {
   }
 
   _templatePhotographerSummary() {
-    const photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
-      this._photographer.id,
-      ""
+    const photographerMedia = this._mediaList.filterByTagAndPhotographerId(
+      "",
+      this._photographer.id
     );
 
     let photographerTotalLikes = 0;
@@ -127,9 +127,9 @@ export class PhotographerPageBuilder {
   }
 
   _addLikesIncrementEvents() {
-    const photographerMedia = this._mediaList.filterByPhotographerIdAndTag(
-      this._photographer.id,
-      this._checkedTag
+    const photographerMedia = this._mediaList.filterByTagAndPhotographerId(
+      this._checkedTag,
+      this._photographer.id
     );
 
     for (let medium of photographerMedia.media) {
