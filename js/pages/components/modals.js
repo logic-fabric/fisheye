@@ -1,12 +1,37 @@
 "use strict";
 
-export class MediaModal {
+class Modal {
+  constructor() {
+    this._addCloseModalEvents();
+  }
+
+  _addCloseModalEvents() {
+    const modalBackground = document.getElementById("modal-bg");
+    const modalWindow = document.getElementById("modal-window");
+    const modalContent = document.getElementById("modal-content");
+    const closeIcon = document.getElementById("close-icon");
+
+    closeIcon.onclick = () => {
+      modalBackground.classList.remove("displayed");
+      modalContent.innerHTML = "";
+    };
+
+    modalWindow.onclick = (e) => e.stopPropagation();
+    
+    modalBackground.onclick = () => {
+      modalBackground.classList.remove("displayed");
+      modalContent.innerHTML = "";
+    };
+  }
+}
+
+export class MediaModal extends Modal {
   constructor(photographer, mediaList, displayedMediumId) {
+    super();
+
     this.photographer = photographer;
     this.mediaList = mediaList;
     this.displayedMediumId = displayedMediumId;
-
-    this.addCloseModalEvents();
   }
 
   get displayedMedium() {
@@ -35,23 +60,5 @@ export class MediaModal {
               </span>
             </div>
             <h2>${medium.title}</h2>`;
-  }
-
-  addCloseModalEvents() {
-    const modalBackground = document.getElementById("modal-bg");
-    const modalWindow = document.getElementById("modal-window");
-    const modalContent = document.getElementById("modal-content");
-    const closeIcon = document.getElementById("close-icon");
-
-    closeIcon.onclick = () => {
-      modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
-    };
-
-    modalWindow.onclick = (e) => e.stopPropagation();
-    modalBackground.onclick = () => {
-      modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
-    };
   }
 }
