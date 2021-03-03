@@ -39,18 +39,18 @@ export class MediaModal {
 
   addCloseModalEvents() {
     const modalBackground = document.getElementById("modal-bg");
-    const modalWindow = document.getElementById("modal-window")
+    const modalWindow = document.getElementById("modal-window");
     const modalContent = document.getElementById("modal-content");
     const closeIcon = document.getElementById("close-icon");
 
     closeIcon.onclick = () => {
-      modalBackground.style.display = "none";
+      modalBackground.classList.remove("displayed");
       modalContent.innerHTML = "";
     };
 
     modalWindow.onclick = (e) => e.stopPropagation();
     modalBackground.onclick = () => {
-      modalBackground.style.display = "none";
+      modalBackground.classList.remove("displayed");
       modalContent.innerHTML = "";
     };
   }

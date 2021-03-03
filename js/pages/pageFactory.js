@@ -14,20 +14,20 @@ export class PageFactory {
       window.scrollTo(0, 0);
     }
 
-    const page = photographer
+    const pageToBuild = photographer
       ? new PhotographerPageBuilder(photographer, this._mediaList, checkedTag)
       : new HomePageBuilder(this._photographersList, checkedTag);
 
-    page.render();
-    this._addUpButtonEvent();
+    pageToBuild.render();
+    this._addUpButtonEvents();
   }
 
-  _addUpButtonEvent() {
+  _addUpButtonEvents() {
     const upButton = document.getElementById("up-button");
     const mainContent = document.getElementById("main-content");
 
     window.addEventListener("scroll", () => {
-      let mainRect = mainContent.getBoundingClientRect();
+      const mainRect = mainContent.getBoundingClientRect();
 
       if (mainRect.top < 60) {
         upButton.classList.add("visible");

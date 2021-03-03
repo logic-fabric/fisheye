@@ -2,7 +2,7 @@
 
 import { PhotographerCard } from "./components/cards.js";
 import { Logo } from "./components/logo.js";
-import { PhotographersNavTag } from "./components/hashtags.js";
+import { PhotographersTagsNav } from "./components/hashtags.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
@@ -26,7 +26,7 @@ export class HomePageBuilder {
     let htmlContent = "";
 
     htmlContent += new Logo().html;
-    htmlContent += new PhotographersNavTag(
+    htmlContent += new PhotographersTagsNav(
       this._photographersTags,
       this._checkedTag
     ).html;

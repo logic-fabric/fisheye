@@ -8,6 +8,10 @@
   height: 100%;
 
   background: rgba(0, 0, 0, 0.4);
+
+  &.displayed {
+    display: block;
+  }
 }
 
 .c-modal__window {

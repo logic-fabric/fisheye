@@ -45,7 +45,7 @@ class PhotographerTag {
   }
 }
 
-export class MediaNavTag {
+export class MediaTagsNav {
   constructor(photographer, checkedTag) {
     this.photographer = photographer;
     this.checkedTag = checkedTag;
@@ -67,7 +67,7 @@ export class MediaNavTag {
   }
 }
 
-export class PhotographersNavTag {
+export class PhotographersTagsNav {
   constructor(tagsList, checkedTag) {
     this.tagsList = tagsList;
     this.checkedTag = checkedTag;

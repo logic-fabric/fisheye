@@ -5,7 +5,7 @@ import { MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
-import { MediaNavTag } from "./components/hashtags.js";
+import { MediaTagsNav } from "./components/hashtags.js";
 
 export class PhotographerPageBuilder {
   constructor(photographer, mediaList, checkedTag) {
@@ -61,11 +61,12 @@ export class PhotographerPageBuilder {
                      <p class="p-banner__tagline">
                        ${this._photographer.tagline}
                      </p>`;
-    let navTagHtml = new MediaNavTag(this._photographer, this._checkedTag).html;
+    let tagsNavHtml = new MediaTagsNav(this._photographer, this._checkedTag)
+      .html;
 
-    let infosWithNavTagHtml = `<div class="lg4 md4 sm4">
+    let infosAndTagsNavHtml = `<div class="lg4 md4 sm4">
                                 ${infosHtml}
-                                ${navTagHtml}
+                                ${tagsNavHtml}
                               </div>`;
 
     let contactButtonHtml = `<div class="lg4 md4 sm4">
@@ -80,7 +81,7 @@ export class PhotographerPageBuilder {
                         </div>`;
 
     return `<section class="row-12 p-banner">
-              ${infosWithNavTagHtml}
+              ${infosAndTagsNavHtml}
               ${contactButtonHtml}
               ${portraitHtml}
             </section>`;
@@ -180,7 +181,7 @@ export class PhotographerPageBuilder {
           mediumToDisplayId
         ).html;
 
-        modalBackground.style.display = "block";
+        modalBackground.classList.add("displayed");
       };
     }
   }

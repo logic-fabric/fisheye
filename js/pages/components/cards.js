@@ -1,7 +1,7 @@
 "use strict";
 
 import { LikesButton } from "./buttons.js";
-import { PhotographersNavTag } from "./hashtags.js";
+import { PhotographersTagsNav } from "./hashtags.js";
 
 export class MediumCard {
   constructor(photographer, medium) {
@@ -85,7 +85,7 @@ export class PhotographerCard {
 
     htmlContent += new PhotographerCardFocusableArea(this.photographer).html;
     htmlContent += new PhotographerCardInfos(this.photographer).html;
-    htmlContent += new PhotographersNavTag(
+    htmlContent += new PhotographersTagsNav(
       this.photographer.tags,
       this.checkedTag
     ).html;
