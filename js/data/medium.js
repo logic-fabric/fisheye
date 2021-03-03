@@ -18,6 +18,10 @@ export class Medium {
 
     return rawTitle[0].toUpperCase() + rawTitle.slice(1).toLowerCase();
   }
+
+  isVideo() {
+    return this.filename.toLowerCase().endsWith("mp4");
+  }
 }
 
 export class MediaList {

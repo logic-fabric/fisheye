@@ -3,52 +3,13 @@
 import { LikesButton } from "./buttons.js";
 import { PhotographersTagsNav } from "./hashtags.js";
 
-export class MediumCard {
-  constructor(photographer, medium) {
-    this.photographer = photographer;
-    this.medium = medium;
-  }
-
-  get html() {
-    const isVideo = this.medium.filename.endsWith("mp4");
-    const filename = isVideo
-      ? this.medium.filename.replace("mp4", "png")
-      : this.medium.filename;
-
-    let htmlContent = "<article class='lg4 md4 sm4 c-medium-card'>";
-    htmlContent += `<div class="c-medium-card__img" 
-                         data-medium-id="${this.medium.id}">`;
-    htmlContent += `<img
-                      src="img/${this.photographer.mediaFolder}/${filename}" 
-                      alt="${this.medium.altText}" 
-                      width="350" height="300"
-                    />`;
-    if (isVideo) {
-      htmlContent += "<i class='far fa-play-circle'></i>";
-    }
-    htmlContent += "</div>";
-    htmlContent += "<div class='row-12 c-medium-card__infos'>";
-    htmlContent += `<h2 class="lg7 md7 sm7">${this.medium.title}</h2>`;
-    htmlContent += `<p class="lg2 md2 sm2">${this.medium.price}&nbsp;€</p>`;
-    htmlContent += new LikesButton(
-      "lg3 md3 sm3 c-btn",
-      "button",
-      this.medium.likes,
-      this.medium.id
-    ).html;
-    htmlContent += "</div></article>";
-
-    return htmlContent;
-  }
-}
-
 class PhotographerCardFocusableArea {
   constructor(photographer) {
     this.photographer = photographer;
   }
 
   get html() {
-    return `<a href="#photographer:${this.photographer.name.replace(/ /, "-")}">
+    return `<a href="#photographer:${this.photographer.slug}">
               <img 
                 src="img/photographers/${this.photographer.portrait}" 
                 alt="${this.photographer.name}" width="200" height="200" 
@@ -81,16 +42,47 @@ export class PhotographerCard {
   }
 
   get html() {
-    let htmlContent = "<article class='c-photographer-card lg4 md4 sm4'>";
+    return `<article class="c-photographer-card lg4 md4 sm4">
+      ${new PhotographerCardFocusableArea(this.photographer).html}
+      ${new PhotographerCardInfos(this.photographer).html}
+      ${new PhotographersTagsNav(this.photographer.tags, this.checkedTag).html}
+            </article>`;
+  }
+}
 
-    htmlContent += new PhotographerCardFocusableArea(this.photographer).html;
-    htmlContent += new PhotographerCardInfos(this.photographer).html;
-    htmlContent += new PhotographersTagsNav(
-      this.photographer.tags,
-      this.checkedTag
+export class MediumCard {
+  constructor(photographer, medium) {
+    this.photographer = photographer;
+    this.medium = medium;
+  }
+
+  get html() {
+    let filename = this.medium.isVideo()
+      ? this.medium.filename.replace("mp4", "png")
+      : this.medium.filename;
+
+    let htmlContent = `<article class="lg4 md4 sm4 c-medium-card">
+                        <div class="c-medium-card__img" 
+                         data-medium-id="${this.medium.id}">
+                          <img
+                            src="img/${this.photographer.mediaFolder}/${filename}" 
+                            alt="${this.medium.altText}" 
+                            width="350" height="300"
+                          />`;
+    if (this.medium.isVideo()) {
+      htmlContent += "<i class='far fa-play-circle'></i>";
+    }
+    htmlContent += "</div>";
+    htmlContent += `<div class="row-12 c-medium-card__infos">
+                    <h2 class="lg7 md7 sm7">${this.medium.title}</h2>
+                    <p class="lg2 md2 sm2">${this.medium.price}&nbsp;€</p>`;
+    htmlContent += new LikesButton(
+      "lg3 md3 sm3 c-btn",
+      "button",
+      this.medium.likes,
+      this.medium.id
     ).html;
-
-    htmlContent += "</article>";
+    htmlContent += "</div></article>";
 
     return htmlContent;
   }

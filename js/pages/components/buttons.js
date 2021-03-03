@@ -25,8 +25,7 @@ export class LikesButton extends Button {
                     data-medium-id="${this.mediumId}">
               <span id="likes-quantity-${this.mediumId}">
                 ${this.content}
-              </span>
-              &nbsp;<i class="fas fa-heart"></i>
+              </span>&nbsp;<i class="fas fa-heart"></i>
             </button>`;
   }
 }
