@@ -29,20 +29,20 @@ export class MediaModal extends Modal {
   constructor(photographer, mediaList, displayedMediumId) {
     super();
 
-    this.photographer = photographer;
-    this.mediaList = mediaList;
-    this.displayedMediumId = displayedMediumId;
+    this._photographer = photographer;
+    this._mediaList = mediaList;
+    this._displayedMediumId = displayedMediumId;
   }
 
-  get displayedMedium() {
-    for (const medium of this.mediaList.media) {
-      if (medium.id == this.displayedMediumId) return medium;
+  get _displayedMedium() {
+    for (const medium of this._mediaList.media) {
+      if (medium.id == this._displayedMediumId) return medium;
     }
     return null;
   }
 
   get html() {
-    const medium = this.displayedMedium;
+    const medium = this._displayedMedium;
 
     return `<div class="c-media-modal__carousel">
               <span class="icon-wrapper">
@@ -50,7 +50,7 @@ export class MediaModal extends Modal {
               </span>
               <div class="c-media-modal__medium">
                 <img
-                  src="img/${this.photographer.mediaFolder}/${medium.filename}" 
+                  src="img/${this._photographer.mediaFolder}/${medium.filename}" 
                   alt="${medium.altText} for ${medium.filename}" 
                   width="940" height="800"
                 />

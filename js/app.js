@@ -46,7 +46,7 @@ export class SinglePageApplication {
         fetchedMedium.likes,
         fetchedMedium.date,
         fetchedMedium.price,
-        fetchedMedium.altText,
+        fetchedMedium.altText
       );
 
       mediumInstances.push(mediumInstance);

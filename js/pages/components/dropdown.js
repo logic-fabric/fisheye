@@ -2,7 +2,7 @@
 
 export class MediaFiltersDropdownMenu {
   constructor(options) {
-    this.options = options;
+    this._options = options;
   }
 
   get html() {

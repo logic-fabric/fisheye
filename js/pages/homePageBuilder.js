@@ -2,7 +2,7 @@
 
 import { PhotographerCard } from "./components/cards.js";
 import { Logo } from "./components/logo.js";
-import { PhotographersTagsNav } from "./components/hashtags.js";
+import { PhotographersTagsNav } from "./components/tags.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {

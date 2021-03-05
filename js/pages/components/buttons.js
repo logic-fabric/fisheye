@@ -2,14 +2,14 @@
 
 export class Button {
   constructor(cssClasses, type, content) {
-    this.cssClasses = cssClasses;
-    this.type = type;
-    this.content = content;
+    this._cssClasses = cssClasses;
+    this._type = type;
+    this._content = content;
   }
 
   get html() {
-    return `<button class="${this.cssClasses}" type="${this.type}">
-              ${this.content}
+    return `<button class="${this._cssClasses}" type="${this._type}">
+              ${this._content}
             </button>`;
   }
 }
@@ -17,14 +17,14 @@ export class Button {
 export class LikesButton extends Button {
   constructor(cssClasses, type, content, mediumId) {
     super(cssClasses, type, content);
-    this.mediumId = mediumId;
+    this._mediumId = mediumId;
   }
 
   get html() {
-    return `<button class="${this.cssClasses}" type="${this.type}" 
-                    data-medium-id="${this.mediumId}">
-              <span id="likes-quantity-${this.mediumId}">
-                ${this.content}
+    return `<button class="${this._cssClasses}" type="${this._type}" 
+                    data-medium-id="${this._mediumId}">
+              <span id="likes-quantity-${this._mediumId}">
+                ${this._content}
               </span>&nbsp;<i class="fas fa-heart"></i>
             </button>`;
   }

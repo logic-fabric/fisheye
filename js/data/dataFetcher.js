@@ -2,12 +2,12 @@
 
 export class DataFetcher {
   constructor(dataSource) {
-    this.dataSource = dataSource;
+    this._dataSource = dataSource;
   }
 
   async fetchSource() {
     try {
-      let response = await fetch(this.dataSource);
+      let response = await fetch(this._dataSource);
 
       if (response.ok) {
         let json = await response.json();
@@ -15,12 +15,12 @@ export class DataFetcher {
         return json;
       } else {
         console.error(
-          `HTTP-error-${response.status} while fetchning ${this.dataSource}`
+          `HTTP-error-${response.status} while fetchning ${this._dataSource}`
         );
       }
     } catch (err) {
       console.error(
-        `An error occured while fecthing ${this.dataSource} : ${err}`
+        `An error occured while fecthing ${this._dataSource} : ${err}`
       );
     }
   }
