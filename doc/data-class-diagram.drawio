@@ -1,10 +1,10 @@
-<mxfile host="65bd71144e" modified="2021-03-02T10:17:13.746Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="leJ1v2kGlvdtSO9AhbMo" version="14.2.4" type="embed">
+<mxfile host="65bd71144e" modified="2021-03-05T10:39:02.500Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_2) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.53.2 Chrome/87.0.4280.141 Electron/11.2.1 Safari/537.36" etag="XXB_muYWYVO50n53M5cm" version="14.2.4" type="embed">
     <diagram id="JdC-piUTVLBHBZa_3rRb" name="Page-1">
-        <mxGraphModel dx="1320" dy="923" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="917" dy="373" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="31" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;strokeColor=none;gradientDirection=east;fillColor=#FF9E89;gradientColor=#FFE6CC;" vertex="1" parent="1">
+                <mxCell id="31" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=5;strokeColor=none;gradientDirection=east;fillColor=#F0DED8;" parent="1" vertex="1">
                     <mxGeometry x="80" y="140" width="950" height="360" as="geometry"/>
                 </mxCell>
                 <mxCell id="2" value="Photographer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#901C1C;fontColor=#FFFFFF;strokeWidth=2;fontSize=20;strokeColor=#901C1C;" parent="1" vertex="1">
@@ -86,7 +86,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="32" value="&lt;font color=&quot;#901c1c&quot;&gt;&lt;span style=&quot;font-size: 24px&quot;&gt;&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;i&gt;TO DO: implement in a SQL database in backend&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="32" value="&lt;font color=&quot;#901c1c&quot;&gt;&lt;span style=&quot;font-size: 24px&quot;&gt;&lt;span style=&quot;font-size: 20px&quot;&gt;&lt;i&gt;TO DO: implement in a SQL database in backend&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="560" y="460" width="456" height="20" as="geometry"/>
                 </mxCell>
             </root>
