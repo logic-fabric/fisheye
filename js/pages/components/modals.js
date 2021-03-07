@@ -1,5 +1,52 @@
 "use strict";
 
+class DisplayedImage {
+  constructor(photographer, medium) {
+    this._photographer = photographer;
+    this._medium = medium;
+  }
+
+  get html() {
+    return `<img 
+        src="img/${this._photographer.mediaFolder}/${this._medium.filename}"
+        alt="${this._medium.altText}" width="940" height="800"
+            />`;
+  }
+}
+
+class DisplayedVideo {
+  constructor(photographer, medium) {
+    this._photographer = photographer;
+    this._medium = medium;
+  }
+
+  get html() {
+    console.log(this._medium.filename);
+
+    return `<video controls width="940">
+              <source
+        src="img/${this._photographer.mediaFolder}/${this._medium.filename}"
+        type="video/mp4"
+              />
+            </video>`;
+  }
+}
+
+class DisplayedMediumFactory {
+  constructor(photographer, medium) {
+    this._photographer = photographer;
+    this._medium = medium;
+  }
+
+  get html() {
+    if (this._medium.isVideo()) {
+      return new DisplayedVideo(this._photographer, this._medium).html;
+    } else {
+      return new DisplayedImage(this._photographer, this._medium).html;
+    }
+  }
+}
+
 class Modal {
   constructor() {
     this._addCloseModalEvents();
@@ -17,7 +64,7 @@ class Modal {
     };
 
     modalWindow.onclick = (e) => e.stopPropagation();
-    
+
     modalBackground.onclick = () => {
       modalBackground.classList.remove("displayed");
       modalContent.innerHTML = "";
@@ -42,23 +89,22 @@ export class MediaModal extends Modal {
   }
 
   get html() {
-    const medium = this._displayedMedium;
+    const displayedMediumHtml = new DisplayedMediumFactory(
+      this._photographer,
+      this._displayedMedium
+    ).html;
 
     return `<div class="c-media-modal__carousel">
               <span class="icon-wrapper">
                 <i class="fas fa-chevron-left"></i>
               </span>
               <div class="c-media-modal__medium">
-                <img
-                  src="img/${this._photographer.mediaFolder}/${medium.filename}" 
-                  alt="${medium.altText} for ${medium.filename}" 
-                  width="940" height="800"
-                />
+                ${displayedMediumHtml}
               </div>
               <span class="icon-wrapper">
                 <i class="fas fa-chevron-right"></i>
               </span>
             </div>
-            <h2>${medium.title}</h2>`;
+            <h2>${this._displayedMedium.title}</h2>`;
   }
 }
