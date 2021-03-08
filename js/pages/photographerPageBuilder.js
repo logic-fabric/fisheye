@@ -173,13 +173,19 @@ export class PhotographerPageBuilder {
         const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
         const modalBackground = document.getElementById("modal-bg");
         const modalContent = document.getElementById("modal-content");
+        const mediaModal = new MediaModal(
+          this._photographer,
+          this._mediaList.filterByTagAndPhotographerId(
+            this._checkedTag,
+            this._photographer.id
+          ),
+          mediumToDisplayId
+        );
 
         modalContent.classList.add("c-media-modal");
-        modalContent.innerHTML = new MediaModal(
-          this._photographer,
-          this._mediaList,
-          mediumToDisplayId
-        ).html;
+        modalContent.innerHTML = mediaModal.html;
+
+        mediaModal.addMouseNavigationEvents();
 
         modalBackground.classList.add("displayed");
       };

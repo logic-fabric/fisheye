@@ -21,8 +21,6 @@ class DisplayedVideo {
   }
 
   get html() {
-    console.log(this._medium.filename);
-
     return `<video controls width="940">
               <source
         src="img/${this._photographer.mediaFolder}/${this._medium.filename}"
@@ -88,6 +86,15 @@ export class MediaModal extends Modal {
     return null;
   }
 
+  get _displayedMediumIndex() {
+    for (const medium of this._mediaList.media) {
+      if (medium.id == this._displayedMediumId) {
+        return this._mediaList.media.indexOf(medium);
+      }
+    }
+    return null;
+  }
+
   get html() {
     const displayedMediumHtml = new DisplayedMediumFactory(
       this._photographer,
@@ -98,13 +105,48 @@ export class MediaModal extends Modal {
               <span class="icon-wrapper">
                 <i class="fas fa-chevron-left"></i>
               </span>
-              <div class="c-media-modal__medium">
+              <div class="c-media-modal__medium" id="medium"">
                 ${displayedMediumHtml}
               </div>
               <span class="icon-wrapper">
                 <i class="fas fa-chevron-right"></i>
               </span>
             </div>
-            <h2>${this._displayedMedium.title}</h2>`;
+            <h2 id="medium-title">${this._displayedMedium.title}</h2>`;
+  }
+
+  addMouseNavigationEvents() {
+    let currentMediumIndex = this._displayedMediumIndex;
+    let mediaListLength = this._mediaList.media.length;
+
+    const leftArrow = document.querySelector(".fa-chevron-left");
+    const rightArrow = document.querySelector(".fa-chevron-right");
+    const mediumContainer = document.getElementById("medium");
+    const mediumTitle = document.getElementById("medium-title");
+
+    leftArrow.onclick = () => {
+      currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
+
+      let mediumToDisplay = this._mediaList.media[currentMediumIndex];
+
+      mediumContainer.innerHTML = new DisplayedMediumFactory(
+        this._photographer,
+        mediumToDisplay
+      ).html;
+      mediumTitle.textContent = mediumToDisplay.title;
+    };
+
+    rightArrow.onclick = () => {
+      currentMediumIndex =
+        (currentMediumIndex + mediaListLength - 1) % mediaListLength;
+
+      let mediumToDisplay = this._mediaList.media[currentMediumIndex];
+
+      mediumContainer.innerHTML = new DisplayedMediumFactory(
+        this._photographer,
+        mediumToDisplay
+      ).html;
+      mediumTitle.textContent = mediumToDisplay.title;
+    };
   }
 }
