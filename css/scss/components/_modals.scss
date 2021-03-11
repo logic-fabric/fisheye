@@ -18,9 +18,8 @@
   position: relative;
   z-index: $z-modal + 100;
 
-  max-width: 70rem;
+  width: fit-content;
   margin: 1rem auto;
-  padding: 1rem 0;
   border-radius: 0.25rem;
   overflow: hidden;
 
@@ -31,7 +30,7 @@
 
 #close-icon {
   position: absolute;
-  top: 1.25rem;
+  top: 2rem;
   right: 1.25rem;
 
   width: 3rem;
@@ -51,6 +50,8 @@
     content: " ";
 
     background: $primary-700;
+
+    transition: background-color 300ms;
   }
 
   &::after {
@@ -61,14 +62,26 @@
     transform: rotate(-45deg);
   }
 
+  &.light-icon::after,
+  &.light-icon::before {
+    background: white;
+  }
+
   &:hover::after,
   &:hover::before {
     background: lighten($primary-700, 10);
   }
+
+  &.light-icon:hover::after,
+  &.light-icon:hover::before {
+    background: $neutral-900;
+  }
 }
 
 .c-media-modal {
+  max-width: 70rem;
   height: 100%;
+  padding: 1rem 0;
 
   &__carousel {
     display: flex;
@@ -113,5 +126,49 @@
     text-overflow: ellipsis;
     font-size: $h3-size;
     white-space: nowrap;
+  }
+}
+
+.c-contact-modal {
+  width: 40rem;
+  padding: 1rem 2rem;
+
+  color: black;
+
+  background: $primary-200;
+
+  h1 {
+    margin: 0 0 1rem 0;
+
+    color: black;
+  }
+
+  label,
+  input {
+    display: block;
+  }
+
+  label {
+    margin: 1rem 0 0.5rem 0;
+
+    font-size: $h2-size;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+
+    font-size: $h3-size;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .c-btn {
+    margin: 1.5rem 0 1rem 0;
   }
 }

@@ -38,7 +38,10 @@ export class ContactModal extends Modal {
     let submitButtonHtml = new Button("c-btn c-btn--cta", "submit", "Envoyer")
       .html;
 
-    return `<h1>${this._photographer.name}</h1>
+    return `<h1>
+              Contactez-moi<br />
+              ${this._photographer.name}
+            </h1>
             <form>
               <label for="first-name">
                 Nom
@@ -55,7 +58,8 @@ export class ContactModal extends Modal {
               <label for="message">
                 Votre message
               </label>
-              <textarea id="message"></textarea>
+              <textarea id="message" rows="6" cols="60">
+              </textarea>
             </form>
             ${submitButtonHtml}`;
   }
