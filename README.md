@@ -13,11 +13,11 @@ Ce projet a été conçu selon une **approche Orientée Objet**, approche caract
 ### Données JSON
 
 - Pour **manipuler les données**, celles-ci sont représentées par des objets `Photographer`et `Medium`, regroupés ensuite dans des `PhotographersList`et `MediaList`.
-- Le projet dispose ainsi d'instances d'`Object`et de `Array` "spécialisées", auxquelles associer les **méthodes concernant ces données** : 
-	- pour les ordonner par nom, date, ...
-	- pour les filtrer (en fonction d'un `id`, d'un `tag`, ...)
-	- pour ajouter une propriété `title` à chaque `Medium` (à partir du fichier lui étant associé)
-	- etc.
+- Le projet dispose ainsi d'instances d'`Object`et de `Array` "spécialisées", auxquelles associer les **méthodes concernant ces données** :
+  - pour les ordonner par nom, date, ...
+  - pour les filtrer (en fonction d'un `id`, d'un `tag`, ...)
+  - pour ajouter une propriété `title` à chaque `Medium` (à partir du fichier lui étant associé)
+  - etc.
 
 ![Diagramme de classes (données)](./doc/data-class-diagram.png)
 
@@ -33,8 +33,5 @@ Ce sont ensuite les actions de l'utilisateur qui redéfinissent le *hash* lu par
 
 - Deux "classes atelier" `HomePageBuilder`et`PhotographerPageBuilder`se chargent de **construire le HTML** de chaque type de page, de **l'injecter dans `index.html`** et d'y **ajouter les `EventListeners`** nécessaires.
 - Ces deux classes ateliers utilisent de leur côté des "classes composants" (`Button`, `PhotographerCard, `...)  chargées chacune de construire le **HTML des composants UI** nécessaires.
-- **TO DO: _Factory construisant le composant photo ou vidéo à inclure dans la modale media, avec les deux "classes atelier" associées_**
-- **TO DO: _classe gérant la modale du formulaire de contact_**
-
 
 ![Diagramme de classes (architecture)](./doc/architecture-class-diagram.png)
