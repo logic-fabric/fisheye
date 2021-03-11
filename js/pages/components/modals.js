@@ -1,5 +1,66 @@
 "use strict";
 
+import { Button } from "./buttons.js";
+
+class Modal {
+  constructor() {
+    this._addCloseModalEvents();
+  }
+
+  _addCloseModalEvents() {
+    const modalBackground = document.getElementById("modal-bg");
+    const modalWindow = document.getElementById("modal-window");
+    const modalContent = document.getElementById("modal-content");
+    const closeIcon = document.getElementById("close-icon");
+
+    closeIcon.onclick = () => {
+      modalBackground.classList.remove("displayed");
+      modalContent.innerHTML = "";
+    };
+
+    modalWindow.onclick = (e) => e.stopPropagation();
+
+    modalBackground.onclick = () => {
+      modalBackground.classList.remove("displayed");
+      modalContent.innerHTML = "";
+    };
+  }
+}
+
+export class ContactModal extends Modal {
+  constructor(photographer) {
+    super();
+
+    this._photographer = photographer;
+  }
+
+  get html() {
+    let submitButtonHtml = new Button("c-btn c-btn--cta", "submit", "Envoyer")
+      .html;
+
+    return `<h1>${this._photographer.name}</h1>
+            <form>
+              <label for="first-name">
+                Nom
+              </label>
+              <input type="text" id="first-name" />
+              <label for="last-name">
+                Prénom
+              </label>
+              <input type="text" id="last-name" />
+              <label for="email">
+                Email
+              </label>
+              <input type="email" id="email" />
+              <label for="message">
+                Votre message
+              </label>
+              <textarea id="message"></textarea>
+            </form>
+            ${submitButtonHtml}`;
+  }
+}
+
 class DisplayedImage {
   constructor(photographer, medium) {
     this._photographer = photographer;
@@ -42,31 +103,6 @@ class DisplayedMediumFactory {
     } else {
       return new DisplayedImage(this._photographer, this._medium).html;
     }
-  }
-}
-
-class Modal {
-  constructor() {
-    this._addCloseModalEvents();
-  }
-
-  _addCloseModalEvents() {
-    const modalBackground = document.getElementById("modal-bg");
-    const modalWindow = document.getElementById("modal-window");
-    const modalContent = document.getElementById("modal-content");
-    const closeIcon = document.getElementById("close-icon");
-
-    closeIcon.onclick = () => {
-      modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
-    };
-
-    modalWindow.onclick = (e) => e.stopPropagation();
-
-    modalBackground.onclick = () => {
-      modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
-    };
   }
 }
 

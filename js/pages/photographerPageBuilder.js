@@ -1,7 +1,7 @@
 "use strict";
 
 import { Button } from "./components/buttons.js";
-import { MediaModal } from "./components/modals.js";
+import { ContactModal, MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
@@ -24,6 +24,7 @@ export class PhotographerPageBuilder {
 
     this._addSortWithDropdownMenu();
     this._addLikesIncrementEvents();
+    this._addOpenContactModalEvent();
     this._addOpenMediaModalEvents();
   }
 
@@ -69,8 +70,13 @@ export class PhotographerPageBuilder {
                                 ${tagsNavHtml}
                               </div>`;
 
-    let contactButtonHtml = `<div class="lg4 md4 sm4">
-          ${new Button("c-btn c-btn--cta", "button", "Contactez-moi").html}
+    let contactButtonHtml = new Button(
+      "c-btn c-btn--cta c-btn--contact",
+      "button",
+      "Contactez-moi"
+    ).html;
+    let contactWrapperHtml = `<div class="lg4 md4 sm4">
+                              ${contactButtonHtml}
                              </div>`;
 
     let portraitHtml = `<div class="lg4 md4 sm4 p-banner__portrait">
@@ -82,7 +88,7 @@ export class PhotographerPageBuilder {
 
     return `<section class="row-12 p-banner">
               ${infosAndTagsNavHtml}
-              ${contactButtonHtml}
+              ${contactWrapperHtml}
               ${portraitHtml}
             </section>`;
   }
@@ -162,6 +168,21 @@ export class PhotographerPageBuilder {
       const cardsContainer = document.getElementById("cards-container");
 
       cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
+    };
+  }
+
+  _addOpenContactModalEvent() {
+    const contactButton = document.querySelector(".c-btn--contact");
+
+    contactButton.onclick = () => {
+      const modalBackground = document.getElementById("modal-bg");
+      const modalContent = document.getElementById("modal-content");
+      const contactModal = new ContactModal(this._photographer);
+
+      modalContent.classList.add("c-contact-modal");
+      modalContent.innerHTML = contactModal.html;
+
+      modalBackground.classList.add("displayed");
     };
   }
 
