@@ -7,10 +7,10 @@ export class Medium {
     this.filename = filename;
     this.tags = tags;
     this.likes = likes;
+    this.isLiked = false;
     this.date = new Date(date);
     this.price = price;
     this.altText = altText;
-    this.isLiked = false;
   }
 
   get title() {

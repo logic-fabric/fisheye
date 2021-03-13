@@ -22,10 +22,10 @@ export class PhotographerPageBuilder {
     this._renderHeader();
     this._renderMain();
 
-    this._addSortWithDropdownMenu();
-    this._addLikesIncrementEvents();
     this._addOpenContactModalEvent();
+    this._addSortWithDropdownMenu();
     this._addOpenMediaModalEvents();
+    this._addLikesEvents();
   }
 
   _renderHeader() {
@@ -133,7 +133,65 @@ export class PhotographerPageBuilder {
             </aside>`;
   }
 
-  _addLikesIncrementEvents() {
+  _addOpenContactModalEvent() {
+    const contactButton = document.querySelector(".c-btn--contact");
+
+    contactButton.onclick = () => {
+      const modalBackground = document.getElementById("modal-bg");
+      const closeIcon = document.getElementById("close-icon");
+      const modalContent = document.getElementById("modal-content");
+      const contactModal = new ContactModal(this._photographer);
+
+      closeIcon.classList = "light-icon";
+      modalContent.classList.remove("c-media-modal");
+      modalContent.classList.add("c-contact-modal");
+      modalContent.innerHTML = contactModal.html;
+
+      modalBackground.classList.add("displayed");
+    };
+  }
+
+  _addSortWithDropdownMenu() {
+    const dropdownMenu = document.getElementById("sorting-dropdown");
+
+    dropdownMenu.onchange = () => {
+      const cardsContainer = document.getElementById("cards-container");
+
+      cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
+    };
+  }
+
+  _addOpenMediaModalEvents() {
+    const mediaImages = document.getElementsByClassName("c-medium-card__img");
+
+    for (const mediumImage of mediaImages) {
+      mediumImage.onclick = () => {
+        const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
+        const modalBackground = document.getElementById("modal-bg");
+        const closeIcon = document.getElementById("close-icon");
+        const modalContent = document.getElementById("modal-content");
+        const mediaModal = new MediaModal(
+          this._photographer,
+          this._mediaList.filterByTagAndPhotographerId(
+            this._checkedTag,
+            this._photographer.id
+          ),
+          mediumToDisplayId
+        );
+
+        closeIcon.classList = "";
+        modalContent.classList.remove("c-contact-modal");
+        modalContent.classList.add("c-media-modal");
+        modalContent.innerHTML = mediaModal.html;
+
+        mediaModal.addMouseNavigationEvents();
+
+        modalBackground.classList.add("displayed");
+      };
+    }
+  }
+
+  _addLikesEvents() {
     const photographerMedia = this._mediaList.filterByTagAndPhotographerId(
       this._checkedTag,
       this._photographer.id
@@ -172,64 +230,6 @@ export class PhotographerPageBuilder {
 
         likesQuantitySpan.textContent = medium.likes;
         photographerTotalLikesSpan.textContent = totalLikes;
-      };
-    }
-  }
-
-  _addSortWithDropdownMenu() {
-    const dropdownMenu = document.getElementById("sorting-dropdown");
-
-    dropdownMenu.onchange = () => {
-      const cardsContainer = document.getElementById("cards-container");
-
-      cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
-    };
-  }
-
-  _addOpenContactModalEvent() {
-    const contactButton = document.querySelector(".c-btn--contact");
-
-    contactButton.onclick = () => {
-      const modalBackground = document.getElementById("modal-bg");
-      const closeIcon = document.getElementById("close-icon");
-      const modalContent = document.getElementById("modal-content");
-      const contactModal = new ContactModal(this._photographer);
-
-      closeIcon.classList = "light-icon";
-      modalContent.classList.remove("c-media-modal");
-      modalContent.classList.add("c-contact-modal");
-      modalContent.innerHTML = contactModal.html;
-
-      modalBackground.classList.add("displayed");
-    };
-  }
-
-  _addOpenMediaModalEvents() {
-    const mediaImages = document.getElementsByClassName("c-medium-card__img");
-
-    for (const mediumImage of mediaImages) {
-      mediumImage.onclick = () => {
-        const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
-        const modalBackground = document.getElementById("modal-bg");
-        const closeIcon = document.getElementById("close-icon");
-        const modalContent = document.getElementById("modal-content");
-        const mediaModal = new MediaModal(
-          this._photographer,
-          this._mediaList.filterByTagAndPhotographerId(
-            this._checkedTag,
-            this._photographer.id
-          ),
-          mediumToDisplayId
-        );
-
-        closeIcon.classList = "";
-        modalContent.classList.remove("c-contact-modal");
-        modalContent.classList.add("c-media-modal");
-        modalContent.innerHTML = mediaModal.html;
-
-        mediaModal.addMouseNavigationEvents();
-
-        modalBackground.classList.add("displayed");
       };
     }
   }

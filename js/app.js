@@ -18,11 +18,10 @@ export class SinglePageApplication {
     this.MEDIA = data.media;
 
     this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
-    //this.pageFactory.render("", "all");
+    this.pageFactory.render("", "all");
 
     this._router = new Router(this.pageFactory, this.PHOTOGRAPHERS);
 
     this._router.addRouteListener();
-    window.location.hash = "#all";
   }
 }
