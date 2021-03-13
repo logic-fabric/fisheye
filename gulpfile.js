@@ -35,7 +35,7 @@ function buildCSS() {
 
 function compressImages() {
   gulp
-    .src("img/src/*/*.jpg")
+    .src("img/src/resized_src/*/*.jpg")
     .pipe(imagemin([imagemin.mozjpeg({ quality: 60, progressive: true })]))
     .pipe(gulp.dest("img"));
 }
