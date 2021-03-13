@@ -1,6 +1,6 @@
 "use strict";
 
-import { LikesButton } from "./buttons.js";
+import { LikeButton } from "./buttons.js";
 import { PhotographersTagsNav } from "./tagsNav.js";
 
 class PhotographerCardFocusableArea {
@@ -76,11 +76,12 @@ export class MediumCard {
     htmlContent += `<div class="row-12 c-medium-card__infos">
                     <h2 class="lg7 md7 sm7">${this._medium.title}</h2>
                     <p class="lg2 md2 sm2">${this._medium.price}&nbsp;€</p>`;
-    htmlContent += new LikesButton(
+    htmlContent += new LikeButton(
       "lg3 md3 sm3 c-btn",
       "button",
       this._medium.likes,
-      this._medium.id
+      this._medium.id,
+      this._medium.isLiked
     ).html;
     htmlContent += "</div></article>";
 

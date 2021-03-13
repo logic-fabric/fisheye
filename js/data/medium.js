@@ -10,6 +10,7 @@ export class Medium {
     this.date = new Date(date);
     this.price = price;
     this.altText = altText;
+    this.isLiked = false;
   }
 
   get title() {

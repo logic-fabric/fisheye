@@ -14,18 +14,23 @@ export class Button {
   }
 }
 
-export class LikesButton extends Button {
-  constructor(cssClasses, type, content, mediumId) {
+export class LikeButton extends Button {
+  constructor(cssClasses, type, content, mediumId, isLiked) {
     super(cssClasses, type, content);
     this._mediumId = mediumId;
+    this._isLiked = isLiked;
   }
 
   get html() {
+    const iconType = this._isLiked ? "fas" : "far";
+
     return `<button class="${this._cssClasses}" type="${this._type}" 
                     data-medium-id="${this._mediumId}">
               <span id="likes-quantity-${this._mediumId}">
                 ${this._content}
-              </span>&nbsp;<i class="fas fa-heart"></i>
+              </span>
+              <i class="${iconType} fa-heart" 
+                 id="like-icon-${this._mediumId}"></i>
             </button>`;
   }
 }

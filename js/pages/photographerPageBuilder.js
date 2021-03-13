@@ -140,20 +140,35 @@ export class PhotographerPageBuilder {
     );
 
     for (let medium of photographerMedia.media) {
-      const likesButton = document.querySelector(
+      const likeButton = document.querySelector(
         `button[data-medium-id="${medium.id}"]`
       );
       const likesQuantitySpan = document.getElementById(
         `likes-quantity-${medium.id}`
       );
+      const likeIcon = document.getElementById(`like-icon-${medium.id}`);
       const photographerTotalLikesSpan = document.getElementById(
         "photographer-total-likes"
       );
-      let totalLikes = photographerTotalLikesSpan.textContent;
 
-      likesButton.onclick = () => {
-        medium.likes++;
-        totalLikes++;
+      likeButton.onclick = () => {
+        let totalLikes = parseInt(photographerTotalLikesSpan.textContent);
+
+        medium.isLiked = !medium.isLiked;
+
+        if (medium.isLiked) {
+          medium.likes += 1;
+          totalLikes += 1;
+
+          likeIcon.classList.remove("far");
+          likeIcon.classList.add("fas");
+        } else {
+          medium.likes -= 1;
+          totalLikes -= 1;
+
+          likeIcon.classList.remove("fas");
+          likeIcon.classList.add("far");
+        }
 
         likesQuantitySpan.textContent = medium.likes;
         photographerTotalLikesSpan.textContent = totalLikes;
