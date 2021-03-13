@@ -5,7 +5,7 @@ import { ContactModal, MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
 import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
-import { MediaTagsNav } from "./components/tags.js";
+import { MediaTagsNav } from "./components/tagsNav.js";
 
 export class PhotographerPageBuilder {
   constructor(photographer, mediaList, checkedTag) {
@@ -114,7 +114,7 @@ export class PhotographerPageBuilder {
 
   _templatePhotographerSummary() {
     const photographerMedia = this._mediaList.filterByTagAndPhotographerId(
-      "",
+      "all",
       this._photographer.id
     );
 

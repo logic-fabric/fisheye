@@ -1,7 +1,7 @@
 "use strict";
 
 import { LikesButton } from "./buttons.js";
-import { PhotographersTagsNav } from "./tags.js";
+import { PhotographersTagsNav } from "./tagsNav.js";
 
 class PhotographerCardFocusableArea {
   constructor(photographer) {
@@ -9,7 +9,7 @@ class PhotographerCardFocusableArea {
   }
 
   get html() {
-    return `<a href="#photographer:${this._photographer.slug}">
+    return `<a href="#photographer:${this._photographer.slug}#all">
               <img 
                 src="img/photographers/${this._photographer.portrait}" 
                 alt="${this._photographer.name}" width="200" height="200" 

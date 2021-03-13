@@ -64,7 +64,10 @@ export class MediaTagsNav {
   get html() {
     let htmlContent = "<nav><ul>";
 
-    for (let tag of this._photographer.tags) {
+    const tags = [...this._photographer.tags];
+    tags.unshift("all");
+
+    for (let tag of tags) {
       htmlContent += new MediaTag(
         this._photographer,
         tag,

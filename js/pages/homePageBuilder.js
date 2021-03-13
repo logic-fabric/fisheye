@@ -2,14 +2,15 @@
 
 import { PhotographerCard } from "./components/cards.js";
 import { Logo } from "./components/logo.js";
-import { PhotographersTagsNav } from "./components/tags.js";
+import { PhotographersTagsNav } from "./components/tagsNav.js";
 
 export class HomePageBuilder {
   constructor(photographersList, checkedTag) {
     this._photographersList = photographersList.filterByTag(checkedTag);
     this._checkedTag = checkedTag;
 
-    this._photographersTags = photographersList.sortedTags;
+    this._photographersTags = [...photographersList.sortedTags];
+    this._photographersTags.unshift("all");
   }
 
   render() {

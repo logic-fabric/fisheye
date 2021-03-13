@@ -69,7 +69,7 @@ export class PhotographersList {
   }
 
   filterByTag(tagToMatch) {
-    if (tagToMatch === "") return this;
+    if (tagToMatch === "all") return this;
 
     let filteredPhotographers = [];
 

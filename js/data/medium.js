@@ -59,7 +59,7 @@ export class MediaList {
   filterByTagAndPhotographerId(tag, photographerId) {
     let photographerMedia = [];
 
-    if (tag) {
+    if (tag !== "all") {
       for (let medium of this.media) {
         if (
           medium.photographerId === photographerId &&
