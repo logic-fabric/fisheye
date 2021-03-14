@@ -79,8 +79,7 @@
 }
 
 .c-media-modal {
-  max-width: 70rem;
-  height: 100%;
+  width: 70rem;
   padding: 1rem 0;
 
   &__carousel {
@@ -109,7 +108,10 @@
   }
 
   &__medium {
-    height: 100%;
+    display: flex;
+    align-items: center;
+
+    height: 50rem;
     border-radius: 0.25rem;
     overflow: hidden;
 
