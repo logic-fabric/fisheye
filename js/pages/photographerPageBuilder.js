@@ -100,7 +100,7 @@ export class PhotographerPageBuilder {
     );
 
     if (filter == "date") photographerMedia.sortByDate();
-    if (filter == "popularity") photographerMedia.sortByLikes();
+    if (filter == "likes") photographerMedia.sortByLikes();
     if (filter == "title") photographerMedia.sortByTitle();
 
     let cardsHtml = "";
@@ -154,10 +154,16 @@ export class PhotographerPageBuilder {
   _addSortWithDropdownMenu() {
     const dropdownMenu = document.getElementById("sorting-dropdown");
 
+    console.log(dropdownMenu);
+
     dropdownMenu.onchange = () => {
       const cardsContainer = document.getElementById("cards-container");
 
-      cardsContainer.innerHTML = this.templateMediaCards(dropdownMenu.value);
+      cardsContainer.innerHTML = this._templateMediaCards(dropdownMenu.value);
+      this._addOpenMediaModalEvents();
+      this._addLikesEvents();
+
+      console.log(dropdownMenu.value);
     };
   }
 

@@ -41,62 +41,9 @@
 
   margin: 1.5rem 0 4rem 0;
 
-  #sorting-dropdown {
-    position: absolute;
-    left: 6rem;
-
-    border-radius: 0.25rem;
-    overflow: hidden;
-
-    background: $primary-700;
-  }
-
-  label,
-  button {
+  label {
     font-size: $h6-size;
     font-weight: 700;
-  }
-
-  label {
-    position: relative;
-    top: 1rem;
-  }
-
-  button {
-    width: 10rem;
-    margin: 0;
-    padding: 1rem 1.25rem;
-    border: none;
-    outline: none;
-
-    color: white;
-    text-align: left;
-
-    background: $primary-700;
-
-    cursor: pointer;
-
-    transition: background-color 300ms;
-
-    &:hover {
-      background: lighten($primary-700, 10);
-    }
-
-    i {
-      float: right;
-    }
-  }
-
-  &__divider {
-    width: calc(100% - 2rem);
-    height: 1px;
-    margin: 0 1rem;
-
-    background: white;
-  }
-
-  .expandable {
-    display: none;
   }
 }
 
