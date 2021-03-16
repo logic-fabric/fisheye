@@ -9,9 +9,11 @@ class PhotographerTag {
   get html() {
     return this._checked
       ? `<li  class="c-tag c-tag--checked">
-          <a href="#${this._tag}">#${this._tag}</a>
+          <a href="#${this._tag}" lang="en">#${this._tag}</a>
         </li>`
-      : `<li class="c-tag"><a href="#${this._tag}">#${this._tag}</a></li>`;
+      : `<li class="c-tag">
+          <a href="#${this._tag}" lang="en">#${this._tag}</a>
+        </li>`;
   }
 }
 
@@ -43,12 +45,14 @@ class MediaTag {
   get html() {
     return this._checked
       ? `<li class="c-tag c-tag--checked">
-        <a href="#photographer:${this._photographer.slug}#${this._tag}">
+        <a href="#photographer:${this._photographer.slug}#${this._tag}"
+           lang="en">
           #${this._tag}
         </a>
         </li>`
       : `<li class="c-tag">
-          <a href="#photographer:${this._photographer.slug}#${this._tag}">
+          <a href="#photographer:${this._photographer.slug}#${this._tag}"
+             lang="en">
             #${this._tag}
           </a>
         </li>`;
