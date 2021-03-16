@@ -12,6 +12,8 @@ export class PhotographerPageBuilder {
     this._photographer = photographer;
     this._mediaList = mediaList;
     this._checkedTag = checkedTag;
+
+    this._dropdownMenu = new MediaFiltersDropdownMenu();
   }
 
   render() {
@@ -21,6 +23,8 @@ export class PhotographerPageBuilder {
 
     this._renderHeader();
     this._renderMain();
+
+    this._dropdownMenu.closeDropdownMenu("date");
 
     this._addOpenContactModalEvent();
     this._addSortWithDropdownMenu();
@@ -43,7 +47,7 @@ export class PhotographerPageBuilder {
       this._checkedTag
     );
 
-    htmlContent += new MediaFiltersDropdownMenu().html;
+    htmlContent += this._dropdownMenu.html;
 
     htmlContent += `<div class="row-12" id="cards-container">
                       ${this._templateMediaCards("date")}
@@ -152,18 +156,25 @@ export class PhotographerPageBuilder {
   }
 
   _addSortWithDropdownMenu() {
-    const dropdownMenu = document.getElementById("sorting-dropdown");
+    const dropdownMenu = document.querySelector(".p-dropdown--sr-only");
 
-    console.log(dropdownMenu);
+    dropdownMenu.onclick = () => {
+      const currentFilter = dropdownMenu.value;
+
+      console.log(`ON CLICK <select> | current filter = "${currentFilter}"`);
+      this._dropdownMenu.openDropdownMenu(currentFilter);
+    };
 
     dropdownMenu.onchange = () => {
+      const selectedFilter = dropdownMenu.value;
       const cardsContainer = document.getElementById("cards-container");
 
-      cardsContainer.innerHTML = this._templateMediaCards(dropdownMenu.value);
+      cardsContainer.innerHTML = this._templateMediaCards(selectedFilter);
       this._addOpenMediaModalEvents();
       this._addLikesEvents();
+      this._dropdownMenu.closeDropdownMenu(selectedFilter);
 
-      console.log(dropdownMenu.value);
+      console.log(`ON CHANGE <select> | selected filter = "${selectedFilter}"`);
     };
   }
 

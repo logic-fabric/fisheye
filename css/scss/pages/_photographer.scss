@@ -45,6 +45,18 @@
     font-size: $h6-size;
     font-weight: 700;
   }
+
+  .p-dropdown__option {
+    display: none;
+
+    &.displayed {
+      display: block;
+    }
+
+    &.selected-filter {
+      background: $primary-200;
+    }
+  }
 }
 
 .p-photographer-summary {
