@@ -1,28 +1,28 @@
 "use strict";
 
-const FILTERS = {
+const SORTING_CRITERIONS = {
   date: "Date",
   likes: "Popularité",
   title: "Titre",
 };
 
-export class MediaFiltersDropdownMenu {
+export class MediaSortingDropdownMenu {
   constructor() {
-    this._filters = FILTERS;
+    this._sortingCriterions = SORTING_CRITERIONS;
   }
 
-  _customOptionsHtml(currentFilter) {
+  _customOptionsHtml(currentSortingCriterion) {
     let htmlContent = `<p class="p-dropdown__option" 
-                          data-filter="${currentFilter}">
-                        ${this._filters[currentFilter]}
+                          data-criterion="${currentSortingCriterion}">
+                        ${this._sortingCriterions[currentSortingCriterion]}
                       </p>`;
 
-    Object.keys(this._filters).forEach((filter) => {
+    Object.keys(this._sortingCriterions).forEach((criterion) => {
       htmlContent +=
-        filter === currentFilter
+        criterion === currentSortingCriterion
           ? ""
-          : `<p class="p-dropdown__option" data-filter="${filter}">
-              ${this._filters[filter]}
+          : `<p class="p-dropdown__option" data-criterion="${criterion}">
+              ${this._sortingCriterions[criterion]}
             </p>`;
     });
 
@@ -43,39 +43,39 @@ export class MediaFiltersDropdownMenu {
             </div>`;
   }
 
-  openDropdownMenu(selectedFilter) {
-    console.log(`OPEN dropdownMenu | selected filter = "${selectedFilter}"`);
+  openDropdownMenu(selectedSortingCriterion) {
+    console.log(`OPEN dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`);
 
     const customSelect = document.querySelector(".p-dropdown--custom");
-    customSelect.innerHTML = this._customOptionsHtml(selectedFilter);
+    customSelect.innerHTML = this._customOptionsHtml(selectedSortingCriterion);
 
     const customOptions = document.getElementsByClassName("p-dropdown__option");
 
     for (let option of customOptions) {
-      const filter = option.getAttribute("data-filter");
+      const sortingCriterion = option.getAttribute("data-criterion");
 
       option.classList.add("displayed");
 
-      if (filter === selectedFilter) {
-        option.classList.add("selected-filter");
+      if (sortingCriterion === selectedSortingCriterion) {
+        option.classList.add("selected-criterion");
       } else {
-        option.classList.remove("selected-filter");
+        option.classList.remove("selected-criterion");
       }
     }
   }
 
-  closeDropdownMenu(selectedFilter) {
-    console.log(`CLOSE dropdownMenu | selected filter = "${selectedFilter}"`);
+  closeDropdownMenu(selectedSortingCriterion) {
+    console.log(`CLOSE dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`);
 
     const customOptions = document.getElementsByClassName("p-dropdown__option");
 
     for (let option of customOptions) {
-      const filter = option.getAttribute("data-filter");
+      const sortingCriterion = option.getAttribute("data-criterion");
 
-      if (filter === selectedFilter) {
-        option.classList.add("displayed", "selected-filter");
+      if (sortingCriterion === selectedSortingCriterion) {
+        option.classList.add("displayed", "selected-criterion");
       } else {
-        option.classList.remove("displayed", "selected-filter");
+        option.classList.remove("displayed", "selected-criterion");
       }
     }
   }

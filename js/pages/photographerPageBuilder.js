@@ -3,7 +3,7 @@
 import { Button } from "./components/buttons.js";
 import { ContactModal, MediaModal } from "./components/modals.js";
 import { MediumCard } from "./components/cards.js";
-import { MediaFiltersDropdownMenu } from "./components/dropdown.js";
+import { MediaSortingDropdownMenu } from "./components/dropdown.js";
 import { Logo } from "./components/logo.js";
 import { MediaTagsNav } from "./components/tagsNav.js";
 
@@ -13,7 +13,7 @@ export class PhotographerPageBuilder {
     this._mediaList = mediaList;
     this._checkedTag = checkedTag;
 
-    this._dropdownMenu = new MediaFiltersDropdownMenu();
+    this._dropdownMenu = new MediaSortingDropdownMenu();
   }
 
   render() {
@@ -97,15 +97,15 @@ export class PhotographerPageBuilder {
             </section>`;
   }
 
-  _templateMediaCards(filter) {
+  _templateMediaCards(sortingCriterion) {
     let photographerMedia = this._mediaList.filterByTagAndPhotographerId(
       this._checkedTag,
       this._photographer.id
     );
 
-    if (filter == "date") photographerMedia.sortByDate();
-    if (filter == "likes") photographerMedia.sortByLikes();
-    if (filter == "title") photographerMedia.sortByTitle();
+    if (sortingCriterion == "date") photographerMedia.sortByDate();
+    if (sortingCriterion == "likes") photographerMedia.sortByLikes();
+    if (sortingCriterion == "title") photographerMedia.sortByTitle();
 
     let cardsHtml = "";
 
@@ -159,22 +159,28 @@ export class PhotographerPageBuilder {
     const dropdownMenu = document.querySelector(".p-dropdown--sr-only");
 
     dropdownMenu.onclick = () => {
-      const currentFilter = dropdownMenu.value;
+      const currentSortingCriterion = dropdownMenu.value;
 
-      console.log(`ON CLICK <select> | current filter = "${currentFilter}"`);
-      this._dropdownMenu.openDropdownMenu(currentFilter);
+      console.log(
+        `ON CLICK <select> | current sorting criterion = "${currentSortingCriterion}"`
+      );
+      this._dropdownMenu.openDropdownMenu(currentSortingCriterion);
     };
 
     dropdownMenu.onchange = () => {
-      const selectedFilter = dropdownMenu.value;
+      const selectedSortingCriterion = dropdownMenu.value;
       const cardsContainer = document.getElementById("cards-container");
 
-      cardsContainer.innerHTML = this._templateMediaCards(selectedFilter);
+      cardsContainer.innerHTML = this._templateMediaCards(
+        selectedSortingCriterion
+      );
       this._addOpenMediaModalEvents();
       this._addLikesEvents();
-      this._dropdownMenu.closeDropdownMenu(selectedFilter);
+      this._dropdownMenu.closeDropdownMenu(selectedSortingCriterion);
 
-      console.log(`ON CHANGE <select> | selected filter = "${selectedFilter}"`);
+      console.log(
+        `ON CHANGE <select> | selected sorting criterion = "${selectedSortingCriterion}"`
+      );
     };
   }
 
