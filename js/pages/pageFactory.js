@@ -9,14 +9,23 @@ export class PageFactory {
     this._mediaList = mediaList;
   }
 
-  render(photographer, checkedTag) {
+  render(photographer, checkedTag, sortingCriterion) {
     if (!checkedTag) {
       window.scrollTo(0, 0);
     }
 
-    const pageToBuild = photographer
-      ? new PhotographerPageBuilder(photographer, this._mediaList, checkedTag)
-      : new HomePageBuilder(this._photographersList, checkedTag);
+    let pageToBuild;
+
+    if (photographer) {
+      pageToBuild = new PhotographerPageBuilder(
+        photographer,
+        this._mediaList,
+        checkedTag,
+        sortingCriterion
+      );
+    } else {
+      pageToBuild = new HomePageBuilder(this._photographersList, checkedTag);
+    }
 
     pageToBuild.render();
     this._addUpButtonEvents();

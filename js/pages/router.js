@@ -9,7 +9,7 @@ export class Router {
   addRouteListener() {
     window.onhashchange = () => {
       const route = window.location.hash.slice(1);
-      let photographer, tag;
+      let photographer, tag, sortingCriterion;
 
       if (route.startsWith("photographer")) {
         const routeData = route.split(":")[1];
@@ -18,12 +18,14 @@ export class Router {
 
         photographer = this._photographers.findByName(photographerName);
         tag = routeParameters[1];
+        sortingCriterion = routeParameters[2];
       } else {
         photographer = "";
         tag = route;
+        sortingCriterion = "";
       }
 
-      this._pageFactory.render(photographer, tag);
+      this._pageFactory.render(photographer, tag, sortingCriterion);
     };
   }
 }

@@ -36,23 +36,22 @@ export class PhotographersTagsNav {
 }
 
 class MediaTag {
-  constructor(photographer, tag, checked) {
+  constructor(photographer, tag, checked, currentSortingCriterion) {
     this._photographer = photographer;
     this._tag = tag;
     this._checked = checked;
+    this._criterion = currentSortingCriterion;
   }
 
   get html() {
     return this._checked
       ? `<li class="c-tag c-tag--checked">
-        <a href="#photographer:${this._photographer.slug}#${this._tag}"
-           lang="en">
+        <a href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
           #${this._tag}
         </a>
         </li>`
       : `<li class="c-tag">
-          <a href="#photographer:${this._photographer.slug}#${this._tag}"
-             lang="en">
+          <a href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
             #${this._tag}
           </a>
         </li>`;
@@ -60,9 +59,10 @@ class MediaTag {
 }
 
 export class MediaTagsNav {
-  constructor(photographer, checkedTag) {
+  constructor(photographer, checkedTag, currentSortingCriterion) {
     this._photographer = photographer;
     this._checkedTag = checkedTag;
+    this._currentSortingCriterion = currentSortingCriterion;
   }
 
   get html() {
@@ -75,7 +75,8 @@ export class MediaTagsNav {
       htmlContent += new MediaTag(
         this._photographer,
         tag,
-        tag === this._checkedTag
+        tag === this._checkedTag,
+        this._currentSortingCriterion
       ).html;
     }
     htmlContent += "</ul></nav>";

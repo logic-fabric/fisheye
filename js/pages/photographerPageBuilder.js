@@ -8,12 +8,13 @@ import { Logo } from "./components/logo.js";
 import { MediaTagsNav } from "./components/tagsNav.js";
 
 export class PhotographerPageBuilder {
-  constructor(photographer, mediaList, checkedTag) {
+  constructor(photographer, mediaList, checkedTag, sortingCriterion) {
     this._photographer = photographer;
     this._mediaList = mediaList;
     this._checkedTag = checkedTag;
+    this._sortingCriterion = sortingCriterion;
 
-    this._dropdownMenu = new MediaSortingDropdownMenu();
+    this._dropdownMenu = new MediaSortingDropdownMenu(sortingCriterion);
   }
 
   render() {
@@ -24,7 +25,7 @@ export class PhotographerPageBuilder {
     this._renderHeader();
     this._renderMain();
 
-    this._dropdownMenu.closeDropdownMenu("date");
+    this._dropdownMenu.closeDropdownMenu(this._sortingCriterion);
 
     this._addOpenContactModalEvent();
     this._addSortWithDropdownMenu();
@@ -50,7 +51,7 @@ export class PhotographerPageBuilder {
     htmlContent += this._dropdownMenu.html;
 
     htmlContent += `<div class="row-12" id="cards-container">
-                      ${this._templateMediaCards("date")}
+                      ${this._templateMediaCards(this._sortingCriterion)}
                     </div>`;
 
     htmlContent += this._templatePhotographerSummary();
@@ -66,8 +67,11 @@ export class PhotographerPageBuilder {
                      <p class="p-banner__tagline">
                        ${this._photographer.tagline}
                      </p>`;
-    let tagsNavHtml = new MediaTagsNav(this._photographer, this._checkedTag)
-      .html;
+    let tagsNavHtml = new MediaTagsNav(
+      this._photographer,
+      this._checkedTag,
+      this._sortingCriterion
+    ).html;
 
     let infosAndTagsNavHtml = `<div class="lg4 md4 sm4">
                                 ${infosHtml}
@@ -97,15 +101,15 @@ export class PhotographerPageBuilder {
             </section>`;
   }
 
-  _templateMediaCards(sortingCriterion) {
+  _templateMediaCards() {
     let photographerMedia = this._mediaList.filterByTagAndPhotographerId(
       this._checkedTag,
       this._photographer.id
     );
 
-    if (sortingCriterion == "date") photographerMedia.sortByDate();
-    if (sortingCriterion == "likes") photographerMedia.sortByLikes();
-    if (sortingCriterion == "title") photographerMedia.sortByTitle();
+    if (this._sortingCriterion == "date") photographerMedia.sortByDate();
+    if (this._sortingCriterion == "likes") photographerMedia.sortByLikes();
+    if (this._sortingCriterion == "title") photographerMedia.sortByTitle();
 
     let cardsHtml = "";
 
@@ -159,24 +163,23 @@ export class PhotographerPageBuilder {
     const dropdownMenu = document.querySelector(".p-dropdown--sr-only");
 
     dropdownMenu.onclick = () => {
-      const currentSortingCriterion = dropdownMenu.value;
-
       console.log(
-        `ON CLICK <select> | current sorting criterion = "${currentSortingCriterion}"`
+        `ON CLICK <select> | current sorting criterion = "${this._sortingCriterion}"`
       );
-      this._dropdownMenu.openDropdownMenu(currentSortingCriterion);
+      this._dropdownMenu.openDropdownMenu(this._sortingCriterion);
     };
 
     dropdownMenu.onchange = () => {
       const selectedSortingCriterion = dropdownMenu.value;
-      const cardsContainer = document.getElementById("cards-container");
 
-      cardsContainer.innerHTML = this._templateMediaCards(
+      const currentRoute = window.location.hash;
+
+      const newRoute = currentRoute.replace(
+        this._sortingCriterion,
         selectedSortingCriterion
       );
-      this._addOpenMediaModalEvents();
-      this._addLikesEvents();
-      this._dropdownMenu.closeDropdownMenu(selectedSortingCriterion);
+
+      window.location.hash = newRoute;
 
       console.log(
         `ON CHANGE <select> | selected sorting criterion = "${selectedSortingCriterion}"`
