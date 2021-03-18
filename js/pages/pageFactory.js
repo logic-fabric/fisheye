@@ -17,6 +17,8 @@ export class PageFactory {
     let pageToBuild;
 
     if (photographer) {
+      document.title = `FishEye | ${photographer.name}`;
+
       pageToBuild = new PhotographerPageBuilder(
         photographer,
         this._mediaList,
@@ -24,6 +26,7 @@ export class PageFactory {
         sortingCriterion
       );
     } else {
+      document.title = "FishEye";
       pageToBuild = new HomePageBuilder(this._photographersList, checkedTag);
     }
 
