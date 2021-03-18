@@ -71,13 +71,10 @@ export class PhotographersList {
   filterByTag(tagToMatch) {
     if (tagToMatch === "all") return this;
 
-    let filteredPhotographers = [];
+    const filteredPhotographers = this.photographers.filter((photographer) =>
+      photographer.tags.includes(tagToMatch)
+    );
 
-    for (let photographer of this.photographers) {
-      if (photographer.tags.includes(tagToMatch)) {
-        filteredPhotographers.push(photographer);
-      }
-    }
     return new PhotographersList(filteredPhotographers);
   }
 }

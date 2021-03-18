@@ -58,25 +58,19 @@ export class MediaList {
   }
 
   filterByTagAndPhotographerId(tag, photographerId) {
-    let photographerMedia = [];
+    let photographerMedia;
 
-    if (tag !== "all") {
-      for (let medium of this.media) {
-        if (
-          medium.photographerId === photographerId &&
-          medium.tags.includes(tag)
-        ) {
-          photographerMedia.push(medium);
-        }
-      }
-      return new MediaList(photographerMedia);
+    if (tag === "all") {
+      photographerMedia = this.media.filter(
+        (medium) => medium.photographerId === photographerId
+      );
+    } else {
+      photographerMedia = this.media.filter(
+        (medium) =>
+          medium.photographerId === photographerId && medium.tags.includes(tag)
+      );
     }
 
-    for (let medium of this.media) {
-      if (medium.photographerId === photographerId) {
-        photographerMedia.push(medium);
-      }
-    }
     return new MediaList(photographerMedia);
   }
 }
