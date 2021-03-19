@@ -161,29 +161,45 @@ export class PhotographerPageBuilder {
 
   _addSortWithDropdownMenu() {
     const dropdownMenu = document.querySelector(".p-dropdown--sr-only");
+    const displayedCustomOption = document.querySelector("[data-criterion");
+    const customOptions = document.querySelectorAll("[data-criterion]");
 
     dropdownMenu.onclick = () => {
-      console.log(
-        `ON CLICK <select> | current sorting criterion = "${this._sortingCriterion}"`
-      );
       this._dropdownMenu.openDropdownMenu(this._sortingCriterion);
+    };
+
+    displayedCustomOption.onclick = () => {
+      for (const customOption of customOptions) {
+        customOption.classList.add("displayed");
+
+        customOption.onclick = () => {
+          const selectedSortingCriterion = customOption.getAttribute(
+            "data-criterion"
+          );
+
+          dropdownMenu.value = selectedSortingCriterion;
+
+          const currentRoute = window.location.hash;
+          const newRoute = currentRoute.replace(
+            this._sortingCriterion,
+            selectedSortingCriterion
+          );
+
+          window.location.hash = newRoute;
+        };
+      }
     };
 
     dropdownMenu.onchange = () => {
       const selectedSortingCriterion = dropdownMenu.value;
 
       const currentRoute = window.location.hash;
-
       const newRoute = currentRoute.replace(
         this._sortingCriterion,
         selectedSortingCriterion
       );
 
       window.location.hash = newRoute;
-
-      console.log(
-        `ON CHANGE <select> | selected sorting criterion = "${selectedSortingCriterion}"`
-      );
     };
   }
 
