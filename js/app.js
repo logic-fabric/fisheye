@@ -2,7 +2,7 @@
 
 import { DataFetcher } from "./data/dataFetcher.js";
 import { PageFactory } from "./pages/pageFactory.js";
-import { Router } from "./pages/router.js";
+import { Router } from "./router.js";
 
 export class SinglePageApplication {
   constructor(dataSource) {
@@ -19,6 +19,7 @@ export class SinglePageApplication {
 
     this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
     this.pageFactory.render("", "all");
+    window.location.hash = "#all";
 
     this._router = new Router(this.pageFactory, this.PHOTOGRAPHERS);
 
