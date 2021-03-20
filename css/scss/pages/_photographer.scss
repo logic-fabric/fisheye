@@ -34,31 +34,6 @@
   }
 }
 
-.p-dropdown {
-  display: flex;
-  position: relative;
-  z-index: $z-dropdown;
-
-  margin: 1.5rem 0 4rem 0;
-
-  label {
-    font-size: $h6-size;
-    font-weight: 700;
-  }
-
-  .p-dropdown__option {
-    display: none;
-
-    &.displayed {
-      display: block;
-    }
-
-    &.selected-criterion {
-      background: $primary-200;
-    }
-  }
-}
-
 .p-photographer-summary {
   position: fixed;
   right: 2rem;

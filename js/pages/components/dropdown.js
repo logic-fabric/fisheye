@@ -13,16 +13,17 @@ export class MediaSortingDropdownMenu {
   }
 
   _customOptionsHtml() {
-    let htmlContent = `<p class="p-dropdown__option" 
+    let htmlContent = `<p class="c-dropdown__option" 
                           data-criterion="${this._currentCriterion}">
                         ${this._sortingCriterions[this._currentCriterion]}
-                      </p>`;
+                      </p>
+                      <i class="fas fa-chevron-down"></i>`;
 
     Object.keys(this._sortingCriterions).forEach((criterion) => {
       htmlContent +=
         criterion === this._currentCriterion
           ? ""
-          : `<p class="p-dropdown__option" data-criterion="${criterion}">
+          : `<p class="c-dropdown__option" data-criterion="${criterion}">
               ${this._sortingCriterions[criterion]}
             </p>`;
     });
@@ -31,15 +32,17 @@ export class MediaSortingDropdownMenu {
   }
 
   get html() {
-    return `<div class="p-dropdown">
+    return `<div class="c-dropdown">
               <label for="sorting-listbox">Trier par</label>
-              <select class="p-dropdown--sr-only">
+              <select class="c-dropdown--sr-only sr-only">
                 <option value="date">Date</option>
                 <option value="likes">Popularité</option>
                 <option value="title">Titre</option>
               </select>
-              <div class="p-dropdown--custom">
-                ${this._customOptionsHtml(this._currentCriterion)}
+              <div class="c-dropdown--custom__wrapper">
+                <div class="c-dropdown--custom">
+                  ${this._customOptionsHtml(this._currentCriterion)}
+                </div>
               </div>
             </div>`;
   }
@@ -49,10 +52,10 @@ export class MediaSortingDropdownMenu {
       `OPEN dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`
     );
 
-    const customSelect = document.querySelector(".p-dropdown--custom");
+    const customSelect = document.querySelector(".c-dropdown--custom");
     customSelect.innerHTML = this._customOptionsHtml(selectedSortingCriterion);
 
-    const customOptions = document.getElementsByClassName("p-dropdown__option");
+    const customOptions = document.getElementsByClassName("c-dropdown__option");
 
     for (let option of customOptions) {
       const sortingCriterion = option.getAttribute("data-criterion");
@@ -72,7 +75,7 @@ export class MediaSortingDropdownMenu {
       `CLOSE dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`
     );
 
-    const customOptions = document.getElementsByClassName("p-dropdown__option");
+    const customOptions = document.getElementsByClassName("c-dropdown__option");
 
     for (let option of customOptions) {
       const sortingCriterion = option.getAttribute("data-criterion");

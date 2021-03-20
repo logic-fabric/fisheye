@@ -160,7 +160,7 @@ export class PhotographerPageBuilder {
   }
 
   _addSortWithDropdownMenu() {
-    const dropdownMenu = document.querySelector(".p-dropdown--sr-only");
+    const dropdownMenu = document.querySelector(".c-dropdown--sr-only");
     const displayedCustomOption = document.querySelector("[data-criterion");
     const customOptions = document.querySelectorAll("[data-criterion]");
 
@@ -169,6 +169,10 @@ export class PhotographerPageBuilder {
     };
 
     displayedCustomOption.onclick = () => {
+      const arrowIcon = document.querySelector(".fa-chevron-down");
+
+      arrowIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
+
       for (const customOption of customOptions) {
         customOption.classList.add("displayed");
 
@@ -177,15 +181,21 @@ export class PhotographerPageBuilder {
             "data-criterion"
           );
 
-          dropdownMenu.value = selectedSortingCriterion;
+          if (selectedSortingCriterion === this._sortingCriterion) {
+            arrowIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
 
-          const currentRoute = window.location.hash;
-          const newRoute = currentRoute.replace(
-            this._sortingCriterion,
-            selectedSortingCriterion
-          );
+            this._dropdownMenu.closeDropdownMenu(this._sortingCriterion);
+          } else {
+            dropdownMenu.value = selectedSortingCriterion;
+            
+            const currentRoute = window.location.hash;
+            const newRoute = currentRoute.replace(
+              this._sortingCriterion,
+              selectedSortingCriterion
+            );
 
-          window.location.hash = newRoute;
+            window.location.hash = newRoute;
+          }
         };
       }
     };
