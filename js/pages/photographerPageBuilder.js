@@ -161,33 +161,33 @@ export class PhotographerPageBuilder {
 
   _addSortWithDropdownMenu() {
     const dropdownMenu = document.querySelector(".c-dropdown--sr-only");
-    const displayedCustomOption = document.querySelector("[data-criterion");
     const customOptions = document.querySelectorAll("[data-criterion]");
+    const firstCustomOption = document.querySelector("[data-criterion");
+    const arrowIcon = document.querySelector(".fa-chevron-down");
 
-    dropdownMenu.onclick = () => {
-      this._dropdownMenu.openDropdownMenu(this._sortingCriterion);
-    };
+    for (const customOption of customOptions) {
+      if (customOption === firstCustomOption) {
+        customOption.onclick = () => {
+          arrowIcon.classList.toggle("fa-chevron-down");
+          arrowIcon.classList.toggle("fa-chevron-up");
 
-    displayedCustomOption.onclick = () => {
-      const arrowIcon = document.querySelector(".fa-chevron-down");
-
-      arrowIcon.classList.replace("fa-chevron-down", "fa-chevron-up");
-
-      for (const customOption of customOptions) {
-        customOption.classList.add("displayed");
-
+          for (const customOption of customOptions) {
+            if (customOption !== firstCustomOption) {
+              customOption.classList.toggle("displayed");
+            }
+          }
+        };
+      } else {
         customOption.onclick = () => {
           const selectedSortingCriterion = customOption.getAttribute(
             "data-criterion"
           );
 
           if (selectedSortingCriterion === this._sortingCriterion) {
-            arrowIcon.classList.replace("fa-chevron-up", "fa-chevron-down");
-
             this._dropdownMenu.closeDropdownMenu(this._sortingCriterion);
           } else {
             dropdownMenu.value = selectedSortingCriterion;
-            
+
             const currentRoute = window.location.hash;
             const newRoute = currentRoute.replace(
               this._sortingCriterion,
@@ -198,7 +198,7 @@ export class PhotographerPageBuilder {
           }
         };
       }
-    };
+    }
 
     dropdownMenu.onchange = () => {
       const selectedSortingCriterion = dropdownMenu.value;
