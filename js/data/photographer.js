@@ -1,5 +1,7 @@
 "use strict";
 
+import { sortAlphabetically } from "../utilities/sort.js";
+
 export class Photographer {
   constructor(id, name, city, country, tags, tagline, price, portrait) {
     this.id = id;
@@ -54,7 +56,7 @@ export class PhotographersList {
   get sortedTags() {
     const tags = this._collectTags();
 
-    return tags.sort();
+    return sortAlphabetically(tags);
   }
 
   sortByName() {
