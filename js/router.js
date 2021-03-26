@@ -17,11 +17,11 @@ export class Router {
         const photographerName = routeParameters[0];
 
         photographer = this._photographers.findByName(photographerName);
-        tag = routeParameters[1];
+        tag = decodeURIComponent(routeParameters[1]);
         sortingCriterion = routeParameters[2];
       } else {
         photographer = "";
-        tag = route;
+        tag = decodeURIComponent(route);
         sortingCriterion = "";
       }
 
