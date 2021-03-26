@@ -155,38 +155,51 @@ export class MediaModal extends Modal {
             <h2 id="medium-title">${this._displayedMedium.title}</h2>`;
   }
 
-  addMouseNavigationEvents() {
+  _displayMedium(mediumIndex) {
+    const mediumContainer = document.getElementById("medium");
+    const mediumTitle = document.getElementById("medium-title");
+    const mediumToDisplay = this._mediaList.media[mediumIndex];
+
+    mediumContainer.innerHTML = new DisplayedMediumFactory(
+      this._photographer,
+      mediumToDisplay
+    ).html;
+    mediumTitle.textContent = mediumToDisplay.title;
+  }
+
+  addNavigationEvents() {
     let currentMediumIndex = this._displayedMediumIndex;
     let mediaListLength = this._mediaList.media.length;
 
     const leftArrow = document.querySelector(".fa-chevron-left");
     const rightArrow = document.querySelector(".fa-chevron-right");
-    const mediumContainer = document.getElementById("medium");
-    const mediumTitle = document.getElementById("medium-title");
 
     leftArrow.onclick = () => {
       currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
 
-      let mediumToDisplay = this._mediaList.media[currentMediumIndex];
-
-      mediumContainer.innerHTML = new DisplayedMediumFactory(
-        this._photographer,
-        mediumToDisplay
-      ).html;
-      mediumTitle.textContent = mediumToDisplay.title;
+      this._displayMedium(currentMediumIndex);
     };
 
     rightArrow.onclick = () => {
       currentMediumIndex =
         (currentMediumIndex + mediaListLength - 1) % mediaListLength;
 
-      let mediumToDisplay = this._mediaList.media[currentMediumIndex];
+      this._displayMedium(currentMediumIndex);
+    };
 
-      mediumContainer.innerHTML = new DisplayedMediumFactory(
-        this._photographer,
-        mediumToDisplay
-      ).html;
-      mediumTitle.textContent = mediumToDisplay.title;
+    document.onkeydown = (key) => {
+      if (key.code === "ArrowLeft") {
+        currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
+
+        this._displayMedium(currentMediumIndex);
+      }
+
+      if (key.code === "ArrowRight") {
+        currentMediumIndex =
+          (currentMediumIndex + mediaListLength - 1) % mediaListLength;
+
+        this._displayMedium(currentMediumIndex);
+      }
     };
   }
 }

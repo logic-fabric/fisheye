@@ -236,7 +236,7 @@ export class PhotographerPageBuilder {
         modalContent.classList.add("c-media-modal");
         modalContent.innerHTML = mediaModal.html;
 
-        mediaModal.addMouseNavigationEvents();
+        mediaModal.addNavigationEvents();
 
         modalBackground.classList.add("displayed");
       };
