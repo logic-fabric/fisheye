@@ -42,7 +42,7 @@ export class PhotographerCard {
   }
 
   get html() {
-    return `<article class="c-photographer-card lg4 md4 sm4">
+    return `<article class="c-photographer-card lg4 md6 sm12">
   ${new PhotographerCardFocusableArea(this._photographer).html}
   ${new PhotographerCardInfos(this._photographer).html}
   ${new PhotographersTagsNav(this._photographer.tags, this._checkedTag).html}

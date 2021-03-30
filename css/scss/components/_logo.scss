@@ -1,3 +1,14 @@
 .c-logo__box {
   padding: 2.5rem 1.75rem;
 }
+
+@media (max-width: $small-breakpoint - 1) {
+  .c-logo__box {
+    padding: 2rem 0;
+  }
+
+  .c-logo__img {
+    width: auto;
+    height: 2rem;
+  }
+}

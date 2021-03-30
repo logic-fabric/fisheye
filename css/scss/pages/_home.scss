@@ -2,18 +2,28 @@
   position: relative;
 
   header nav {
-    padding: 3.25rem 2rem;
+    padding: 0 2rem 1rem 0;
+
+    @media (min-width: $medium-breakpoint) {
+      padding: 3.25rem 2rem;
+    }
   }
 
   h1 {
     position: absolute;
+    top: 1.75rem;
     right: 2rem;
-    top: 2rem;
 
     color: $primary-700;
     font-size: $h2-size;
-  }
 
+    @media (max-width: $small-breakpoint - 1) {
+      top: 1.5rem;
+      right: 1rem;
+
+      font-size: $txt-size;
+    }
+  }
 }
 
 // TO REFACTOR:
