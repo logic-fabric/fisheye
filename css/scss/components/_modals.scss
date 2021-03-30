@@ -1,3 +1,18 @@
+$open-modal-duration: 800ms;
+
+@keyframes open-modal {
+  from {
+    top: -20rem;
+
+    opacity: 0;
+  }
+  to {
+    top: 0;
+
+    opacity: 1;
+  }
+}
+
 .c-modal__background {
   display: none;
   position: fixed;
@@ -26,6 +41,8 @@
   color: $primary-700;
 
   background: white;
+
+  animation: open-modal $open-modal-duration forwards;
 }
 
 #close-icon {
