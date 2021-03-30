@@ -58,7 +58,8 @@
   }
 
   &__infos {
-    padding: 0 2rem;
+    width: 350px;
+    margin: auto;
   }
 
   h2 {
@@ -89,5 +90,19 @@
     &:hover {
       color: lighten($primary-700, 20);
     }
+  }
+}
+
+@media (max-width: $medium-breakpoint - 1) {
+  .c-medium-card {
+    margin: 0;
+
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: $small-breakpoint - 1) {
+  .c-medium-card {
+    transform: scale(0.75);
   }
 }

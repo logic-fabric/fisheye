@@ -8,6 +8,11 @@
   margin: 0 auto;
 }
 
+@mixin medium-wrapping {
+  max-width: $medium-container-width;
+  margin: 0 auto;
+}
+
 @mixin small-wrapping {
   max-width: $small-container-width;
   margin: 0 auto;

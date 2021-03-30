@@ -73,7 +73,7 @@ export class PhotographerPageBuilder {
       this._sortingCriterion
     ).html;
 
-    let infosAndTagsNavHtml = `<div class="lg4 md4 sm4">
+    let infosAndTagsNavHtml = `<div class="lg4 md6 sm8">
                                 ${infosHtml}
                                 ${tagsNavHtml}
                               </div>`;
@@ -83,11 +83,11 @@ export class PhotographerPageBuilder {
       "button",
       "Contactez-moi"
     ).html;
-    let contactWrapperHtml = `<div class="lg4 md4 sm4">
+    let contactWrapperHtml = `<div class="lg4 md3 sm12 p-banner__contact-btn">
                               ${contactButtonHtml}
                              </div>`;
 
-    let portraitHtml = `<div class="lg4 md4 sm4 p-banner__portrait">
+    let portraitHtml = `<div class="lg4 md3 sm4 p-banner__portrait">
           <img 
             src="img/photographers/${this._photographer.portrait}" 
             alt="${this._photographer.name}" width="200" height="200" 

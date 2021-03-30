@@ -54,7 +54,7 @@
         top: -1rem;
         left: -0.5rem;
 
-        width: 9rem;
+        width: 9.5rem;
         height: 1px;
 
         background: white;
@@ -67,8 +67,32 @@
   i {
     position: absolute;
     top: 1.25rem;
-    left: 9rem;
+    right: 1rem;
 
     color: white;
+  }
+
+  @media (max-width: $medium-breakpoint - 1) {
+    .c-dropdown__option {
+      width: 10rem;
+      padding: 0.75rem 1rem;
+
+      color: white;
+      font-size: $txt-size;
+
+      &:not(.selected-criterion)::before {
+        top: -0.8rem;
+
+        width: 9rem;
+      }
+    }
+
+    i {
+      top: 0.75rem;
+    }
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    display: none;
   }
 }

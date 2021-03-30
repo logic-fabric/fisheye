@@ -1,5 +1,5 @@
 .p-photographer main {
-  padding: 0 1.75rem;
+  padding: 0 0 2rem 0;
 }
 
 .p-banner {
@@ -15,6 +15,7 @@
   &__tagline {
     margin: 2rem 0 1.5rem 0;
 
+    color: $neutral-700;
     font-size: $h6-size;
   }
 
@@ -30,6 +31,77 @@
       border-radius: 50%;
 
       object-fit: cover;
+    }
+  }
+
+  @media (max-width: $medium-breakpoint - 1) {
+    padding: 1.5rem 2rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    button {
+      margin: 5rem 0;
+      padding: 0.75rem 1rem;
+
+      font-size: $txt-size;
+    }
+
+    &__portrait {
+      transform: scale(0.8);
+
+      img {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    padding: 0;
+
+    background: white;
+
+    h1 {
+      font-size: $h3-size;
+    }
+
+    &__location {
+      font-size: $txt-size;
+    }
+
+    &__tagline,
+    .c-tag {
+      font-size: $sm-size;
+    }
+
+    &__tagline {
+      margin: 0 0 0.5rem 0;
+    }
+
+    &__contact-btn {
+      position: absolute;
+
+      button {
+        position: fixed;
+        bottom: 1rem;
+        left: calc(50% - 5rem);
+        z-index: $z-in-front;
+
+        width: 10rem;
+        margin: 0;
+        padding: 0.5rem;
+
+        text-align: center;
+      }
+    }
+
+    &__portrait {
+      position: relative;
+      top: -2rem;
+      left: -1rem;
+
+      transform: scale(0.45);
     }
   }
 }
@@ -48,5 +120,19 @@
 
   i {
     margin-right: 3rem;
+  }
+
+  @media (max-width: $medium-breakpoint - 1) {
+    padding: 0.75rem 1.5rem;
+
+    font-size: $h5-size;
+
+    i {
+      margin-right: 2rem;
+    }
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    display: none;
   }
 }

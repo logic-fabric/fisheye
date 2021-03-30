@@ -61,7 +61,7 @@ export class MediumCard {
       ? this._medium.filename.replace("mp4", "png")
       : this._medium.filename;
 
-    let htmlContent = `<article class="lg4 md4 sm4 c-medium-card">
+    let htmlContent = `<article class="lg4 md6 sm12 c-medium-card">
                         <div class="c-medium-card__img" 
                          data-medium-id="${this._medium.id}">
                           <img
