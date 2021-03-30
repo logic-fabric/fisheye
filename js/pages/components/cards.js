@@ -74,12 +74,12 @@ export class MediumCard {
     }
     htmlContent += "</div>";
     htmlContent += `<div class="row-12 c-medium-card__infos">
-                    <h2 class="lg7 md7 sm7" lang="en">
+                    <h2 class="lg7 md7 sm8" lang="en">
                       ${this._medium.title}
                     </h2>
                     <p class="lg2 md2 sm2">${this._medium.price}&nbsp;€</p>`;
     htmlContent += new LikeButton(
-      "lg3 md3 sm3 c-btn",
+      "lg3 md3 sm2 c-btn",
       "button",
       this._medium.likes,
       this._medium.id,
