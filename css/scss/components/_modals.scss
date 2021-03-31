@@ -34,7 +34,7 @@ $open-modal-duration: 800ms;
   z-index: $z-modal + 100;
 
   width: fit-content;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   border-radius: 0.25rem;
   overflow: hidden;
 
@@ -43,6 +43,11 @@ $open-modal-duration: 800ms;
   background: white;
 
   animation: open-modal $open-modal-duration forwards;
+
+  @media (max-width: $small-breakpoint - 1) {
+    height: 100%;
+    margin: 0 auto;
+  }
 }
 
 #close-icon {
@@ -92,6 +97,94 @@ $open-modal-duration: 800ms;
   &.light-icon:hover::after,
   &.light-icon:hover::before {
     background: $neutral-900;
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    top: 1.5rem;
+
+    width: 2rem;
+    height: 2rem;
+
+    &::after,
+    &::before {
+      width: 0.25rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+.c-contact-modal {
+  width: 100%;
+  max-width: 40rem;
+  padding: 1.5rem 2rem;
+
+  color: black;
+
+  background: $primary-200;
+
+  h1 {
+    margin: 0 0 2rem 0;
+
+    color: black;
+    font-size: 3rem;
+  }
+
+  label,
+  input {
+    display: block;
+  }
+
+  label {
+    margin: 1rem 0 0.5rem 0;
+
+    font-size: 2rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    border: none;
+    border-radius: 0.25rem;
+
+    font-size: $h3-size;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  .c-btn {
+    margin: 1.5rem 0 1rem 0;
+    padding: 1.5rem 3rem;
+  }
+
+  @media (max-width: $small-breakpoint - 1) {
+    max-width: 30rem;
+
+    h1 {
+      margin: 0.5rem 0 1.5rem 0;
+
+      font-size: 1.75rem;
+    }
+
+    label {
+      font-size: $h5-size;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem 0.5rem;
+
+      font-size: $h5-size;
+    }
+
+    .c-btn {
+      display: block;
+
+      margin: 1.5rem auto 2rem auto;
+      padding: 0.5rem 3rem;
+    }
   }
 }
 
@@ -145,49 +238,5 @@ $open-modal-duration: 800ms;
     text-overflow: ellipsis;
     font-size: $h3-size;
     white-space: nowrap;
-  }
-}
-
-.c-contact-modal {
-  width: 40rem;
-  padding: 1rem 2rem;
-
-  color: black;
-
-  background: $primary-200;
-
-  h1 {
-    margin: 0 0 1rem 0;
-
-    color: black;
-  }
-
-  label,
-  input {
-    display: block;
-  }
-
-  label {
-    margin: 1rem 0 0.5rem 0;
-
-    font-size: $h2-size;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 1rem 0.5rem;
-    border: none;
-    border-radius: 0.25rem;
-
-    font-size: $h3-size;
-  }
-
-  textarea {
-    resize: none;
-  }
-
-  .c-btn {
-    margin: 1.5rem 0 1rem 0;
   }
 }
