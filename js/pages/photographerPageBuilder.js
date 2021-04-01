@@ -146,14 +146,16 @@ export class PhotographerPageBuilder {
 
     contactButton.onclick = () => {
       const modalBackground = document.getElementById("modal-bg");
-      const closeIcon = document.getElementById("close-icon");
       const modalContent = document.getElementById("modal-content");
+
       const contactModal = new ContactModal(this._photographer);
 
-      closeIcon.classList = "light-icon";
       modalContent.classList.remove("c-media-modal");
       modalContent.classList.add("c-contact-modal");
+
       modalContent.innerHTML = contactModal.html;
+
+      contactModal.addCloseModalEvents();
 
       modalBackground.classList.add("displayed");
     };
@@ -219,9 +221,10 @@ export class PhotographerPageBuilder {
     for (const mediumImage of mediaImages) {
       mediumImage.onclick = () => {
         const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
+
         const modalBackground = document.getElementById("modal-bg");
-        const closeIcon = document.getElementById("close-icon");
         const modalContent = document.getElementById("modal-content");
+        
         const mediaModal = new MediaModal(
           this._photographer,
           this._mediaList.filterByTagAndPhotographerId(
@@ -231,11 +234,12 @@ export class PhotographerPageBuilder {
           mediumToDisplayId
         );
 
-        closeIcon.classList = "";
         modalContent.classList.remove("c-contact-modal");
         modalContent.classList.add("c-media-modal");
+
         modalContent.innerHTML = mediaModal.html;
 
+        mediaModal.addCloseModalEvents();
         mediaModal.addNavigationEvents();
 
         modalBackground.classList.add("displayed");

@@ -3,11 +3,7 @@
 import { Button } from "./buttons.js";
 
 class Modal {
-  constructor() {
-    this._addCloseModalEvents();
-  }
-
-  _addCloseModalEvents() {
+  addCloseModalEvents() {
     const modalBackground = document.getElementById("modal-bg");
     const modalWindow = document.getElementById("modal-window");
     const modalContent = document.getElementById("modal-content");
@@ -38,7 +34,8 @@ export class ContactModal extends Modal {
     let submitButtonHtml = new Button("c-btn c-btn--cta", "submit", "Envoyer")
       .html;
 
-    return `<h1>
+    return `<i class="fas fa-times" id="close-icon"></i>
+            <h1>
               Contactez-moi<br />
               ${this._photographer.name}
             </h1>
@@ -141,7 +138,8 @@ export class MediaModal extends Modal {
       this._displayedMedium
     ).html;
 
-    return `<div class="c-media-modal__carousel">
+    return `<i class="fas fa-times" id="close-icon"></i>
+            <div class="c-media-modal__carousel">
               <span class="icon-wrapper">
                 <i class="fas fa-chevron-left"></i>
               </span>
