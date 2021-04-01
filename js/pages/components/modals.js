@@ -6,19 +6,18 @@ class Modal {
   addCloseModalEvents() {
     const modalBackground = document.getElementById("modal-bg");
     const modalWindow = document.getElementById("modal-window");
-    const modalContent = document.getElementById("modal-content");
     const closeIcon = document.getElementById("close-icon");
 
     closeIcon.onclick = () => {
       modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
+      modalWindow.innerHTML = "";
     };
 
     modalWindow.onclick = (e) => e.stopPropagation();
 
     modalBackground.onclick = () => {
       modalBackground.classList.remove("displayed");
-      modalContent.innerHTML = "";
+      modalWindow.innerHTML = "";
     };
   }
 }

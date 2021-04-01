@@ -48,10 +48,6 @@ export class MediaSortingDropdownMenu {
   }
 
   openDropdownMenu(selectedSortingCriterion) {
-    console.log(
-      `OPEN dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`
-    );
-
     const customSelect = document.querySelector(".c-dropdown--custom");
     customSelect.innerHTML = this._customOptionsHtml(selectedSortingCriterion);
 
@@ -71,10 +67,6 @@ export class MediaSortingDropdownMenu {
   }
 
   closeDropdownMenu(selectedSortingCriterion) {
-    console.log(
-      `CLOSE dropdownMenu | selected sorting criterion = "${selectedSortingCriterion}"`
-    );
-
     const customOptions = document.getElementsByClassName("c-dropdown__option");
 
     for (let option of customOptions) {

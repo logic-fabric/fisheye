@@ -146,14 +146,14 @@ export class PhotographerPageBuilder {
 
     contactButton.onclick = () => {
       const modalBackground = document.getElementById("modal-bg");
-      const modalContent = document.getElementById("modal-content");
+      const modalWindow = document.getElementById("modal-window");
 
       const contactModal = new ContactModal(this._photographer);
 
-      modalContent.classList.remove("c-media-modal");
-      modalContent.classList.add("c-contact-modal");
+      modalWindow.classList.remove("c-media-modal");
+      modalWindow.classList.add("c-contact-modal");
 
-      modalContent.innerHTML = contactModal.html;
+      modalWindow.innerHTML = contactModal.html;
 
       contactModal.addCloseModalEvents();
 
@@ -223,7 +223,7 @@ export class PhotographerPageBuilder {
         const mediumToDisplayId = mediumImage.getAttribute("data-medium-id");
 
         const modalBackground = document.getElementById("modal-bg");
-        const modalContent = document.getElementById("modal-content");
+        const modalWindow = document.getElementById("modal-window");
         
         const mediaModal = new MediaModal(
           this._photographer,
@@ -234,10 +234,10 @@ export class PhotographerPageBuilder {
           mediumToDisplayId
         );
 
-        modalContent.classList.remove("c-contact-modal");
-        modalContent.classList.add("c-media-modal");
+        modalWindow.classList.remove("c-contact-modal");
+        modalWindow.classList.add("c-media-modal");
 
-        modalContent.innerHTML = mediaModal.html;
+        modalWindow.innerHTML = mediaModal.html;
 
         mediaModal.addCloseModalEvents();
         mediaModal.addNavigationEvents();
