@@ -158,7 +158,16 @@ export class PhotographerPageBuilder {
       contactModal.addCloseModalEvents();
       contactModal.addSubmitFormEvent();
 
+      document.getElementById("contact-form").reset();
+
+      const modalFormWrapper = document.getElementById("contact-form-wrapper");
+      const modalSuccessWrapper = document.getElementById(
+        "contact-success-wrapper"
+      );
+
       modalBackground.classList.add("displayed");
+      modalSuccessWrapper.style.height = 0;
+      modalFormWrapper.style.height = "auto";
     };
   }
 
@@ -225,7 +234,7 @@ export class PhotographerPageBuilder {
 
         const modalBackground = document.getElementById("modal-bg");
         const modalWindow = document.getElementById("modal-window");
-        
+
         const mediaModal = new MediaModal(
           this._photographer,
           this._mediaList.filterByTagAndPhotographerId(

@@ -34,29 +34,51 @@ export class ContactModal extends Modal {
       .html;
 
     return `<i class="fas fa-times" id="close-icon"></i>
-            <h1>
-              Contactez-moi<br />
-              ${this._photographer.name}
-            </h1>
-            <form id="contact-form" action="index.html" method=post"">
-              <label for="first-name">
-                Nom
-              </label>
-              <input type="text" id="first-name" required />
-              <label for="last-name">
-                Prénom
-              </label>
-              <input type="text" id="last-name" required />
-              <label for="email">
-                Email
-              </label>
-              <input type="email" id="email" required />
-              <label for="message">
-                Votre message
-              </label>
-              <textarea id="message" rows="6" cols="60" required></textarea>
-              ${submitButtonHtml}
-            </form>`;
+            <div id="contact-form-wrapper">
+              <h1>
+                Contactez-moi<br />
+                ${this._photographer.name}
+              </h1>
+              <form id="contact-form" action="index.html" method=post"">
+                <label for="first-name">
+                  Nom
+                </label>
+                <input type="text" id="first-name" />
+                <label for="last-name">
+                  Prénom
+                </label>
+                <input type="text" id="last-name" />
+                <label for="email">
+                  Email
+                </label>
+                <input type="email" id="email" />
+                <label for="message">
+                  Votre message
+                </label>
+                <textarea id="message" rows="6" cols="60"></textarea>
+                ${submitButtonHtml}
+              </form>
+            </div>
+            <div id="contact-success-wrapper">
+              <p>
+                Votre message a bien été envoyé à ${this._photographer.name}.
+              </p>
+              <p>
+                Merci pour l'intérêt que vous portez à son travail.
+              </p>
+            </div>`;
+  }
+
+  _displaySuccessfullSubmit() {
+    const modalFormWrapper = document.getElementById("contact-form-wrapper");
+    const modalSuccessWrapper = document.getElementById(
+      "contact-success-wrapper"
+    );
+
+    const modalHeight = getComputedStyle(modalFormWrapper).height;
+
+    modalFormWrapper.style.height = 0;
+    modalSuccessWrapper.style.height = modalHeight;
   }
 
   addSubmitFormEvent() {
@@ -78,6 +100,8 @@ export class ContactModal extends Modal {
       };
 
       console.log("User inputs to POST to back-end:", userInputs);
+
+      this._displaySuccessfullSubmit();
     };
   }
 }
