@@ -156,6 +156,7 @@ export class PhotographerPageBuilder {
       modalWindow.innerHTML = contactModal.html;
 
       contactModal.addCloseModalEvents();
+      contactModal.addSubmitFormEvent();
 
       modalBackground.classList.add("displayed");
     };

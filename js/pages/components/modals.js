@@ -38,26 +38,47 @@ export class ContactModal extends Modal {
               Contactez-moi<br />
               ${this._photographer.name}
             </h1>
-            <form>
+            <form id="contact-form" action="index.html" method=post"">
               <label for="first-name">
                 Nom
               </label>
-              <input type="text" id="first-name" />
+              <input type="text" id="first-name" required />
               <label for="last-name">
                 Prénom
               </label>
-              <input type="text" id="last-name" />
+              <input type="text" id="last-name" required />
               <label for="email">
                 Email
               </label>
-              <input type="email" id="email" />
+              <input type="email" id="email" required />
               <label for="message">
                 Votre message
               </label>
-              <textarea id="message" rows="6" cols="60">
-              </textarea>
-            </form>
-            ${submitButtonHtml}`;
+              <textarea id="message" rows="6" cols="60" required></textarea>
+              ${submitButtonHtml}
+            </form>`;
+  }
+
+  addSubmitFormEvent() {
+    document.getElementById("contact-form").onsubmit = (e) => {
+      e.preventDefault();
+
+      const firstName = document.getElementById("first-name");
+      const lastName = document.getElementById("last-name");
+      const email = document.getElementById("email");
+      const message = document.getElementById("message");
+
+      // TO DO: add inputs validations and custom errorm message
+
+      const userInputs = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        message: message.value,
+      };
+
+      console.log("User inputs to POST to back-end:", userInputs);
+    };
   }
 }
 
