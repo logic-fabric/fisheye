@@ -8,11 +8,11 @@ class PhotographerTag {
 
   get html() {
     return this._checked
-      ? `<li  class="c-tag c-tag--checked">
-          <a href="#${this._tag}" lang="en">#${this._tag}</a>
+      ? `<li>
+          <a class="c-tag c-tag--checked" href="#${this._tag}" lang="en">#${this._tag}</a>
         </li>`
-      : `<li class="c-tag">
-          <a href="#${this._tag}" lang="en">#${this._tag}</a>
+      : `<li>
+          <a class="c-tag" href="#${this._tag}" lang="en">#${this._tag}</a>
         </li>`;
   }
 }
@@ -45,13 +45,13 @@ class MediaTag {
 
   get html() {
     return this._checked
-      ? `<li class="c-tag c-tag--checked">
-        <a href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
+      ? `<li>
+        <a class="c-tag c-tag--checked" href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
           #${this._tag}
         </a>
         </li>`
-      : `<li class="c-tag">
-          <a href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
+      : `<li>
+          <a class="c-tag" href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}" lang="en">
             #${this._tag}
           </a>
         </li>`;

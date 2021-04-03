@@ -2,8 +2,18 @@
   padding: 2.5rem 1.75rem;
 
   img {
-    height: 66px;
+    height: 74px;
     padding: 0.5rem 0;
+    border: 0.25rem solid white;
+    border-width: 0.25rem 0;
+  }
+
+  &:focus {
+    outline: none;
+
+    img {
+      border-color: $primary-300;
+    }
   }
 
   @media (max-width: $medium-breakpoint - 1) {
@@ -13,6 +23,7 @@
       width: auto;
       height: 2.5rem;
       padding: 0.25rem 0;
+      border-width: 0.125rem 0;
     }
   }
 
