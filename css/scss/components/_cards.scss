@@ -3,6 +3,21 @@
 
   text-align: center;
 
+  a:focus {
+    display: block;
+
+    outline: none;
+
+    img {
+      filter: drop-shadow(2px 8px 4px $neutral-500);
+      transform: translateY(-0.25rem);
+    }
+
+    h2 {
+      color: $primary-700;
+    }
+  }
+
   img {
     border-radius: 50%;
 
