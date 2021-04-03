@@ -24,7 +24,7 @@ export class PhotographersTagsNav {
   }
 
   get html() {
-    let htmlContent = "<nav class='lg6 offset-md2 md8 sm12'><ul>";
+    let htmlContent = "<nav class='lg6 md6 sm12'><ul>";
 
     for (let tag of this._tagsList) {
       htmlContent += new PhotographerTag(tag, tag === this._checkedTag).html;
