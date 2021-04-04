@@ -19,6 +19,13 @@ class Modal {
       modalBackground.classList.remove("displayed");
       modalWindow.innerHTML = "";
     };
+
+    document.onkeydown = (key) => {
+      if (key.code === "Escape") {
+        modalBackground.classList.remove("displayed");
+        modalWindow.innerHTML = "";
+      }
+    };
   }
 }
 
@@ -210,11 +217,13 @@ export class MediaModal extends Modal {
   }
 
   addNavigationEvents() {
-    let currentMediumIndex = this._displayedMediumIndex;
-    let mediaListLength = this._mediaList.media.length;
-
+    const modalBackground = document.getElementById("modal-bg");
+    const modalWindow = document.getElementById("modal-window");
     const leftArrow = document.querySelector(".fa-chevron-left");
     const rightArrow = document.querySelector(".fa-chevron-right");
+
+    let currentMediumIndex = this._displayedMediumIndex;
+    let mediaListLength = this._mediaList.media.length;
 
     leftArrow.onclick = () => {
       currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
@@ -241,6 +250,11 @@ export class MediaModal extends Modal {
           (currentMediumIndex + mediaListLength - 1) % mediaListLength;
 
         this._displayMedium(currentMediumIndex);
+      }
+
+      if (key.code === "Escape") {
+        modalBackground.classList.remove("displayed");
+        modalWindow.innerHTML = "";
       }
     };
   }
