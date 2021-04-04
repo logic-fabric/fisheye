@@ -110,8 +110,9 @@
 
     transition: color 300ms;
 
+    &:focus,
     &:hover {
-      color: lighten($primary-700, 20);
+      color: lighten($primary-700, 25);
     }
   }
 

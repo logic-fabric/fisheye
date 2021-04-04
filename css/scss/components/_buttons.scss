@@ -21,6 +21,11 @@
 
     transition: background-color 300ms;
 
+    &:focus {
+      filter: drop-shadow(2px 4px 4px $primary-700);
+      transform: translateY(-0.125rem);
+    }
+
     &:hover {
       background: lighten($primary-700, 10);
     }
