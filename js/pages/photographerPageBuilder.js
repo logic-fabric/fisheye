@@ -29,6 +29,7 @@ export class PhotographerPageBuilder {
 
     this._addOpenContactModalEvent();
     this._addSortWithDropdownMenu();
+    this._addShowFocusOnDropdownMenu();
     this._addOpenMediaModalEvents();
     this._addLikesEvents();
   }
@@ -223,6 +224,45 @@ export class PhotographerPageBuilder {
 
       window.location.hash = newRoute;
     };
+  }
+
+  _addShowFocusOnDropdownMenu() {
+    const dropdownMenu = document.querySelector(".c-dropdown--sr-only");
+    const customOptions = document.querySelectorAll("[data-criterion]");
+    const firstCustomOption = document.querySelector("[data-criterion");
+    const arrowIcon = document.querySelector(".fa-chevron-down");
+
+    const openOnFocus = (key) => {
+      if (key.code === "Enter") {
+        arrowIcon.classList.toggle("fa-chevron-down");
+        arrowIcon.classList.toggle("fa-chevron-up");
+
+        for (const customOption of customOptions) {
+          if (customOption !== firstCustomOption) {
+            customOption.classList.toggle("displayed");
+          }
+        }
+      }
+    };
+
+    dropdownMenu.onfocus = () => {
+      firstCustomOption.classList.add("focused");
+
+      document.addEventListener("keydown", openOnFocus);
+    };
+
+    dropdownMenu.addEventListener("focusout", () => {
+      firstCustomOption.classList.remove("focused");
+      arrowIcon.classList = "fas fa-chevron-down";
+
+      for (const customOption of customOptions) {
+        if (customOption !== firstCustomOption) {
+          customOption.classList.remove("displayed");
+        }
+      }
+
+      document.removeEventListener("keydown", openOnFocus);
+    });
   }
 
   _addOpenMediaModalEvents() {

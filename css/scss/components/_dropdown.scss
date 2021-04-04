@@ -37,6 +37,7 @@
 
     cursor: pointer;
 
+    &.focused,
     &:hover {
       background: lighten($primary-700, 10);
     }
