@@ -123,7 +123,7 @@ export class PhotographerPageBuilder {
 
   _templatePhotographerSummary() {
     const photographerMedia = this._mediaList.filterByTagAndPhotographerId(
-      "all",
+      "tous",
       this._photographer.id
     );
 

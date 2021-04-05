@@ -60,7 +60,7 @@ export class MediaList {
   filterByTagAndPhotographerId(tag, photographerId) {
     let photographerMedia;
 
-    if (tag === "all") {
+    if (tag === "tous") {
       photographerMedia = this.media.filter(
         (medium) => medium.photographerId === photographerId
       );

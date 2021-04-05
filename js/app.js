@@ -18,8 +18,8 @@ export class SinglePageApplication {
     this.MEDIA = data.media;
 
     this.pageFactory = new PageFactory(this.PHOTOGRAPHERS, this.MEDIA);
-    this.pageFactory.render("", "all");
-    window.location.hash = "#all";
+    this.pageFactory.render("", "tous");
+    window.location.hash = "#tous";
 
     this._router = new Router(this.pageFactory, this.PHOTOGRAPHERS);
 

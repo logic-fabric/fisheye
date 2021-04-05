@@ -10,7 +10,7 @@ export class HomePageBuilder {
     this._checkedTag = checkedTag;
 
     this._photographersTags = [...photographersList.sortedTags];
-    this._photographersTags.unshift("all");
+    this._photographersTags.unshift("tous");
   }
 
   render() {

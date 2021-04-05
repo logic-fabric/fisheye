@@ -71,7 +71,7 @@ export class PhotographersList {
   }
 
   filterByTag(tagToMatch) {
-    if (tagToMatch === "all") return this;
+    if (tagToMatch === "tous") return this;
 
     const filteredPhotographers = this.photographers.filter((photographer) =>
       photographer.tags.includes(tagToMatch)
