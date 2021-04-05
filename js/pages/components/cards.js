@@ -62,7 +62,7 @@ export class MediumCard {
       : this._medium.filename;
 
     let htmlContent = `<article class="lg4 md6 sm12 c-medium-card">
-                        <div class="c-medium-card__img" 
+                        <div class="c-medium-card__img" tabindex="0"
                          data-medium-id="${this._medium.id}">
                           <img
                             src="img/${this._photographer.mediaFolder}/${filename}" 

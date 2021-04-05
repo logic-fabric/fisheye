@@ -54,6 +54,14 @@
 
     cursor: pointer;
 
+    &:focus {
+      outline: none;
+
+      img {
+        border: 0.25rem solid $primary-200;
+      }
+    }
+
     img {
       border-radius: 0.25rem;
 
