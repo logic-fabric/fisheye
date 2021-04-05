@@ -133,13 +133,13 @@ export class PhotographerPageBuilder {
       photographerTotalLikes += medium.likes;
     }
 
-    return `<aside class="p-photographer-summary">
+    return `<div class="p-photographer-summary">
               <span id="photographer-total-likes">
                 ${photographerTotalLikes}
               </span>
               &nbsp;<i class="fas fa-heart"></i>
               <span>${this._photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
-            </aside>`;
+            </div>`;
   }
 
   _addOpenContactModalEvent() {
