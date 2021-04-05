@@ -33,7 +33,7 @@ export class MediaSortingDropdownMenu {
 
   get html() {
     return `<div class="c-dropdown">
-              <label for="sorting-listbox">Trier par</label>
+              <label>Trier par</label>
               <select class="c-dropdown--sr-only sr-only">
                 <option value="date">Date</option>
                 <option value="likes">Popularité</option>
