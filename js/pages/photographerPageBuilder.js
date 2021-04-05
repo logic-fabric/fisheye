@@ -169,6 +169,9 @@ export class PhotographerPageBuilder {
       modalBackground.classList.add("displayed");
       modalSuccessWrapper.style.height = 0;
       modalFormWrapper.style.height = "auto";
+
+      const firstInput = document.getElementById("first-name");
+      firstInput.focus();
     };
   }
 

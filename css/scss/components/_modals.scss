@@ -127,10 +127,15 @@ $open-modal-duration: 800ms;
   textarea {
     width: 100%;
     padding: 1rem 0.5rem;
-    border: none;
+    border: 0.25rem solid white;
     border-radius: 0.25rem;
 
     font-size: $h3-size;
+
+    &:focus {
+      border-color: $primary-700;
+      outline: none;
+    }
   }
 
   textarea {
