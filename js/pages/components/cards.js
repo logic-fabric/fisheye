@@ -4,6 +4,10 @@ import { LikeButton } from "./buttons.js";
 import { PhotographersTagsNav } from "./tagsNav.js";
 
 class PhotographerCardFocusableArea {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   */
   constructor(photographer) {
     this._photographer = photographer;
   }
@@ -20,6 +24,10 @@ class PhotographerCardFocusableArea {
 }
 
 class PhotographerCardInfos {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   */
   constructor(photographer) {
     this._photographer = photographer;
   }
@@ -36,6 +44,11 @@ class PhotographerCardInfos {
 }
 
 export class PhotographerCard {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   * @param {string} checkedTag
+   */
   constructor(photographer, checkedTag) {
     this._photographer = photographer;
     this._checkedTag = checkedTag;
@@ -51,6 +64,11 @@ export class PhotographerCard {
 }
 
 export class MediumCard {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   * @param {Medium} medium
+   */
   constructor(photographer, medium) {
     this._photographer = photographer;
     this._medium = medium;

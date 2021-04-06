@@ -1,6 +1,12 @@
 "use strict";
 
 export class Button {
+  /**
+   * @constructs
+   * @param {string} cssClasses 
+   * @param {string} type 
+   * @param {string} content 
+   */
   constructor(cssClasses, type, content) {
     this._cssClasses = cssClasses;
     this._type = type;
@@ -15,6 +21,14 @@ export class Button {
 }
 
 export class LikeButton extends Button {
+  /**
+   * @constructs
+   * @param {string} cssClasses 
+   * @param {string} type 
+   * @param {string} content 
+   * @param {number} mediumId 
+   * @param {boolean} isLiked 
+   */
   constructor(cssClasses, type, content, mediumId, isLiked) {
     super(cssClasses, type, content);
     this._mediumId = mediumId;

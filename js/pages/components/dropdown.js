@@ -7,6 +7,10 @@ const SORTING_CRITERIONS = {
 };
 
 export class MediaSortingDropdownMenu {
+  /**
+   * @constructs
+   * @param {string} currentCriterion
+   */
   constructor(currentCriterion) {
     this._sortingCriterions = SORTING_CRITERIONS;
     this._currentCriterion = currentCriterion;

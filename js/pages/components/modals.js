@@ -30,6 +30,10 @@ class Modal {
 }
 
 export class ContactModal extends Modal {
+  /**
+   * @constructs
+   * @param {Photographer} photographer 
+   */
   constructor(photographer) {
     super();
 
@@ -114,6 +118,11 @@ export class ContactModal extends Modal {
 }
 
 class DisplayedImage {
+  /**
+   * @constructs
+   * @param {Photographer} photographer 
+   * @param {Medium} medium 
+   */
   constructor(photographer, medium) {
     this._photographer = photographer;
     this._medium = medium;
@@ -128,6 +137,11 @@ class DisplayedImage {
 }
 
 class DisplayedVideo {
+  /**
+   * @constructs
+   * @param {Photographer} photographer 
+   * @param {Medium} medium 
+   */
   constructor(photographer, medium) {
     this._photographer = photographer;
     this._medium = medium;
@@ -144,6 +158,11 @@ class DisplayedVideo {
 }
 
 class DisplayedMediumFactory {
+  /**
+   * @constructs
+   * @param {Photographer} photographer 
+   * @param {Medium} medium 
+   */
   constructor(photographer, medium) {
     this._photographer = photographer;
     this._medium = medium;
@@ -159,6 +178,12 @@ class DisplayedMediumFactory {
 }
 
 export class MediaModal extends Modal {
+  /**
+   * @constructs
+   * @param {Photographer} photographer 
+   * @param {MediaList} mediaList 
+   * @param {number} displayedMediumId 
+   */
   constructor(photographer, mediaList, displayedMediumId) {
     super();
 

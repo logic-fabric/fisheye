@@ -1,6 +1,11 @@
 "use strict";
 
 class PhotographerTag {
+  /**
+   * @constructs
+   * @param {string} tag
+   * @param {boolean} checked
+   */
   constructor(tag, checked) {
     this._tag = tag;
     this._checked = checked;
@@ -18,6 +23,11 @@ class PhotographerTag {
 }
 
 export class PhotographersTagsNav {
+  /**
+   * @constructs
+   * @param {Array.string} tagsList
+   * @param {string} checkedTag
+   */
   constructor(tagsList, checkedTag) {
     this._tagsList = tagsList;
     this._checkedTag = checkedTag;
@@ -36,6 +46,13 @@ export class PhotographersTagsNav {
 }
 
 class MediaTag {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   * @param {string} tag
+   * @param {boolean} checked
+   * @param {string} currentSortingCriterion
+   */
   constructor(photographer, tag, checked, currentSortingCriterion) {
     this._photographer = photographer;
     this._tag = tag;
@@ -59,6 +76,12 @@ class MediaTag {
 }
 
 export class MediaTagsNav {
+  /**
+   * @constructs
+   * @param {Photographer} photographer
+   * @param {string} checkedTag
+   * @param {string} currentSortingCriterion
+   */
   constructor(photographer, checkedTag, currentSortingCriterion) {
     this._photographer = photographer;
     this._checkedTag = checkedTag;
