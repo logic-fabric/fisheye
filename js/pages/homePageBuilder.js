@@ -5,6 +5,11 @@ import { Logo } from "./components/logo.js";
 import { PhotographersTagsNav } from "./components/tagsNav.js";
 
 export class HomePageBuilder {
+  /**
+   * @constructs
+   * @param {PhotographersList} photographersList 
+   * @param {string} checkedTag 
+   */
   constructor(photographersList, checkedTag) {
     this._photographersList = photographersList.filterByTag(checkedTag);
     this._checkedTag = checkedTag;

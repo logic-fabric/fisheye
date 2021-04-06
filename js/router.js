@@ -1,11 +1,19 @@
 "use strict";
 
 export class Router {
+  /**
+   * @constructs
+   * @param {PageFactory} pageFactory 
+   * @param {PhotographersList} photographersList 
+   */
   constructor(pageFactory, photographersList) {
     this._pageFactory = pageFactory;
     this._photographers = photographersList;
   }
 
+  /**
+   * Watch the current URL and initiate a page rebuild when URL evolves.
+   */
   addRouteListener() {
     let comingFromHome;
 

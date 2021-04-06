@@ -4,11 +4,22 @@ import { HomePageBuilder } from "./homePageBuilder.js";
 import { PhotographerPageBuilder } from "./photographerPageBuilder.js";
 
 export class PageFactory {
+  /**
+   * @constructs
+   * @param {PhotographersList} photographersList 
+   * @param {MediaList} mediaList 
+   */
   constructor(photographersList, mediaList) {
     this._photographersList = photographersList;
     this._mediaList = mediaList;
   }
 
+  /**
+   * Rebuild the page with a PhotographerPageBuilder or a HomePageBuilder, depending the parameters.
+   * @param {string} photographer 
+   * @param {string} checkedTag 
+   * @param {string} sortingCriterion 
+   */
   render(photographer, checkedTag, sortingCriterion) {
     if (!checkedTag) {
       window.scrollTo(0, 0);

@@ -8,6 +8,13 @@ import { Logo } from "./components/logo.js";
 import { MediaTagsNav } from "./components/tagsNav.js";
 
 export class PhotographerPageBuilder {
+  /**
+   * @constructs
+   * @param {string} photographer
+   * @param {MediaList} mediaList
+   * @param {string} checkedTag
+   * @param {string} sortingCriterion
+   */
   constructor(photographer, mediaList, checkedTag, sortingCriterion) {
     this._photographer = photographer;
     this._mediaList = mediaList;

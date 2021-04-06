@@ -5,12 +5,19 @@ import { PageFactory } from "./pages/pageFactory.js";
 import { Router } from "./router.js";
 
 export class SinglePageApplication {
+  /**
+   * @constructs
+   * @param {string} dataSource
+   */
   constructor(dataSource) {
     this._dataFetcher = new DataFetcher(dataSource);
 
     this._init();
   }
 
+  /**
+   * Asynchronously receive photographers and media data to launch a PageFactory and an associated Router.
+   */
   async _init() {
     const data = await this._dataFetcher.fetchSource();
 
