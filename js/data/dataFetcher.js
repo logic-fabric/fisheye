@@ -4,10 +4,18 @@ import { Photographer, PhotographersList } from "./photographer.js";
 import { Medium, MediaList } from "./medium.js";
 
 export class DataFetcher {
+  /**
+   * @constructs
+   * @param {string} dataSource
+   */
   constructor(dataSource) {
     this._dataSource = dataSource;
   }
 
+  /**
+   * Fetch the data source and return its content as a PhotographersList and a MediaList if the fetching is ok.
+   * @returns {PhotographersList, MediaList}
+   */
   async fetchSource() {
     try {
       let response = await fetch(this._dataSource);

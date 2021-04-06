@@ -1,6 +1,17 @@
 "use strict";
 
 export class Medium {
+  /**
+   * @constructs
+   * @param {number} id 
+   * @param {string} photographerId 
+   * @param {string} filename 
+   * @param {Array.string} tags 
+   * @param {number} likes 
+   * @param {string} date 
+   * @param {number} price 
+   * @param {string} altText 
+   */
   constructor(id, photographerId, filename, tags, likes, date, price, altText) {
     this.id = id;
     this.photographerId = photographerId;
@@ -13,6 +24,10 @@ export class Medium {
     this.altText = altText;
   }
 
+  /**
+   * Add a 'title' attribute based on the medium filename.
+   * @returns {string}
+   */
   get title() {
     const filenameWithoutExtension = this.filename.split(".")[0];
     const rawTitle = filenameWithoutExtension.split("_").slice(1).join(" ");
@@ -20,12 +35,19 @@ export class Medium {
     return rawTitle[0].toUpperCase() + rawTitle.slice(1).toLowerCase();
   }
 
+  /**
+   * @returns {boolean}
+   */
   isVideo() {
     return this.filename.toLowerCase().endsWith("mp4");
   }
 }
 
 export class MediaList {
+  /**
+   * @constructs
+   * @param {Array.Medium} media 
+   */
   constructor(media) {
     this.media = media;
   }
@@ -57,6 +79,11 @@ export class MediaList {
     });
   }
 
+  /**
+   * @param {string} tag 
+   * @param {number} photographerId 
+   * @returns {MediaList}
+   */
   filterByTagAndPhotographerId(tag, photographerId) {
     let photographerMedia;
 

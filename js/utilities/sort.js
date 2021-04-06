@@ -1,5 +1,10 @@
 "use strict";
 
+/**
+ * Utility function to sort alphabetically french words, including accentuated ones.
+ * @param {Array.string} strings 
+ * @returns {Array.string}
+ */
 export function sortAlphabetically(strings) {
   const asciiConverter = [];
 

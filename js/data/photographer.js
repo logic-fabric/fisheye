@@ -3,6 +3,17 @@
 import { sortAlphabetically } from "../utilities/sort.js";
 
 export class Photographer {
+  /**
+   * @constructs
+   * @param {number} id 
+   * @param {string} name 
+   * @param {string} city 
+   * @param {string} country 
+   * @param {Array.string} tags 
+   * @param {string} tagline 
+   * @param {number} price 
+   * @param {string} portrait 
+   */
   constructor(id, name, city, country, tags, tagline, price, portrait) {
     this.id = id;
     this.name = name;
@@ -14,16 +25,28 @@ export class Photographer {
     this.portrait = portrait;
   }
 
+  /**
+   * Add a 'mediaFolder' attribute giving the folder where the media of this photographer are stocked.
+   * @returns {string}
+   */
   get mediaFolder() {
     return this.name.replace(/ /, "").replace(/-/, "");
   }
 
+  /**
+   * Add a 'slug' version of the photographer name, to use with the Router.
+   * @returns {string}
+   */
   get slug() {
     return this.name.toLowerCase().replace(/ /, "-");
   }
 }
 
 export class PhotographersList {
+  /**
+   * @constructs
+   * @param {Array.Photographer} photographers 
+   */
   constructor(photographers) {
     this.photographers = photographers;
 
@@ -53,6 +76,10 @@ export class PhotographersList {
     return [...tags];
   }
 
+  /**
+   * Add a 'sortedTags' attribute build by collecting and sorting alphabetically all the tags of the photographers in the list.
+   * @returns  {Array.string}
+   */
   get sortedTags() {
     const tags = this._collectTags();
 
@@ -70,6 +97,10 @@ export class PhotographersList {
     });
   }
 
+  /**
+   * @param {string} tagToMatch 
+   * @returns {PhotographersList}
+   */
   filterByTag(tagToMatch) {
     if (tagToMatch === "tous") return this;
 
