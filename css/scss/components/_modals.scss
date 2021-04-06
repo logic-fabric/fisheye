@@ -1,3 +1,7 @@
+/* ======
+   MODALS
+   ====== */
+
 $open-modal-duration: 800ms;
 
 @keyframes open-modal {
@@ -66,6 +70,7 @@ $open-modal-duration: 800ms;
   }
 }
 
+/* Modal to send a message to a photographer: */
 .c-contact-modal {
   width: 100%;
   max-width: 40rem;
@@ -180,6 +185,7 @@ $open-modal-duration: 800ms;
   }
 }
 
+/* Modal to enlarge each medium of a photographer: */
 .c-media-modal {
   max-width: 70rem;
   padding: 2rem 0 1.5rem 0;

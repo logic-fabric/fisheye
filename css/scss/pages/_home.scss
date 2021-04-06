@@ -1,3 +1,7 @@
+/* =========================
+   HOME PAGE SPECIFIC STYLES
+   ========================= */
+
 .p-home {
   position: relative;
 
@@ -38,9 +42,4 @@
       font-size: $txt-size;
     }
   }
-}
-
-// TO REFACTOR:
-#photographer-cards {
-  display: flex;
 }

@@ -1,3 +1,7 @@
+/* ===================================
+   PHOTOGRAPHERS PAGES SPECIFIC STYLES
+   =================================== */
+
 .p-photographer main {
   padding: 0 0 2rem 0;
 
@@ -6,6 +10,7 @@
   }
 }
 
+/* Banner with photographer infos and contact button: */
 .p-banner {
   padding: 2.5rem 3rem;
 
@@ -110,6 +115,7 @@
   }
 }
 
+/* Summary with price and the total of likes: */
 .p-photographer-summary {
   position: fixed;
   right: 2rem;
