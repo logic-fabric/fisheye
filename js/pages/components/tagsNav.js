@@ -63,12 +63,12 @@ class MediaTag {
   get html() {
     return this._checked
       ? `<li>
-        <a class="c-tag c-tag--checked" href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}">
+        <a class="c-tag c-tag--checked" href="#photographer:${this._photographer.slug}&${this._tag}&${this._criterion}">
           #${this._tag}
         </a>
         </li>`
       : `<li>
-          <a class="c-tag" href="#photographer:${this._photographer.slug}#${this._tag}#${this._criterion}">
+          <a class="c-tag" href="#photographer:${this._photographer.slug}&${this._tag}&${this._criterion}">
             #${this._tag}
           </a>
         </li>`;

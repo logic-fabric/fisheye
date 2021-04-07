@@ -27,7 +27,7 @@ export class Router {
         comingFromHome = false;
 
         const routeData = route.split(":")[1];
-        const routeParameters = routeData.split("#");
+        const routeParameters = routeData.split("&");
         const photographerName = routeParameters[0];
 
         photographer = this._photographers.findByName(photographerName);
