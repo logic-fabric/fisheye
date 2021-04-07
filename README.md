@@ -16,14 +16,14 @@ Ce projet a été conçu selon une **approche Orientée Objet**, approche caract
 - Le projet dispose ainsi d'instances d'`Object`et de `Array` "spécialisées", auxquelles associer les **méthodes concernant ces données** :
   - pour les ordonner par nom, date, ...
   - pour les filtrer (en fonction d'un `id`, d'un `tag`, ...)
-  - pour ajouter une propriété `title` à chaque `Medium` (à partir du fichier lui étant associé)
+  - pour ajouter par exemple une propriété `title` à chaque `Medium` (à partir du fichier lui étant associé)
   - etc.
 
 ![Diagramme de classes (données)](./doc/data-class-diagram.png)
 
 ### Architecture
 
-- Une classe `DataFetcher`permet de **récupérer, de manière asynchrone, les données du JSON**, d'en faire des instances de `Photographer` et `Medium` renvoyées sous forme de `PhotographerList`et `MediaList`.
+- Une classe `DataFetcher`permet de **récupérer, de manière asynchrone, les données du JSON**, d'en faire des instances de `Photographer` et `Medium` renvoyées sous la forme d'une `PhotographerList`et  d'une `MediaList`.
 - Une classe `Router` **"écoute" la route actuelle**, définie par le *hash* de l'URL, et **"actionne" la reconstruction de la page** à chaque changement de ce *hash*.
 - La demande de (re)construction est envoyée à une classe `Pagefactory`qui **détermine s'il s'agit de construire une "page accueil" ou une "page photographe"**.
 
