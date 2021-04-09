@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-03-13T13:48:00.880Z" agent="5.0 (Macintosh; Intel Mac OS X 11_2_3) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.54.1 Chrome/87.0.4280.141 Electron/11.3.0 Safari/537.36" etag="ptVgiJRvbc7SzZOK0nQx" version="14.2.4" type="embed">
+<mxfile>
     <diagram id="JdC-piUTVLBHBZa_3rRb" name="Page-1">
-        <mxGraphModel dx="1372" dy="708" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
+        <mxGraphModel dx="1054" dy="733" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#FFFFFF" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -56,15 +56,15 @@
                     <mxGeometry y="79" width="320" height="171" as="geometry"/>
                 </mxCell>
                 <mxCell id="22" value="MediaList" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#901C1C;fontColor=#FFFFFF;strokeWidth=2;fontSize=20;strokeColor=#901C1C;" parent="1" vertex="1">
-                    <mxGeometry x="600" y="558" width="400" height="200" as="geometry">
+                    <mxGeometry x="600" y="558" width="400" height="210" as="geometry">
                         <mxRectangle x="160" y="220" width="160" height="40" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="23" value="+ media: Array [Medium]" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#393C56;fontSize=16;fillColor=#FAFAFA;strokeColor=#901C1C;fontStyle=1;strokeWidth=2;" parent="22" vertex="1">
                     <mxGeometry y="40" width="400" height="39" as="geometry"/>
                 </mxCell>
-                <mxCell id="24" value="+ sortByDate()&#10;+ sortByLikes()&#10;+ sortByName()&#10;&#10;+ filterByTagAndPhotographerId() &gt; MediaList" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#393C56;strokeWidth=2;fontSize=16;fillColor=#FAFAFA;strokeColor=#901C1C;" parent="22" vertex="1">
-                    <mxGeometry y="79" width="400" height="121" as="geometry"/>
+                <mxCell id="24" value="+ filterByTagAndPhotographerId() &gt; MediaList&#10;&#10;+ _sortByDate()&#10;+ _sortByLikes()&#10;+ _sortByName()&#10;+ sortByCriterion()" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#393C56;strokeWidth=2;fontSize=16;fillColor=#FAFAFA;strokeColor=#901C1C;" parent="22" vertex="1">
+                    <mxGeometry y="79" width="400" height="131" as="geometry"/>
                 </mxCell>
                 <mxCell id="25" value="" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;fillColor=#F2CC8F;fontSize=20;fontColor=#FFFFFF;exitX=0.004;exitY=0.081;exitDx=0;exitDy=0;strokeWidth=2;strokeColor=#901C1C;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="2" target="19" edge="1">
                     <mxGeometry relative="1" as="geometry">
