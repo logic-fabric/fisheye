@@ -3,14 +3,14 @@
 export class Medium {
   /**
    * @constructs
-   * @param {number} id 
-   * @param {string} photographerId 
-   * @param {string} filename 
-   * @param {Array.string} tags 
-   * @param {number} likes 
-   * @param {string} date 
-   * @param {number} price 
-   * @param {string} altText 
+   * @param {number} id
+   * @param {string} photographerId
+   * @param {string} filename
+   * @param {Array.string} tags
+   * @param {number} likes
+   * @param {string} date
+   * @param {number} price
+   * @param {string} altText
    */
   constructor(id, photographerId, filename, tags, likes, date, price, altText) {
     this.id = id;
@@ -46,42 +46,15 @@ export class Medium {
 export class MediaList {
   /**
    * @constructs
-   * @param {Array.Medium} media 
+   * @param {Array.Medium} media
    */
   constructor(media) {
     this.media = media;
   }
 
-  sortByDate() {
-    return this.media.sort((m1, m2) => {
-      if (m1.date - m2.date < 0) return 1;
-      if (m1.date - m2.date > 0) return -1;
-      return 0;
-    });
-  }
-
-  sortByLikes() {
-    return this.media.sort((m1, m2) => {
-      if (m1.likes < m2.likes) return 1;
-      if (m1.likes > m2.likes) return -1;
-      return 0;
-    });
-  }
-
-  sortByTitle() {
-    return this.media.sort((m1, m2) => {
-      const title1 = m1.title.toLowerCase();
-      const title2 = m2.title.toLowerCase();
-
-      if (title1 > title2) return 1;
-      if (title1 < title2) return -1;
-      return 0;
-    });
-  }
-
   /**
-   * @param {string} tag 
-   * @param {number} photographerId 
+   * @param {string} tag
+   * @param {number} photographerId
    * @returns {MediaList}
    */
   filterByTagAndPhotographerId(tag, photographerId) {
@@ -99,5 +72,41 @@ export class MediaList {
     }
 
     return new MediaList(photographerMedia);
+  }
+
+  _sortByDate() {
+    return this.media.sort((m1, m2) => {
+      if (m1.date - m2.date < 0) return 1;
+      if (m1.date - m2.date > 0) return -1;
+      return 0;
+    });
+  }
+
+  _sortByLikes() {
+    return this.media.sort((m1, m2) => {
+      if (m1.likes < m2.likes) return 1;
+      if (m1.likes > m2.likes) return -1;
+      return 0;
+    });
+  }
+
+  _sortByTitle() {
+    return this.media.sort((m1, m2) => {
+      const title1 = m1.title.toLowerCase();
+      const title2 = m2.title.toLowerCase();
+
+      if (title1 > title2) return 1;
+      if (title1 < title2) return -1;
+      return 0;
+    });
+  }
+
+  /**
+   * @param {string} criterion
+   */
+  sortByCriterion(criterion) {
+    if (criterion == "date") this._sortByDate();
+    if (criterion == "likes") this._sortByLikes();
+    if (criterion == "title") this._sortByTitle();
   }
 }

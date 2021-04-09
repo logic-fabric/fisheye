@@ -32,7 +32,7 @@ class Modal {
 export class ContactModal extends Modal {
   /**
    * @constructs
-   * @param {Photographer} photographer 
+   * @param {Photographer} photographer
    */
   constructor(photographer) {
     super();
@@ -120,8 +120,8 @@ export class ContactModal extends Modal {
 class DisplayedImage {
   /**
    * @constructs
-   * @param {Photographer} photographer 
-   * @param {Medium} medium 
+   * @param {Photographer} photographer
+   * @param {Medium} medium
    */
   constructor(photographer, medium) {
     this._photographer = photographer;
@@ -139,8 +139,8 @@ class DisplayedImage {
 class DisplayedVideo {
   /**
    * @constructs
-   * @param {Photographer} photographer 
-   * @param {Medium} medium 
+   * @param {Photographer} photographer
+   * @param {Medium} medium
    */
   constructor(photographer, medium) {
     this._photographer = photographer;
@@ -160,8 +160,8 @@ class DisplayedVideo {
 class DisplayedMediumFactory {
   /**
    * @constructs
-   * @param {Photographer} photographer 
-   * @param {Medium} medium 
+   * @param {Photographer} photographer
+   * @param {Medium} medium
    */
   constructor(photographer, medium) {
     this._photographer = photographer;
@@ -180,9 +180,9 @@ class DisplayedMediumFactory {
 export class MediaModal extends Modal {
   /**
    * @constructs
-   * @param {Photographer} photographer 
-   * @param {MediaList} mediaList 
-   * @param {number} displayedMediumId 
+   * @param {Photographer} photographer
+   * @param {MediaList} mediaList
+   * @param {number} displayedMediumId
    */
   constructor(photographer, mediaList, displayedMediumId) {
     super();
@@ -251,28 +251,28 @@ export class MediaModal extends Modal {
     let mediaListLength = this._mediaList.media.length;
 
     leftArrow.onclick = () => {
-      currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
-
-      this._displayMedium(currentMediumIndex);
-    };
-
-    rightArrow.onclick = () => {
       currentMediumIndex =
         (currentMediumIndex + mediaListLength - 1) % mediaListLength;
 
       this._displayMedium(currentMediumIndex);
     };
 
+    rightArrow.onclick = () => {
+      currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
+
+      this._displayMedium(currentMediumIndex);
+    };
+
     document.onkeydown = (key) => {
       if (key.code === "ArrowLeft") {
-        currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
+        currentMediumIndex =
+          (currentMediumIndex + mediaListLength - 1) % mediaListLength;
 
         this._displayMedium(currentMediumIndex);
       }
 
       if (key.code === "ArrowRight") {
-        currentMediumIndex =
-          (currentMediumIndex + mediaListLength - 1) % mediaListLength;
+        currentMediumIndex = (currentMediumIndex + 1) % mediaListLength;
 
         this._displayMedium(currentMediumIndex);
       }

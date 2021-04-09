@@ -115,9 +115,7 @@ export class PhotographerPageBuilder {
       this._photographer.id
     );
 
-    if (this._sortingCriterion == "date") photographerMedia.sortByDate();
-    if (this._sortingCriterion == "likes") photographerMedia.sortByLikes();
-    if (this._sortingCriterion == "title") photographerMedia.sortByTitle();
+    photographerMedia.sortByCriterion(this._sortingCriterion);
 
     let cardsHtml = "";
 
@@ -280,12 +278,16 @@ export class PhotographerPageBuilder {
     const modalBackground = document.getElementById("modal-bg");
     const modalWindow = document.getElementById("modal-window");
 
+    let photographerMedia = this._mediaList.filterByTagAndPhotographerId(
+      this._checkedTag,
+      this._photographer.id
+    );
+
+    photographerMedia.sortByCriterion(this._sortingCriterion);
+
     const mediaModal = new MediaModal(
       this._photographer,
-      this._mediaList.filterByTagAndPhotographerId(
-        this._checkedTag,
-        this._photographer.id
-      ),
+      photographerMedia,
       mediumToDisplayId
     );
 
