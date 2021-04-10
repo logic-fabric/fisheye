@@ -150,10 +150,23 @@
     }
 
     &__infos {
-      h2,
+      h2 {
+        font-size: $txt-size;
+      }
+
       p,
       button {
-        font-size: $txt-size;
+        position: relative;
+
+        font-size: $sm-size;
+      }
+
+      p {
+        top: 2px;
+      }
+
+      button {
+        top: 1px;
       }
 
       button {
