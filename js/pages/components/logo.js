@@ -6,7 +6,7 @@ export class Logo {
               <img
                 class="c-logo__img"
                 src="./img/logo-fisheye.png"
-                alt="Logo de FishEye"
+                alt="FishEye"
                 width="200"
                 height="50"
               />
