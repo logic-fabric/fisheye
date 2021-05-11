@@ -6,6 +6,10 @@ Code source du **Projet 6** - **_Créez un site accessible pour une plateforme d
 
 Le rendu de ce code est accessible sur cette [GitHub Page dédiée](https://logic-fabric.github.io/LoicMangin_6_29012021/).
 
+## Maquette de l'UI
+
+L'UI de ce projet a été réalisée à partir d'une [maquette Figma](https://www.figma.com/file/pt8xJxC1QffW4HX16QhGZJ/UI-Design-FishEye-FR).
+
 ## Structure du projet
 
 Ce projet a été conçu selon une **approche Orientée Objet**, approche caractérisée par un découpage en classes.
