@@ -1,22 +1,32 @@
 "use strict";
 
 /**
+ * @param {string} str
+ * @returns {string}
+ */
+function replaceNonAsciiLetters(str) {
+  return str
+    .toLowerCase()
+    .replace(/[àä]/g, "a")
+    .replace(/[éèêë]/g, "e")
+    .replace(/[îï]/g, "i")
+    .replace(/[ôö]/g, "o")
+    .replace(/[ùûû]/g, "u")
+    .replace(/ç/g, "c");
+}
+
+/**
  * Utility function to sort alphabetically french words, including accentuated ones.
- * @param {Array.string} strings 
+ * @param {Array.string} strings
  * @returns {Array.string}
  */
 export function sortAlphabetically(strings) {
   const asciiConverter = [];
 
   for (let str of strings) {
-    let convertedStr = str
-      .toLowerCase()
-      .replace(/[àä]/g, "a")
-      .replace(/[éèêë]/g, "e")
-      .replace(/[îï]/g, "i")
-      .replace(/[ôö]/g, "o")
-      .replace(/[ùûû]/g, "u");
-    asciiConverter.push([str, convertedStr]);
+    let strWithoutNonAsciiLetters = replaceNonAsciiLetters(str);
+
+    asciiConverter.push([str, strWithoutNonAsciiLetters]);
   }
 
   asciiConverter.sort((asso1, asso2) => {
