@@ -1,5 +1,7 @@
 # FishEye - Jan 2021
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e57e0c50308f490bbcc5efd361e09a70)](https://app.codacy.com/gh/logic-fabric/fisheye?utm_source=github.com&utm_medium=referral&utm_content=logic-fabric/fisheye&utm_campaign=Badge_Grade_Settings)
+
 Code source du **Projet 6** - **_Créez un site accessible pour une plateforme de photographes_** du parcours **Développeur Front-end** d'_OpenClassrooms_.
 
 ## Page de démonstration
