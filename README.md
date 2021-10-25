@@ -29,15 +29,15 @@ Ce projet a été conçu selon une **approche Orientée Objet**, approche caract
 
 ### Architecture
 
-- Une classe `DataFetcher`permet de **récupérer, de manière asynchrone, les données du JSON**, d'en faire des instances de `Photographer` et `Medium` renvoyées sous la forme d'une `PhotographerList`et  d'une `MediaList`.
-- Une classe `Router` **"écoute" la route actuelle**, définie par le *hash* de l'URL, et **"actionne" la reconstruction de la page** à chaque changement de ce *hash*.
+- Une classe `DataFetcher`permet de **récupérer, de manière asynchrone, les données du JSON**, d'en faire des instances de `Photographer` et `Medium` renvoyées sous la forme d'une `PhotographerList`et d'une `MediaList`.
+- Une classe `Router` **"écoute" la route actuelle**, définie par le _hash_ de l'URL, et **"actionne" la reconstruction de la page** à chaque changement de ce _hash_.
 - La demande de (re)construction est envoyée à une classe `Pagefactory`qui **détermine s'il s'agit de construire une "page accueil" ou une "page photographe"**.
 
 Une instance de ces trois classes est créé par une **`SinglePageApplication`** qui lance également la construction de la page d'accueil initiale.
 
-Ce sont ensuite les actions de l'utilisateur qui redéfinissent le *hash* lu par le `Router`, celui-ci sollicitant la reconstruction de la page auprès de `PageFactory`.
+Ce sont ensuite les actions de l'utilisateur qui redéfinissent le _hash_ lu par le `Router`, celui-ci sollicitant la reconstruction de la page auprès de `PageFactory`.
 
 - Deux "classes atelier" `HomePageBuilder`et`PhotographerPageBuilder`se chargent de **construire le HTML** de chaque type de page, de **l'injecter dans `index.html`** et d'y **ajouter les `EventListeners`** nécessaires.
-- Ces deux classes ateliers utilisent de leur côté des "classes composants" (`Button`, `PhotographerCard, `...)  chargées chacune de construire le **HTML des composants UI** nécessaires.
+- Ces deux classes ateliers utilisent de leur côté des "classes composants" (`Button`, `PhotographerCard, `...) chargées chacune de construire le **HTML des composants UI** nécessaires.
 
 ![Diagramme de classes (architecture)](./doc/architecture-class-diagram.png)

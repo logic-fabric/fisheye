@@ -60,9 +60,10 @@ $iefix: 0.01px;
         }
 
         &.has-gutter#{$suffix} > .offset-lg#{$i} {
-          margin-left: calc(
-            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-          );
+          margin-left:
+            calc(
+              (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+            );
         }
       }
     }
@@ -85,9 +86,10 @@ $iefix: 0.01px;
         }
 
         &.has-gutter#{$suffix} > .offset-md#{$i} {
-          margin-left: calc(
-            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-          );
+          margin-left:
+            calc(
+              (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+            );
         }
       }
     }
@@ -110,9 +112,10 @@ $iefix: 0.01px;
         }
 
         &.has-gutter#{$suffix} > .offset-sm#{$i} {
-          margin-left: calc(
-            (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
-          );
+          margin-left:
+            calc(
+              (100% / #{$nb-cols}) * #{$i} + #{$size} / 2 - #{$iefix}
+            );
         }
       }
     }

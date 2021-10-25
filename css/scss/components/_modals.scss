@@ -10,6 +10,7 @@ $open-modal-duration: 800ms;
 
     opacity: 0;
   }
+
   to {
     top: 0;
 
@@ -128,6 +129,10 @@ $open-modal-duration: 800ms;
     font-size: 2rem;
   }
 
+  textarea {
+    resize: none;
+  }
+
   input,
   textarea {
     width: 100%;
@@ -141,10 +146,6 @@ $open-modal-duration: 800ms;
       border-color: $primary-700;
       outline: none;
     }
-  }
-
-  textarea {
-    resize: none;
   }
 
   .c-btn {
@@ -193,7 +194,6 @@ $open-modal-duration: 800ms;
   &__carousel {
     display: flex;
     justify-content: space-between;
-    overflow: hidden;
 
     overflow: hidden;
 

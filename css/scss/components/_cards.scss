@@ -8,6 +8,12 @@
 
   text-align: center;
 
+  img {
+    border-radius: 50%;
+
+    object-fit: cover;
+  }
+
   a:focus {
     display: block;
 
@@ -21,12 +27,6 @@
     h2 {
       color: $primary-700;
     }
-  }
-
-  img {
-    border-radius: 50%;
-
-    object-fit: cover;
   }
 
   &__location {
@@ -60,18 +60,18 @@
 
     cursor: pointer;
 
+    img {
+      border-radius: 0.25rem;
+
+      object-fit: cover;
+    }
+
     &:focus {
       outline: none;
 
       img {
         border: 0.25rem solid $primary-200;
       }
-    }
-
-    img {
-      border-radius: 0.25rem;
-
-      object-fit: cover;
     }
 
     i {
@@ -167,9 +167,7 @@
 
       button {
         top: 1px;
-      }
 
-      button {
         height: 2rem;
         margin: 0;
       }
