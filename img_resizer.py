@@ -31,10 +31,10 @@ if __name__ == '__main__':
     ]
 
     for img_folder in img_folders:
+        resized_img_folder = resized_src / img_folder
+
         if img_folder not in os.listdir(resized_src):
             os.mkdir(resized_img_folder)
-
-        resized_img_folder = resized_src / img_folder
 
         images = [
             filename for filename in os.listdir(img_folder)
