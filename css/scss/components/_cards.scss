@@ -29,6 +29,10 @@
     }
   }
 
+  &__portrait {
+    filter: grayscale(1);
+  }
+
   &__location {
     color: $primary-700;
     font-size: $h5-size;

@@ -14,10 +14,12 @@ class PhotographerCardFocusableArea {
 
   get html() {
     return `<a href="#photographer:${this._photographer.slug}&tous&date">
-              <img 
-                src="img/photographers/${this._photographer.portrait}" 
-                alt="${this._photographer.name}" width="200" height="200" 
-              />
+              <div class="c-photographer-card__portrait">
+                <img 
+                  src="img/photographers/${this._photographer.portrait}" 
+                  alt="${this._photographer.name}" width="200" height="200" 
+                />
+              </div>
               <h2>${this._photographer.name}</h2>
             </a>`;
   }
