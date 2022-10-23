@@ -56,6 +56,6 @@ export class HomePageBuilder {
       cardsHtml += new PhotographerCard(photographer, this._checkedTag).html;
     }
 
-    return `<div class=row-12>${cardsHtml}</div>`;
+    return `<div class="row-12 has-gutter-xl">${cardsHtml}</div>`;
   }
 }
