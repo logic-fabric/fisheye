@@ -58,6 +58,11 @@ export class PhotographerCard {
 
   get html() {
     return `<article class="c-photographer-card lg4 md6 sm12">
+  <div 
+    id="${this._photographer.slug}-decorative-bg"
+    class="c-photographer-card__decorative-bg"
+  >
+  </div>
   ${new PhotographerCardFocusableArea(this._photographer).html}
   ${new PhotographerCardInfos(this._photographer).html}
   ${new PhotographersTagsNav(this._photographer.tags, this._checkedTag).html}

@@ -5,16 +5,27 @@ import { sortAlphabetically } from "../utilities/sort.js";
 export class Photographer {
   /**
    * @constructs
-   * @param {number} id 
-   * @param {string} name 
-   * @param {string} city 
-   * @param {string} country 
-   * @param {Array.string} tags 
-   * @param {string} tagline 
-   * @param {number} price 
-   * @param {string} portrait 
+   * @param {number} id
+   * @param {string} name
+   * @param {string} city
+   * @param {string} country
+   * @param {Array.string} tags
+   * @param {string} tagline
+   * @param {number} price
+   * @param {string} portrait
+   * @param {string} decorativeColor
    */
-  constructor(id, name, city, country, tags, tagline, price, portrait) {
+  constructor(
+    id,
+    name,
+    city,
+    country,
+    tags,
+    tagline,
+    price,
+    portrait,
+    decorativeColor
+  ) {
     this.id = id;
     this.name = name;
     this.city = city;
@@ -23,6 +34,7 @@ export class Photographer {
     this.tagline = tagline;
     this.price = price;
     this.portrait = portrait;
+    this.decorativeColor = decorativeColor;
   }
 
   /**
@@ -45,7 +57,7 @@ export class Photographer {
 export class PhotographersList {
   /**
    * @constructs
-   * @param {Array.Photographer} photographers 
+   * @param {Array.Photographer} photographers
    */
   constructor(photographers) {
     this.photographers = photographers;
@@ -98,7 +110,7 @@ export class PhotographersList {
   }
 
   /**
-   * @param {string} tagToMatch 
+   * @param {string} tagToMatch
    * @returns {PhotographersList}
    */
   filterByTag(tagToMatch) {

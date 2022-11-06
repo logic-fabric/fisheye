@@ -34,7 +34,8 @@ export class DataFetcher {
           fetchedPhotographer.tags,
           fetchedPhotographer.tagline,
           fetchedPhotographer.price,
-          fetchedPhotographer.portrait
+          fetchedPhotographer.portrait,
+          fetchedPhotographer.decorativeColor
         );
 
         photographerInstances.push(photographerInstance);

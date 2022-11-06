@@ -7,8 +7,8 @@ import { PhotographersTagsNav } from "./components/tagsNav.js";
 export class HomePageBuilder {
   /**
    * @constructs
-   * @param {PhotographersList} photographersList 
-   * @param {string} checkedTag 
+   * @param {PhotographersList} photographersList
+   * @param {string} checkedTag
    */
   constructor(photographersList, checkedTag) {
     this._photographersList = photographersList.filterByTag(checkedTag);
@@ -25,6 +25,8 @@ export class HomePageBuilder {
 
     this._renderHeader();
     this._renderMain();
+
+    this._decoratePhotographersCardsBackgrounds();
   }
 
   _renderHeader() {
@@ -57,5 +59,15 @@ export class HomePageBuilder {
     }
 
     return `<div class="row-12 has-gutter-xl">${cardsHtml}</div>`;
+  }
+
+  _decoratePhotographersCardsBackgrounds() {
+    for (let photographer of this._photographersList.photographers) {
+      const cardDecorativeBackground = document.getElementById(
+        `${photographer.slug}-decorative-bg`
+      );
+
+      cardDecorativeBackground.style.background = photographer.decorativeColor;
+    }
   }
 }
