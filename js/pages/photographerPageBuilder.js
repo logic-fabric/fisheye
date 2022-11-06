@@ -65,6 +65,8 @@ export class PhotographerPageBuilder {
     htmlContent += this._templatePhotographerSummary();
 
     main.innerHTML = htmlContent;
+
+    this._decorateContactButtonAndSummary();
   }
 
   _templatePhotographerBanner() {
@@ -95,11 +97,13 @@ export class PhotographerPageBuilder {
                               ${contactButtonHtml}
                              </div>`;
 
-    let portraitHtml = `<div class="lg4 md3 sm4 p-banner__portrait">
+    let portraitHtml = `<div class="lg4 md3 sm4">
+                          <div class="p-banner__portrait">
           <img 
             src="img/photographers/${this._photographer.portrait}" 
             alt="${this._photographer.name}" width="200" height="200" 
           />
+                          </div>
                         </div>`;
 
     return `<section class="row-12 p-banner">
@@ -145,6 +149,16 @@ export class PhotographerPageBuilder {
               &nbsp;<i class="fas fa-heart"></i>
               <span>${this._photographer.price}&nbsp;€&nbsp;/&nbsp;jour</span>
             </div>`;
+  }
+
+  _decorateContactButtonAndSummary() {
+    const contactButton = document.querySelector(".c-btn--contact");
+    const photographerSummary = document.querySelector(
+      ".p-photographer-summary"
+    );
+
+    contactButton.style.background = this._photographer.decorativeColor;
+    photographerSummary.style.background = this._photographer.decorativeColor;
   }
 
   _addOpenContactModalEvent() {
@@ -200,9 +214,8 @@ export class PhotographerPageBuilder {
         };
       } else {
         customOption.onclick = () => {
-          const selectedSortingCriterion = customOption.getAttribute(
-            "data-criterion"
-          );
+          const selectedSortingCriterion =
+            customOption.getAttribute("data-criterion");
 
           if (selectedSortingCriterion === this._sortingCriterion) {
             this._dropdownMenu.closeDropdownMenu(this._sortingCriterion);

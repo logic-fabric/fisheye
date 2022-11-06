@@ -79,14 +79,21 @@ $open-modal-duration: 800ms;
 
   color: black;
 
-  background: $primary-200;
+  background: $primary-100;
 
   #close-icon {
-    color: white;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem;
+    border-radius: 50%;
 
-    &:hover {
-      color: $neutral-900;
-    }
+    color: white;
+    text-align: center;
+
+    background: $primary-700;
+
+    transition: all 300ms;
+
   }
 
   #contact-form-wrapper,

@@ -9,7 +9,7 @@
       "tagline": "Voir le beau dans le quotidien",
       "price": 400,
       "portrait": "MimiKeel.jpg",
-      "decorativeColor": "violet"
+      "decorativeColor": "mediumOrchid"
     },
     {
       "name": "Ellie-Rose Wilkens",
@@ -20,7 +20,7 @@
       "tagline": "Capturer des compositions complexes",
       "price": 250,
       "portrait": "EllieRoseWilkens.jpg",
-      "decorativeColor": "tomato"
+      "decorativeColor": "fireBrick"
     },
     {
       "name": "Tracy Galindo",
@@ -53,7 +53,7 @@
       "tagline": "Je crée des souvenirs",
       "price": 275,
       "portrait": "RhodeDubois.jpg",
-      "decorativeColor": "orange"
+      "decorativeColor": "maroon"
     },
     {
       "name": "Marcel Nikolic",

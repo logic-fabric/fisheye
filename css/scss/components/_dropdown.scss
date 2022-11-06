@@ -6,7 +6,7 @@
   display: flex;
   z-index: $z-dropdown;
 
-  margin: 1.5rem 0 4rem 0;
+  margin: 6rem 0 2rem 0;
 
   label {
     font-size: $h6-size;
@@ -19,11 +19,11 @@
 
   .c-dropdown--custom {
     position: absolute;
-    top: -0.5rem;
+    top: -1rem;
     left: 6rem;
     z-index: $z-dropdown;
 
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     overflow: hidden;
   }
 
@@ -31,7 +31,7 @@
     display: none;
     width: 11rem;
     margin: 0;
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.5rem;
 
     color: white;
     font-size: $h6-size;
@@ -59,7 +59,7 @@
         top: -1rem;
         left: -0.5rem;
 
-        width: 9.5rem;
+        width: 9rem;
         height: 1px;
 
         background: white;
@@ -72,7 +72,7 @@
   i {
     position: absolute;
     top: 1.25rem;
-    right: 1rem;
+    right: 1.25rem;
 
     color: white;
   }
